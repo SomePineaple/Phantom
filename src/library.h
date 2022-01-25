@@ -1,0 +1,6 @@
+#ifndef MC_INJECTION_LIBRARY_H
+#define MC_INJECTION_LIBRARY_H
+
+void hello();
+
+#endif //MC_INJECTION_LIBRARY_H
