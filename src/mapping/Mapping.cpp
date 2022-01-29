@@ -3,6 +3,7 @@
 //
 
 #include "Mapping.h"
+#include "../Platform.h"
 
 std::map<std::string, CM*> lookup;
 
@@ -57,6 +58,7 @@ void Mapping::setup() {
     // -----------------------------------
     //
     // obfuscated minecraft classes - 1.12
+#ifdef MC_1_12
     m = make("Entity", "ve");
     field(m, "x", "p", "D", false);
     field(m, "y", "q", "D", false);
@@ -79,6 +81,32 @@ void Mapping::setup() {
     field(m, "player", "h", "Lbub;", false);
     field(m, "world", "f", "Lbrz;", false);
     method(m, "getMinecraft", "z", "()Lbhz;", true);
+#endif
+    // obfuscated minecraft classes - 1.8.8
+#ifdef MC_1_8_8
+    m = make("Entity", "pk");
+    field(m, "x", "s", "D", false);
+    field(m, "y", "t", "D", false);
+    field(m, "z", "u", "D", false);
+    method(m, "getID", "F", "()I", false);
+    method(m, "getName", "e_", "()Ljava/lang/String;", false);
+    m = make("WorldClient", "bdb");
+    field(m, "entities", "c", "Ljava/util/Set;", false);
+    method(m, "setTime", "b", "(J)V", false);
+    m = make("PlayerSP", "bew");
+    field(m, "x", "s", "D", false);
+    field(m, "y", "t", "D", false);
+    field(m, "z", "u", "D", false);
+    field(m, "yaw", "y", "F", false);
+    field(m, "pitch", "z", "F", false);
+    method(m, "getID", "F", "()I", false);
+    method(m, "getName", "e_", "()Ljava/lang/String;", false);
+    method(m, "setSprint", "d", "(Z)V", false);
+    m = make("Minecraft", "ave");
+    field(m, "player", "h", "Lbew;", false);
+    field(m, "world", "f", "Lbdb;", false);
+    method(m, "getMinecraft", "A", "()Lave;", true);
+#endif
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {

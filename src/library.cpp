@@ -7,7 +7,7 @@ void startClient() {
     auto *phantom = new Phantom();
 
     auto *system = new JavaSystem(phantom);
-    system->out->println(JvmUtils::getJString(phantom, "Hello, we are injected"));
+    system->out->println(JvmUtils::getJString(phantom, "Phantom: Injected"));
 
     phantom->runClient();
 }

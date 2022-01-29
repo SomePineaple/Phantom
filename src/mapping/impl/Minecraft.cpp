@@ -2,10 +2,13 @@
 #include "EntityPlayerSP.h"
 #include "WorldClient.h"
 
-Minecraft::Minecraft(Phantom * phantom) : AbstractClass::AbstractClass(phantom, "Minecraft") {
+Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "Minecraft") {
 	smdGetMinecraft = getMethodID("getMinecraft");
 	fdPlayer = getFieldID("player");
 	fdWorld = getFieldID("world");
+
+    playerContainer = nullptr;
+    worldContainer = nullptr;
 }
 
 jobject Minecraft::getMinecraft() {

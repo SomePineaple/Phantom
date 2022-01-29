@@ -35,12 +35,12 @@ Phantom::Phantom() {
 }
 
 void Phantom::runClient() {
-    auto *system = new JavaSystem(this);
-
     // Get minecraft instance
     auto *mc = new Minecraft(this);
 
-    system->out->println(JvmUtils::getJString(this, "UDP: We are injected and I got the minecraft instance YAY"));
+    auto *system = new JavaSystem(this);
+
+    system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
 
     running = true;
 
@@ -55,7 +55,7 @@ void Phantom::runClient() {
         WorldClient * world = mc->getWorldContainer();
         // Ensure the player and world are not null (IE, check if in-game)
         if (player == nullptr || world == nullptr) {
-            system->out->println(JvmUtils::getJString(this, "Not in game, quitting"));
+            system->out->println(JvmUtils::getJString(this, "Phantom: Not in game, quitting"));
             running = false;
         }
         // Get all the entities, calculate the closest one
