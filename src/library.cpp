@@ -1,11 +1,12 @@
 #include "library.h"
 
 #include <iostream>
+#include <thread>
 
-__attribute__((constuctor)) void dllLoad() {
+void startClient() {
 
 }
 
-void hello() {
-    std::cout << "Hello, World!" << std::endl;
+__attribute__((constructor)) void dllLoad() {
+    std::thread clientThread(startClient);
 }

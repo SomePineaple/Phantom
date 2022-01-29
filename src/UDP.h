@@ -9,7 +9,7 @@
 
 class UDP {
 public:
-    UDP();
+    [[noreturn]] UDP();
     JavaVM * getJvm();
     JNIEnv * getEnv();
 private:

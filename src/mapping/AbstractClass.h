@@ -8,6 +8,7 @@
 #include "jvmti.h"
 #include "CM.h"
 #include "../UDP.h"
+#include "Mapping.h"
 
 class AbstractClass {
 public:
