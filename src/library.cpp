@@ -1,10 +1,10 @@
 #include <thread>
-#include "UDP.h"
+#include "Phantom.h"
 #include "mapping/impl/JavaSystem.h"
 #include "utils/JvmUtils.h"
 
 void startClient() {
-    UDP *udp = new UDP();
+    Phantom *udp = new Phantom();
 
     auto *system = new JavaSystem(udp);
     system->out->println(JvmUtils::getJString(udp, "Hello, we are injected"));

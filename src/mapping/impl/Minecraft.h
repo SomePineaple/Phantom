@@ -2,13 +2,13 @@
 
 #include "../AbstractClass.h"
 
-class UDP;
+class Phantom;
 class EntityPlayerSP;
 class WorldClient;
 class Minecraft : public AbstractClass
 {
 public:
-	Minecraft(UDP *udp);
+	Minecraft(Phantom *udp);
 
 	jobject getMinecraft();
 	jobject getPlayer();

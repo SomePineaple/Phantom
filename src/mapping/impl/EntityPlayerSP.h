@@ -3,12 +3,12 @@
 #include "../AbstractClass.h"
 
 
-class UDP;
+class Phantom;
 class Minecraft;
 class EntityPlayerSP : public AbstractClass
 {
 public:
-	EntityPlayerSP(UDP *udp, Minecraft *mc);
+	EntityPlayerSP(Phantom *udp, Minecraft *mc);
 
 	jdouble getPosX();
 	jdouble getPosY();

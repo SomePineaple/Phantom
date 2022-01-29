@@ -1,7 +1,7 @@
 #include "Minecraft.h"
 #include "Entity.h"
 
-Entity::Entity(UDP * udp, Minecraft * mc, jobject entity) : AbstractClass::AbstractClass(udp, "Entity")
+Entity::Entity(Phantom * udp, Minecraft * mc, jobject entity) : AbstractClass::AbstractClass(udp, "Entity")
 {
 	this->mc = mc;
 	this->entity = entity;

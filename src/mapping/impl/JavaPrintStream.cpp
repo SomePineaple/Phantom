@@ -4,7 +4,7 @@
 
 #include "JavaPrintStream.h"
 
-JavaPrintStream::JavaPrintStream(UDP *udp, jobject printStream) : AbstractClass(udp, "PrintStream") {
+JavaPrintStream::JavaPrintStream(Phantom *udp, jobject printStream) : AbstractClass(udp, "PrintStream") {
     mdPrintln = getMethodID("println");
 
     this->printStream = printStream;

@@ -1,7 +1,7 @@
 #include "Minecraft.h"
 #include "WorldClient.h"
 
-WorldClient::WorldClient(UDP * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "WorldClient") {
+WorldClient::WorldClient(Phantom * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "WorldClient") {
 	this->mc = mc;
 	fdEntityList = getFieldID("entities");
 	mdSetWorldTime = getMethodID("setTime");

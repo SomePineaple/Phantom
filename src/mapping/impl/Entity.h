@@ -7,7 +7,7 @@ class Minecraft;
 class Entity : public AbstractClass
 {
 public:
-	Entity(UDP * udp, Minecraft * mc, jobject entity);
+	Entity(Phantom * udp, Minecraft * mc, jobject entity);
 
 	jdouble getPosX();
 	jdouble getPosY();

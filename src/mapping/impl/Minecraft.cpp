@@ -2,7 +2,7 @@
 #include "EntityPlayerSP.h"
 #include "WorldClient.h"
 
-Minecraft::Minecraft(UDP * udp) : AbstractClass::AbstractClass(udp, "Minecraft") {
+Minecraft::Minecraft(Phantom * udp) : AbstractClass::AbstractClass(udp, "Minecraft") {
 	smdGetMinecraft = getMethodID("getMinecraft");
 	fdPlayer = getFieldID("player");
 	fdWorld = getFieldID("world");

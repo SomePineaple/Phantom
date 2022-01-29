@@ -7,12 +7,12 @@
 
 #include "jvmti.h"
 #include "CM.h"
-#include "../UDP.h"
+#include "../Phantom.h"
 #include "Mapping.h"
 
 class AbstractClass {
 public:
-    AbstractClass(UDP * udp, const char * clsName);
+    AbstractClass(Phantom * udp, const char * clsName);
 
     //This stuff is just to make using JNI easier (it's already easy, just likes to be easier)
     //It doesn't cover everything, but covers most basic shit
@@ -125,7 +125,7 @@ public:
 
 protected:
     const char* clsKey;
-    UDP * udp;
+    Phantom * udp;
     jclass cls;
     // Field getter that uses the mapping class so only a clear-text name needs to be defined.
     // "name" : Clear-text name used by 'Mapping.h' to define the field.

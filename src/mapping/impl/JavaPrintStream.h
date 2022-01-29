@@ -9,7 +9,7 @@
 
 class JavaPrintStream : public AbstractClass {
 public:
-    JavaPrintStream(UDP *udp, jobject printStream);
+    JavaPrintStream(Phantom *udp, jobject printStream);
     void println(jstring data);
 private:
     jobject printStream;

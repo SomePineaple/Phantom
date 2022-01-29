@@ -2,14 +2,14 @@
 // Created by somepineaple on 1/25/22.
 //
 
-#ifndef MC_INJECTION_UDP_H
-#define MC_INJECTION_UDP_H
+#ifndef MC_INJECTION_PHANTOM_H
+#define MC_INJECTION_PHANTOM_H
 
 #include "jvmti.h"
 
-class UDP {
+class Phantom {
 public:
-    UDP();
+    Phantom();
 
     void runClient();
 
@@ -24,4 +24,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_UDP_H
+#endif //MC_INJECTION_PHANTOM_H

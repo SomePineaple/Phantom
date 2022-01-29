@@ -5,7 +5,7 @@
 class JavaList : public AbstractClass
 {
 public:
-	JavaList(UDP * udp, jobject list);
+	JavaList(Phantom * udp, jobject list);
 	
 	jobject get(jint index);
 	int size();

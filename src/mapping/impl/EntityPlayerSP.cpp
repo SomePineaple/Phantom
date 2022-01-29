@@ -1,7 +1,7 @@
 #include "Minecraft.h"
 #include "EntityPlayerSP.h"
 
-EntityPlayerSP::EntityPlayerSP(UDP * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "PlayerSP") {
+EntityPlayerSP::EntityPlayerSP(Phantom * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "PlayerSP") {
 	this->mc = mc;
 
 	//Get all the field and method IDs for EntityPlayerSP that we want (mappings are for 1.12)

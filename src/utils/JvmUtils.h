@@ -7,10 +7,10 @@
 
 
 #include "jvmti.h"
-#include "../UDP.h"
+#include "../Phantom.h"
 
 namespace JvmUtils {
-    jstring getJString(UDP *udp, const char *str);
+    jstring getJString(Phantom *udp, const char *str);
 }
 
 

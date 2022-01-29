@@ -2,7 +2,7 @@
 // Created by somepineaple on 1/25/22.
 //
 
-#include "UDP.h"
+#include "Phantom.h"
 
 #include <iostream>
 #include <unistd.h>
@@ -16,7 +16,7 @@
 #include "utils/MathHelper.h"
 #include "utils/JvmUtils.h"
 
-UDP::UDP() {
+Phantom::Phantom() {
     jsize count;
     if (JNI_GetCreatedJavaVMs(&jvm, 1, &count) != JNI_OK || count == 0) {
 		return;
@@ -32,7 +32,7 @@ UDP::UDP() {
     Mapping::setup();
 }
 
-void UDP::runClient() {
+void Phantom::runClient() {
     auto *system = new JavaSystem(this);
 
     // Get minecraft instance
@@ -80,18 +80,18 @@ void UDP::runClient() {
     }
 }
 
-JavaVM *UDP::getJvm() {
+JavaVM *Phantom::getJvm() {
     return jvm;
 }
 
-JNIEnv *UDP::getEnv() {
+JNIEnv *Phantom::getEnv() {
     return env;
 }
 
-void UDP::setRunning(bool p_running) {
+void Phantom::setRunning(bool p_running) {
     this->running = p_running;
 }
 
-bool UDP::isRunning() const {
+bool Phantom::isRunning() const {
     return running;
 }
