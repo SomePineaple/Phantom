@@ -4,6 +4,6 @@
 
 #include "JvmUtils.h"
 
-jstring JvmUtils::getJString(Phantom *udp, const char *str) {
-    return udp->getEnv()->NewStringUTF(str);
+jstring JvmUtils::getJString(Phantom *phantom, const char *str) {
+    return phantom->getEnv()->NewStringUTF(str);
 }

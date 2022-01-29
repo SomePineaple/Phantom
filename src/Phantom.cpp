@@ -17,6 +17,8 @@
 #include "utils/JvmUtils.h"
 
 Phantom::Phantom() {
+    running = false;
+
     jsize count;
     if (JNI_GetCreatedJavaVMs(&jvm, 1, &count) != JNI_OK || count == 0) {
 		return;
@@ -40,6 +42,8 @@ void Phantom::runClient() {
 
     system->out->println(JvmUtils::getJString(this, "UDP: We are injected and I got the minecraft instance YAY"));
 
+    running = true;
+
     // Infinite loop, very error-prone but good enough for the purpose of showing that it works.
     //
     // In this case there is no null checking, so this will crash if the world is null,
@@ -51,7 +55,8 @@ void Phantom::runClient() {
         WorldClient * world = mc->getWorldContainer();
         // Ensure the player and world are not null (IE, check if in-game)
         if (player == nullptr || world == nullptr) {
-            sleep(1);
+            system->out->println(JvmUtils::getJString(this, "Not in game, quitting"));
+            running = false;
         }
         // Get all the entities, calculate the closest one
         JavaSet *entities = world->getEntities();

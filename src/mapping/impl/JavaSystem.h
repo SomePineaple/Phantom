@@ -10,7 +10,7 @@
 
 class JavaSystem : public AbstractClass {
 public:
-    JavaSystem(Phantom *udp);
+    explicit JavaSystem(Phantom *phantom);
     JavaPrintStream *out;
 private:
 };

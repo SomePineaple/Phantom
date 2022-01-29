@@ -13,7 +13,7 @@ struct CM {
     const char* name;
     std::map<std::string, Mem> fields;
     std::map<std::string, Mem> methods;
-    CM(const char* clsName) : name(clsName) {}
+    explicit CM(const char* clsName) : name(clsName) {}
 };
 
 #endif //MC_INJECTION_CM_H

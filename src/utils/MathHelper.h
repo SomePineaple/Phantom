@@ -7,8 +7,8 @@
 
 
 namespace MathHelper {
-    double radtodeg(double x);
-    double degtorad(double x);
+    double toDegrees(double rad);
+    double toRadians(double deg);
 
     double distance(double x, double y);
     double distance(double x1, double y1, double z1, double x2, double y2, double z2);

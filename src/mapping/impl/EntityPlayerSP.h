@@ -8,7 +8,7 @@ class Minecraft;
 class EntityPlayerSP : public AbstractClass
 {
 public:
-	EntityPlayerSP(Phantom *udp, Minecraft *mc);
+	EntityPlayerSP(Phantom *phantom, Minecraft *mc);
 
 	jdouble getPosX();
 	jdouble getPosY();

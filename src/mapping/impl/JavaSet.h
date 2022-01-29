@@ -5,7 +5,7 @@
 class JavaSet : public AbstractClass
 {
 public:
-	JavaSet(Phantom *udp, jobject set);
+	JavaSet(Phantom *phantom, jobject set);
 
 	int size();
 	jobjectArray toArray();

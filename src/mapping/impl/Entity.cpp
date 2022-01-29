@@ -1,7 +1,7 @@
 #include "Minecraft.h"
 #include "Entity.h"
 
-Entity::Entity(Phantom * udp, Minecraft * mc, jobject entity) : AbstractClass::AbstractClass(udp, "Entity")
+Entity::Entity(Phantom * phantom, Minecraft * mc, jobject entity) : AbstractClass::AbstractClass(phantom, "Entity")
 {
 	this->mc = mc;
 	this->entity = entity;
@@ -34,5 +34,5 @@ const char * Entity::getName() {
 	//Needs to get the name as a jstring, then convert that to something usable
 	auto str = (jstring)getObject(entity, mdGetName);
     jboolean notTrue = false;
-	return udp->getEnv()->GetStringUTFChars(str, &notTrue);
+	return phantom->getEnv()->GetStringUTFChars(str, &notTrue);
 }

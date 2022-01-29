@@ -2,7 +2,7 @@
 #include "EntityPlayerSP.h"
 #include "WorldClient.h"
 
-Minecraft::Minecraft(Phantom * udp) : AbstractClass::AbstractClass(udp, "Minecraft") {
+Minecraft::Minecraft(Phantom * phantom) : AbstractClass::AbstractClass(phantom, "Minecraft") {
 	smdGetMinecraft = getMethodID("getMinecraft");
 	fdPlayer = getFieldID("player");
 	fdWorld = getFieldID("world");
@@ -22,12 +22,12 @@ jobject Minecraft::getWorld() {
 
 EntityPlayerSP * Minecraft::getPlayerContainer() {
 	if (!playerContainer)
-		playerContainer = new EntityPlayerSP(udp, this);
+		playerContainer = new EntityPlayerSP(phantom, this);
 	return playerContainer;
 }
 
 WorldClient * Minecraft::getWorldContainer() {
 	if (!worldContainer)
-		worldContainer = new WorldClient(udp, this);
+		worldContainer = new WorldClient(phantom, this);
 	return worldContainer;
 }

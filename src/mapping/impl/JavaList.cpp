@@ -1,6 +1,6 @@
 #include "JavaList.h"
 
-JavaList::JavaList(Phantom * udp, jobject list) : AbstractClass::AbstractClass(udp, "List") {
+JavaList::JavaList(Phantom * phantom, jobject list) : AbstractClass::AbstractClass(phantom, "List") {
 	mdGet = getMethodID("get");
 	mdSize = getMethodID("size");
 	mdToArray = getMethodID("toArray");

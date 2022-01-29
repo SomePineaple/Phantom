@@ -1,6 +1,6 @@
 #include "JavaSet.h"
 
-JavaSet::JavaSet(Phantom * udp, jobject set) : AbstractClass::AbstractClass(udp, "Set")
+JavaSet::JavaSet(Phantom * phantom, jobject set) : AbstractClass::AbstractClass(phantom, "Set")
 {
 	mdSize = getMethodID("size");
 	mdToArray = getMethodID("toArray");

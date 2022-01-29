@@ -7,7 +7,7 @@ class Minecraft;
 class WorldClient : public AbstractClass
 {
 public:
-	WorldClient(Phantom * udp, Minecraft * mc);
+	WorldClient(Phantom *phantom, Minecraft * mc);
 
 	jobject getEntityList();
 	void setWorldTime(jlong time);

@@ -1,7 +1,7 @@
 #include "Minecraft.h"
 #include "WorldClient.h"
 
-WorldClient::WorldClient(Phantom * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "WorldClient") {
+WorldClient::WorldClient(Phantom * phantom, Minecraft * mc) : AbstractClass::AbstractClass(phantom, "WorldClient") {
 	this->mc = mc;
 	fdEntityList = getFieldID("entities");
 	mdSetWorldTime = getMethodID("setTime");
@@ -16,6 +16,6 @@ void WorldClient::setWorldTime(jlong time) {
 }
 
 JavaSet * WorldClient::getEntities() {
-	auto * set = new JavaSet(udp, getEntityList());
+	auto * set = new JavaSet(phantom, getEntityList());
 	return set;
 }

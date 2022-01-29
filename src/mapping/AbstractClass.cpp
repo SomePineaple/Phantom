@@ -4,17 +4,17 @@
 
 #include "AbstractClass.h"
 
-AbstractClass::AbstractClass(Phantom * udp, const char * clsName) {
-    this->udp = udp;
+AbstractClass::AbstractClass(Phantom * phantom, const char * clsName) {
+    this->phantom = phantom;
     this->clsKey = clsName;
 
     //Find each class that inherits AbstractClass by the class name provided
-    cls = udp->getEnv()->FindClass(Mapping::getClassName(clsName));
+    cls = phantom->getEnv()->FindClass(Mapping::getClassName(clsName));
 
     //Check for exceptions. I got lazy, and this is the only time I actually check for errors
     //Basically, checks if there's an error, prints the stack trace to the console, then clears the error
-    if (udp->getEnv()->ExceptionCheck()) {
-        udp->getEnv()->ExceptionDescribe();
-        udp->getEnv()->ExceptionClear();
+    if (phantom->getEnv()->ExceptionCheck()) {
+        phantom->getEnv()->ExceptionDescribe();
+        phantom->getEnv()->ExceptionClear();
     }
 }

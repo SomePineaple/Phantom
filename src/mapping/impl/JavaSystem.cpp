@@ -4,6 +4,6 @@
 
 #include "JavaSystem.h"
 
-JavaSystem::JavaSystem(Phantom *udp) : AbstractClass(udp, "System") {
-    out = new JavaPrintStream(udp, getObject(getFieldID("out")));
+JavaSystem::JavaSystem(Phantom *phantom) : AbstractClass(phantom, "System") {
+    out = new JavaPrintStream(phantom, getObject(getFieldID("out")));
 }

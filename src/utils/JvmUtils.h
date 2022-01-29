@@ -10,7 +10,7 @@
 #include "../Phantom.h"
 
 namespace JvmUtils {
-    jstring getJString(Phantom *udp, const char *str);
+    jstring getJString(Phantom *phantom, const char *str);
 }
 
 
