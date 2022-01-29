@@ -4,8 +4,7 @@
 
 #include "AbstractClass.h"
 
-AbstractClass::AbstractClass(UDP * udp, const char * clsName)
-{
+AbstractClass::AbstractClass(UDP * udp, const char * clsName) {
     this->udp = udp;
     this->clsKey = clsName;
 

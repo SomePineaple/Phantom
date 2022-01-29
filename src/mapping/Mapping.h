@@ -29,7 +29,6 @@ public:
     static const char* getClassName(const char* key) {
         return getClass(key)->name;
     }
-private:
     static void setup() {
         // How to define mappings:
         // --- Unobfuscated classes:
@@ -53,6 +52,10 @@ private:
         m = make("Set", "java/util/Set");
         method(m, "toArray", "()[Ljava/lang/Object;", false);
         method(m, "size", "()I", false);
+        m = make("System", "java/lang/System");
+        field(m, "out", "Ljava/io/PrintStream;", true);
+        m = make("PrintStream", "java/io/PrintStream");
+        method(m, "println", "(Ljava/lang/String;)V", false);
         // How to define mappings:
         // --- Obfuscated classes:
         //
@@ -91,7 +94,7 @@ private:
         field(m, "world", "f", "Lbrz;", false);
         method(m, "getMinecraft", "z", "()Lbhz;", true);
     }
-
+private:
     static void field(CM *cm, const char* name, const char* desc, bool isStatic) {
         field(cm, name, name, desc, isStatic);
     }

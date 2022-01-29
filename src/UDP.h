@@ -9,12 +9,18 @@
 
 class UDP {
 public:
-    [[noreturn]] UDP();
-    JavaVM * getJvm();
-    JNIEnv * getEnv();
+    UDP();
+
+    void runClient();
+
+    JavaVM *getJvm();
+    JNIEnv *getEnv();
+    void setRunning(bool p_running);
+    bool isRunning() const;
 private:
-    JavaVM * jvm;
-    JNIEnv * env;
+    bool running;
+    JavaVM *jvm;
+    JNIEnv *env;
 };
 
 

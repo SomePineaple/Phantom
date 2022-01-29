@@ -8,13 +8,13 @@ class Minecraft;
 class EntityPlayerSP : public AbstractClass
 {
 public:
-	EntityPlayerSP(UDP * udp, Minecraft * mc);
+	EntityPlayerSP(UDP *udp, Minecraft *mc);
 
 	jdouble getPosX();
 	jdouble getPosY();
 	jdouble getPosZ();
 	jint getId();
-	const char * getName();
+	const char *getName();
 
 	void setRotationYaw(jfloat yaw);
 	void setRotationPitch(jfloat pitch);
@@ -29,6 +29,6 @@ private:
 	jmethodID mdGetName;
 	jmethodID mdSetSprinting;
 
-	Minecraft * mc;
+	Minecraft *mc;
 };
 

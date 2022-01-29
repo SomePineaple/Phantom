@@ -1,6 +1,4 @@
 #include "JavaSet.h"
-#include "../AbstractClass.h"
-
 
 JavaSet::JavaSet(UDP * udp, jobject set) : AbstractClass::AbstractClass(udp, "Set")
 {

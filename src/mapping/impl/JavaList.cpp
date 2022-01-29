@@ -1,7 +1,6 @@
 #include "JavaList.h"
 
-JavaList::JavaList(UDP * udp, jobject list) : AbstractClass::AbstractClass(udp, "List")
-{
+JavaList::JavaList(UDP * udp, jobject list) : AbstractClass::AbstractClass(udp, "List") {
 	mdGet = getMethodID("get");
 	mdSize = getMethodID("size");
 	mdToArray = getMethodID("toArray");

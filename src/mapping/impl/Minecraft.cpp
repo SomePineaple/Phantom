@@ -2,8 +2,7 @@
 #include "EntityPlayerSP.h"
 #include "WorldClient.h"
 
-Minecraft::Minecraft(UDP * udp) : AbstractClass::AbstractClass(udp, "Minecraft")
-{
+Minecraft::Minecraft(UDP * udp) : AbstractClass::AbstractClass(udp, "Minecraft") {
 	smdGetMinecraft = getMethodID("getMinecraft");
 	fdPlayer = getFieldID("player");
 	fdWorld = getFieldID("world");
@@ -22,7 +21,6 @@ jobject Minecraft::getWorld() {
 }
 
 EntityPlayerSP * Minecraft::getPlayerContainer() {
-	//If the player container doesn't exist, make it, why am I even commenting this?
 	if (!playerContainer)
 		playerContainer = new EntityPlayerSP(udp, this);
 	return playerContainer;

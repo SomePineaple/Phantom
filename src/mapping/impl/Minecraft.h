@@ -8,7 +8,7 @@ class WorldClient;
 class Minecraft : public AbstractClass
 {
 public:
-	Minecraft(UDP * udp);
+	Minecraft(UDP *udp);
 
 	jobject getMinecraft();
 	jobject getPlayer();
