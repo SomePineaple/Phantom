@@ -4,12 +4,12 @@
 #include "utils/JvmUtils.h"
 
 void startClient() {
-    Phantom *udp = new Phantom();
+    auto *phantom = new Phantom();
 
-    auto *system = new JavaSystem(udp);
-    system->out->println(JvmUtils::getJString(udp, "Hello, we are injected"));
+    auto *system = new JavaSystem(phantom);
+    system->out->println(JvmUtils::getJString(phantom, "Hello, we are injected"));
 
-    udp->runClient();
+    phantom->runClient();
 }
 
 __attribute__((constructor)) void dllLoad() {
