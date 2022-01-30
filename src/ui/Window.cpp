@@ -59,7 +59,7 @@ void Window::setup() {
     ImGui_ImplOpenGL3_Init(glsl_version);
 }
 
-void Window::update(bool &running, bool inGame) {
+void Window::update(AimBot *aim, bool &running, bool inGame) {
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     SDL_Event event;
@@ -83,7 +83,12 @@ void Window::update(bool &running, bool inGame) {
         ImGui::Begin("Phantom Settings", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
 
         if (inGame) {
-            ImGui::Text("Here are your settings");
+            ImGui::Text("Cheats:");
+
+            ImGui::Checkbox("AimBot", &aim->enabled);
+            if (aim->enabled)
+                ImGui::SliderFloat("AimBot: Range", &aim->range, 0, 6);
+
         } else {
             ImGui::Text("Please join a world");
         }

@@ -5,8 +5,7 @@
 class Phantom;
 class EntityPlayerSP;
 class WorldClient;
-class Minecraft : public AbstractClass
-{
+class Minecraft : public AbstractClass {
 public:
 	explicit Minecraft(Phantom *phantom);
 

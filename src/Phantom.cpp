@@ -15,6 +15,8 @@
 
 #include "utils/MathHelper.h"
 #include "utils/JvmUtils.h"
+#include "cheats/AimBot.h"
+#include "ui/Window.h"
 
 Phantom::Phantom() {
     running = false;
@@ -42,7 +44,9 @@ void Phantom::runClient() {
 
     system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
 
-    window = new Window(500, 400, "Phantom");
+    auto *aim = new AimBot(this);
+
+    auto *window = new Window(500, 400, "Phantom");
     window->setup();
 
     running = true;
@@ -53,32 +57,13 @@ void Phantom::runClient() {
         // Ensure the player and world are not null (IE, check if in-game)
         if (player == nullptr || world == nullptr) {
             system->out->println(JvmUtils::getJString(this, "Phantom: Not in game, quitting"));
-            window->update(running, false);
+            window->update(aim, running, false);
             continue;
         }
-        // Get all the entities, calculate the closest one
-        JavaSet *entities = world->getEntities();
-        double dist = 6;
-        Entity *closest = nullptr;
-        for (int i = 0; i < entities->size(); i++) {
-            auto * entity = new Entity(this, mc, entities->get(i));
-            if (entity->getId() != player->getId()) {
-                double newDist = MathHelper::distance(entity->getPosX(), entity->getPosY(), entity->getPosZ(), player->getPosX(), player->getPosY(), player->getPosZ());
-                if (newDist < dist) {
-                    dist = newDist;
-                    closest = entity;
-                }
-            }
-        }
 
-        // If there is an entity in range, look at it
-        if (closest != nullptr) {
-            double * rotation = MathHelper::direction(player->getPosX(), player->getPosY(), player->getPosZ(), closest->getPosX(), closest->getPosY(), closest->getPosZ());
-            player->setRotationYaw((float)rotation[0]);
-            player->setRotationPitch((float)rotation[1]);
-        }
+        aim->run(mc);
 
-        window->update(running, true);
+        window->update(aim, running, true);
     }
 
     window->destruct();
