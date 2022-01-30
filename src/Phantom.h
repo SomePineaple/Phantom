@@ -5,7 +5,8 @@
 #ifndef MC_INJECTION_PHANTOM_H
 #define MC_INJECTION_PHANTOM_H
 
-#include "jvmti.h"
+#include <jvmti.h>
+#include "ui/Window.h"
 
 class Phantom {
 public:
@@ -21,6 +22,8 @@ private:
     bool running;
     JavaVM *jvm;
     JNIEnv *env;
+
+    Window *window;
 };
 
 

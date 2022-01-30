@@ -42,13 +42,10 @@ void Phantom::runClient() {
 
     system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
 
-    running = true;
+    window = new Window(500, 400, "Phantom");
+    window->setup();
 
-    // Infinite loop, very error-prone but good enough for the purpose of showing that it works.
-    //
-    // In this case there is no null checking, so this will crash if the world is null,
-    // so inject while in-game. This will crash if you leave.
-    //
+    running = true;
     while (running) {
         // This is in the loop so that the instances are current. IE, joining a new world not trying to reference the old one.
         EntityPlayerSP *player = mc->getPlayerContainer();
@@ -81,9 +78,10 @@ void Phantom::runClient() {
             player->setRotationPitch((float)rotation[1]);
         }
 
-        // Sleep cause I'm tired. 1000000 is 1 second, usleep uses microseconds
-        usleep(1000000 / 60);
+        window->update(running, true);
     }
+
+    window->destruct();
 }
 
 JavaVM *Phantom::getJvm() {

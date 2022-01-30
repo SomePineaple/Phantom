@@ -5,7 +5,7 @@
 #ifndef MC_INJECTION_ABSTRACTCLASS_H
 #define MC_INJECTION_ABSTRACTCLASS_H
 
-#include "jvmti.h"
+#include <jvmti.h>
 #include "CM.h"
 #include "../Phantom.h"
 #include "Mapping.h"

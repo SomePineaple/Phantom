@@ -5,12 +5,20 @@
 #ifndef MC_INJECTION_WINDOW_H
 #define MC_INJECTION_WINDOW_H
 
+#include <SDL.h>
 
 class Window {
 public:
     Window(int width, int height, const char *title);
+    void setup();
+    void destruct();
+    void update(bool &running, bool inGame);
 private:
     int width, height;
+    const char *title;
+
+    SDL_Window *window;
+    SDL_GLContext glContext;
 };
 
 

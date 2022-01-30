@@ -6,7 +6,7 @@
 #define MC_INJECTION_JVMUTILS_H
 
 
-#include "jvmti.h"
+#include <jvmti.h>
 #include "../Phantom.h"
 
 namespace JvmUtils {
