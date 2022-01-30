@@ -13,13 +13,13 @@ public:
 	jobject getPlayer();
 	jobject getWorld();
 
-	EntityPlayerSP * getPlayerContainer();
-	WorldClient * getWorldContainer();
+	EntityPlayerSP *getPlayerContainer();
+	WorldClient *getWorldContainer();
 private:
 	jfieldID fdPlayer;
 	jfieldID fdWorld;
 	jmethodID smdGetMinecraft;
 
-	EntityPlayerSP * playerContainer;
-	WorldClient * worldContainer;
+	EntityPlayerSP *playerContainer;
+	WorldClient *worldContainer;
 };

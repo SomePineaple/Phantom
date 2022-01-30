@@ -84,6 +84,9 @@ void Mapping::setup() {
     field(m, "player", "h", "Lbub;", false);
     field(m, "world", "f", "Lbrz;", false);
     method(m, "getMinecraft", "z", "()Lbhz;", true);
+    m = make("KeyBinding", "bhw");
+    method(m, "setKeyBindState", "a", "(IZ)V", true);
+    method(m, "onTick", "a", "(I)V", true);
 #endif
     // obfuscated minecraft classes - 1.8.8
 #ifdef MC_1_8_8
@@ -109,6 +112,9 @@ void Mapping::setup() {
     field(m, "player", "h", "Lbew;", false);
     field(m, "world", "f", "Lbdb;", false);
     method(m, "getMinecraft", "A", "()Lave;", true);
+    m = make("KeyBinding", "avb");
+    method(m, "setKeyBindState", "a", "(IZ)V", true);
+    method(m, "onTick", "a", "(I)V", true);
 #endif
 }
 
