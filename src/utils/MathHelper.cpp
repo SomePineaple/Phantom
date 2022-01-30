@@ -30,3 +30,19 @@ double MathHelper::toDegrees(double rad) {
 double MathHelper::toRadians(double deg) {
     return deg * M_PI / 180.0;
 }
+
+int MathHelper::randInt(int min, int max) {
+    return (min <= max) ?
+           ((rand() % ((max + 1) - min)) + min) :
+           ((rand() % ((min + 1) - max)) + max);
+}
+
+float MathHelper::randFloat(float min, float max) {
+    float random = (float)rand() / (float)RAND_MAX;
+    return min + ((max - min) * random);
+}
+
+double MathHelper::randDouble(double min, double max) {
+    double random = (double)rand() / (double)RAND_MAX;
+    return min + ((max - min) * random);
+}

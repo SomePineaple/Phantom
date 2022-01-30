@@ -14,6 +14,10 @@ namespace MathHelper {
     double distance(double x1, double y1, double z1, double x2, double y2, double z2);
     double direction(double x1, double y1, double x2, double y2);
     double *direction(double x1, double y1, double z1, double x2, double y2, double z2);
+
+    int randInt(int min, int max);
+    float randFloat(float min, float max);
+    double randDouble(double min, double max);
 }
 
 
