@@ -2,8 +2,7 @@
 
 #include "../AbstractClass.h"
 
-class JavaSet : public AbstractClass
-{
+class JavaSet : public AbstractClass {
 public:
 	JavaSet(Phantom *phantom, jobject set);
 

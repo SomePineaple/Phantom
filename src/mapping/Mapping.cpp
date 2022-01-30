@@ -43,6 +43,9 @@ void Mapping::setup() {
     field(m, "out", "Ljava/io/PrintStream;", true);
     m = make("PrintStream", "java/io/PrintStream");
     method(m, "println", "(Ljava/lang/String;)V", false);
+    m = make("Mouse", "org/lwjgl/input/Mouse");
+    method(m, "isButtonDown", "(I)Z", true);
+
     // How to define mappings:
     // --- Obfuscated classes:
     //
