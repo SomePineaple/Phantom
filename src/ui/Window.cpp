@@ -14,6 +14,9 @@ Window::Window(int width, int height, const char *title) {
     this->width = width;
     this->height = height;
     this->title = title;
+
+    window = nullptr;
+    glContext = nullptr;
 }
 
 void Window::setup() {
@@ -77,13 +80,12 @@ void Window::update(bool &running, bool inGame) {
     {
         ImGui::SetNextWindowPos(ImVec2(0, 0));
         ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y));
-        ImGui::Begin("Phantom Settings", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);                          // Create a window called "Hello, world!" and append into it.
+        ImGui::Begin("Phantom Settings", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
 
         if (inGame) {
-            ImGui::Text(
-                    "Here are your settings");               // Display some text (you can use a format strings too)
+            ImGui::Text("Here are your settings");
         } else {
-            ImGui::Text("Please join a game");
+            ImGui::Text("Please join a world");
         }
 
         if (ImGui::Button("Destruct"))
