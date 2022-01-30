@@ -5,8 +5,11 @@
 #include "AutoClicker.h"
 #include "../utils/MathHelper.h"
 
-AutoClicker::AutoClicker(float cps) {
+AutoClicker::AutoClicker(Phantom *phantom, float cps) {
     this->cps = cps;
+
+    mouse = new Mouse(phantom);
+
     isEnabled = false;
     lastClick = new MSTimer();
     hold = new MSTimer();

@@ -6,15 +6,19 @@
 #define MC_INJECTION_AUTOCLICKER_H
 
 #include "../utils/MSTimer.h"
+#include "../Phantom.h"
+#include "../mapping/impl/Mouse.h"
 
 class AutoClicker {
 public:
-    explicit AutoClicker(float cps);
+    explicit AutoClicker(Phantom *phantom, float cps);
     void update();
 
     float cps;
 private:
     void updateVals();
+
+    Mouse *mouse;
 
     bool isEnabled;
     MSTimer *lastClick;
