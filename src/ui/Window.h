@@ -20,6 +20,8 @@ private:
 
     SDL_Window *window;
     SDL_GLContext glContext;
+
+    static void drawHelper(const char *desc);
 };
 
 

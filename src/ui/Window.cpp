@@ -86,6 +86,9 @@ void Window::update(AimBot *aim, bool &running, bool inGame) {
             ImGui::Text("Cheats:");
 
             ImGui::Checkbox("AimBot", &aim->enabled);
+            ImGui::SameLine();
+            drawHelper("Automatically aims at the nearest entity. There is not anti-bot, and this is not aim assist, this is aimbot, this will instaban on servers with good anticheats");
+
             if (aim->enabled)
                 ImGui::SliderFloat("AimBot: Range", &aim->range, 0, 6);
 
@@ -118,4 +121,15 @@ void Window::destruct() {
     SDL_GL_DeleteContext(glContext);
     SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+void Window::drawHelper(const char *desc) {
+    ImGui::TextDisabled("(?)");
+    if (ImGui::IsItemHovered()) {
+        ImGui::BeginTooltip();
+        ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+        ImGui::TextUnformatted(desc);
+        ImGui::PopTextWrapPos();
+        ImGui::EndTooltip();
+    }
 }
