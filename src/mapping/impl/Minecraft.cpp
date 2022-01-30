@@ -23,13 +23,19 @@ jobject Minecraft::getWorld() {
 	return getObject(getMinecraft(), fdWorld);
 }
 
-EntityPlayerSP * Minecraft::getPlayerContainer() {
+EntityPlayerSP *Minecraft::getPlayerContainer() {
+    if (getPlayer() == nullptr)
+        return nullptr;
+
 	if (!playerContainer)
 		playerContainer = new EntityPlayerSP(phantom, this);
 	return playerContainer;
 }
 
-WorldClient * Minecraft::getWorldContainer() {
+WorldClient *Minecraft::getWorldContainer() {
+    if (getWorld() == nullptr)
+        return nullptr;
+
 	if (!worldContainer)
 		worldContainer = new WorldClient(phantom, this);
 	return worldContainer;

@@ -51,12 +51,13 @@ void Phantom::runClient() {
     //
     while (running) {
         // This is in the loop so that the instances are current. IE, joining a new world not trying to reference the old one.
-        EntityPlayerSP * player = mc->getPlayerContainer();
-        WorldClient * world = mc->getWorldContainer();
+        EntityPlayerSP *player = mc->getPlayerContainer();
+        WorldClient *world = mc->getWorldContainer();
         // Ensure the player and world are not null (IE, check if in-game)
         if (player == nullptr || world == nullptr) {
             system->out->println(JvmUtils::getJString(this, "Phantom: Not in game, quitting"));
             running = false;
+            continue;
         }
         // Get all the entities, calculate the closest one
         JavaSet *entities = world->getEntities();
