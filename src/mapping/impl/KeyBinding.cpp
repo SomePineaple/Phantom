@@ -4,13 +4,6 @@
 
 #include "KeyBinding.h"
 
-KeyBinding::KeyBinding(Phantom *phantom) : AbstractClass(phantom, "KeyBinding") {
-    mdOnTick = getMethodID("onTick");
-    mdSetKeyBindState = getMethodID("setKeyBindState");
-    mdGetKeyCode = nullptr;
-    this->keyBinding = nullptr;
-}
-
 KeyBinding::KeyBinding(Phantom *phantom, jobject keyBinding) : AbstractClass(phantom, "KeyBinding") {
     mdOnTick = getMethodID("onTick");
     mdSetKeyBindState = getMethodID("setKeyBindState");
@@ -27,7 +20,7 @@ void KeyBinding::setKeyBindState(jint key, jboolean state) {
 }
 
 int KeyBinding::getKeyCode() {
-    if (keyBinding == nullptr)
+    if (keyBinding == nullptr || mdGetKeyCode == nullptr)
         return 0;
     return getInt(keyBinding, mdGetKeyCode);
 }

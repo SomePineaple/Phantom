@@ -26,7 +26,10 @@ void AutoClicker::run(Minecraft *mc) {
 
     if (mouse->isButtonDown(0)) {
         // TODO: This crashes minecraft
-        int keyCode = keyBindAttack->getKeyCode();
+        //int keyCode = keyBindAttack->getKeyCode();
+
+        // Default key code for keyBindAttack
+        int keyCode = -100;
 
         if (lastClick->hasTimePassed((long)(speed * 1000.0)) && !holding) {
             lastClick->reset();

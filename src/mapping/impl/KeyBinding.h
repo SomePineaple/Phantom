@@ -10,8 +10,7 @@
 
 class KeyBinding : public AbstractClass {
 public:
-    KeyBinding(Phantom *phantom);
-    KeyBinding(Phantom *phantom, jobject keyBinding);
+    explicit KeyBinding(Phantom *phantom, jobject keyBinding = nullptr);
     void onTick(jint key);
     void setKeyBindState(jint key, jboolean state);
 
