@@ -8,22 +8,26 @@
 #include "../utils/MSTimer.h"
 #include "../Phantom.h"
 #include "../mapping/impl/Mouse.h"
+#include "../mapping/impl/KeyBinding.h"
+#include "../mapping/impl/Minecraft.h"
 
 class AutoClicker {
 public:
-    explicit AutoClicker(Phantom *phantom, float cps);
-    void update();
+    explicit AutoClicker(Phantom *phantom);
+    void run(Minecraft *mc);
 
+    bool enabled;
     float cps;
 private:
     void updateVals();
 
     Mouse *mouse;
 
-    bool isEnabled;
     MSTimer *lastClick;
     MSTimer *hold;
     double speed, holdLength, min, max;
+
+    bool holding;
 
     MSTimer *eventTimer;
     bool isSpiking, isDropping;

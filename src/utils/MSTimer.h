@@ -11,6 +11,7 @@ public:
     MSTimer();
     ~MSTimer();
     bool hasTimePassed(long time) const;
+    long getTimePassed() const;
     void reset();
 private:
     long lastTime;

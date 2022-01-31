@@ -49,6 +49,7 @@ WorldClient *Minecraft::getWorldContainer() {
 GameSettings *Minecraft::getGameSettingsContainer() {
     if (getGameSettings() == nullptr)
         return nullptr;
+
     if (!gameSettingsContainer)
         gameSettingsContainer = new GameSettings(phantom, getGameSettings());
     return gameSettingsContainer;

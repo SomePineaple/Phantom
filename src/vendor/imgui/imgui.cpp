@@ -7493,7 +7493,7 @@ ImGuiKeyData* ImGui::GetKeyData(ImGuiKey key)
     else
         index = key;
 #else
-    IM_ASSERT(IsNamedKey(key) && "Support for user key indices was dropped in favor of ImGuiKey. Please update backend & user code.");
+    IM_ASSERT(IsNamedKey(key) && "Support for user key indices was dropped in favor of ImGuiKey. Please run backend & user code.");
     index = key - ImGuiKey_NamedKey_BEGIN;
 #endif
     return &g.IO.KeysData[index];
@@ -7535,7 +7535,7 @@ IM_STATIC_ASSERT(ImGuiKey_NamedKey_COUNT == IM_ARRAYSIZE(GKeyNames));
 const char* ImGui::GetKeyName(ImGuiKey key)
 {
 #ifdef IMGUI_DISABLE_OBSOLETE_KEYIO
-    IM_ASSERT((IsNamedKey(key) || key == ImGuiKey_None) && "Support for user key indices was dropped in favor of ImGuiKey. Please update backend and user code.");
+    IM_ASSERT((IsNamedKey(key) || key == ImGuiKey_None) && "Support for user key indices was dropped in favor of ImGuiKey. Please run backend and user code.");
 #else
     if (IsLegacyKey(key))
     {

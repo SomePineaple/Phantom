@@ -5,18 +5,16 @@
 #include "Phantom.h"
 
 #include <iostream>
-#include <unistd.h>
 #include "mapping/impl/Minecraft.h"
-#include "mapping/impl/JavaSet.h"
-#include "mapping/impl/Entity.h"
 #include "mapping/impl/WorldClient.h"
 #include "mapping/impl/EntityPlayerSP.h"
 #include "mapping/impl/JavaSystem.h"
 
-#include "utils/MathHelper.h"
 #include "utils/JvmUtils.h"
-#include "cheats/AimBot.h"
 #include "ui/Window.h"
+
+#include "cheats/AimBot.h"
+#include "cheats/AutoClicker.h"
 
 Phantom::Phantom() {
     running = false;
@@ -45,6 +43,7 @@ void Phantom::runClient() {
     system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
 
     auto *aim = new AimBot(this);
+    auto *clicker = new AutoClicker(this);
 
     auto *window = new Window(500, 400, "Phantom");
     window->setup();
@@ -56,12 +55,12 @@ void Phantom::runClient() {
         WorldClient *world = mc->getWorldContainer();
         // Ensure the player and world are not null (IE, check if in-game)
         if (player == nullptr || world == nullptr) {
-            system->out->println(JvmUtils::getJString(this, "Phantom: Not in game, quitting"));
             window->update(aim, running, false);
             continue;
         }
 
         aim->run(mc);
+        clicker->run(mc);
 
         window->update(aim, running, true);
     }

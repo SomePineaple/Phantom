@@ -5,20 +5,40 @@
 #include "AutoClicker.h"
 #include "../utils/MathHelper.h"
 
-AutoClicker::AutoClicker(Phantom *phantom, float cps) {
-    this->cps = cps;
+AutoClicker::AutoClicker(Phantom *phantom) {
+    cps = 12;
 
     mouse = new Mouse(phantom);
 
-    isEnabled = false;
+    enabled = false;
+    holding = false;
     lastClick = new MSTimer();
     hold = new MSTimer();
     eventTimer = new MSTimer();
     updateVals();
 }
 
-void AutoClicker::update() {
+void AutoClicker::run(Minecraft *mc) {
+    if (!enabled)
+        return;
 
+    KeyBinding *keyBindAttack = mc->getGameSettingsContainer()->getKeyBindAttackContainer();
+
+    if (mouse->isButtonDown(0)) {
+        if (lastClick->hasTimePassed((long)(speed * 1000.0)) && !holding) {
+            lastClick->reset();
+            if (hold->getTimePassed() > lastClick->getTimePassed())
+                hold->reset();
+            keyBindAttack->setKeyBindState(keyBindAttack->getKeyCode(), true);
+            keyBindAttack->onTick(keyBindAttack->getKeyCode());
+            updateVals();
+            holding = true;
+        } else if (hold->hasTimePassed((long)(holdLength * 1000.0))) {
+            keyBindAttack->setKeyBindState(keyBindAttack->getKeyCode(), false);
+            updateVals();
+            holding = false;
+        }
+    }
 }
 
 void AutoClicker::updateVals() {
@@ -51,5 +71,5 @@ void AutoClicker::updateVals() {
     }
 
     speed = 1.0 / MathHelper::randDouble(min, max);
-    holdLength = 1.0 / MathHelper::randDouble(min, max);
+    holdLength = speed / MathHelper::randDouble(min, max);
 }

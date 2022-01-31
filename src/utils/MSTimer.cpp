@@ -18,6 +18,12 @@ bool MSTimer::hasTimePassed(long time) const {
     return getCurrentTimeMillis() - lastTime > time;
 }
 
+long MSTimer::getTimePassed() const {
+    return getCurrentTimeMillis() - lastTime;
+}
+
 void MSTimer::reset() {
     lastTime = getCurrentTimeMillis();
 }
+
+MSTimer::~MSTimer() = default;
