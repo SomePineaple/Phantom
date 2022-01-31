@@ -55,14 +55,14 @@ void Phantom::runClient() {
         WorldClient *world = mc->getWorldContainer();
         // Ensure the player and world are not null (IE, check if in-game)
         if (player == nullptr || world == nullptr) {
-            window->update(aim, running, false);
+            window->update(aim, clicker, running, false);
             continue;
         }
 
         aim->run(mc);
         clicker->run(mc);
 
-        window->update(aim, running, true);
+        window->update(aim, clicker, running, true);
     }
 
     window->destruct();

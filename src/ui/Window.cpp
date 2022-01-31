@@ -59,7 +59,7 @@ void Window::setup() {
     ImGui_ImplOpenGL3_Init(glsl_version);
 }
 
-void Window::update(AimBot *aim, bool &running, bool inGame) {
+void Window::update(AimBot *aim, AutoClicker *clicker,  bool &running, bool inGame) {
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     SDL_Event event;
@@ -91,6 +91,10 @@ void Window::update(AimBot *aim, bool &running, bool inGame) {
 
             if (aim->enabled)
                 ImGui::SliderFloat("AimBot: Range", &aim->range, 0, 6);
+
+            ImGui::Checkbox("AutoClicker", &clicker->enabled);
+            if (clicker->enabled)
+                ImGui::SliderFloat("AutoClicker: CPS", &clicker->cps, 4, 20);
 
         } else {
             ImGui::Text("Please join a world");

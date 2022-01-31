@@ -25,16 +25,19 @@ void AutoClicker::run(Minecraft *mc) {
     KeyBinding *keyBindAttack = mc->getGameSettingsContainer()->getKeyBindAttackContainer();
 
     if (mouse->isButtonDown(0)) {
+        // TODO: This crashes minecraft
+        int keyCode = keyBindAttack->getKeyCode();
+
         if (lastClick->hasTimePassed((long)(speed * 1000.0)) && !holding) {
             lastClick->reset();
             if (hold->getTimePassed() > lastClick->getTimePassed())
                 hold->reset();
-            keyBindAttack->setKeyBindState(keyBindAttack->getKeyCode(), true);
-            keyBindAttack->onTick(keyBindAttack->getKeyCode());
+            keyBindAttack->setKeyBindState(keyCode, true);
+            keyBindAttack->onTick(keyCode);
             updateVals();
             holding = true;
         } else if (hold->hasTimePassed((long)(holdLength * 1000.0))) {
-            keyBindAttack->setKeyBindState(keyBindAttack->getKeyCode(), false);
+            keyBindAttack->setKeyBindState(keyCode, false);
             updateVals();
             holding = false;
         }

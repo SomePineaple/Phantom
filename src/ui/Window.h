@@ -7,13 +7,14 @@
 
 #include <SDL.h>
 #include "../cheats/AimBot.h"
+#include "../cheats/AutoClicker.h"
 
 class Window {
 public:
     Window(int width, int height, const char *title);
     void setup();
     void destruct();
-    void update(AimBot *aim, bool &running, bool inGame);
+    void update(AimBot *aim, AutoClicker *clicker, bool &running, bool inGame);
 private:
     int width, height;
     const char *title;
