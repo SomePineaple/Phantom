@@ -6,6 +6,7 @@ Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "
 	smdGetMinecraft = getMethodID("getMinecraft");
 	fdPlayer = getFieldID("player");
 	fdWorld = getFieldID("world");
+    fdGameSettings = getFieldID("gameSettings");
 
     playerContainer = nullptr;
     worldContainer = nullptr;
@@ -21,6 +22,10 @@ jobject Minecraft::getPlayer() {
 
 jobject Minecraft::getWorld() {
 	return getObject(getMinecraft(), fdWorld);
+}
+
+jobject Minecraft::getGameSettings() {
+    return getObject(getMinecraft(), fdWorld);
 }
 
 EntityPlayerSP *Minecraft::getPlayerContainer() {
@@ -39,4 +44,12 @@ WorldClient *Minecraft::getWorldContainer() {
 	if (!worldContainer)
 		worldContainer = new WorldClient(phantom, this);
 	return worldContainer;
+}
+
+GameSettings *Minecraft::getGameSettingsContainer() {
+    if (getGameSettings() == nullptr)
+        return nullptr;
+    if (!gameSettingsContainer)
+        gameSettingsContainer = new GameSettings(phantom, getGameSettings());
+    return gameSettingsContainer;
 }

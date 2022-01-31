@@ -11,11 +11,17 @@
 class KeyBinding : public AbstractClass {
 public:
     KeyBinding(Phantom *phantom);
+    KeyBinding(Phantom *phantom, jobject keyBinding);
     void onTick(jint key);
     void setKeyBindState(jint key, jboolean state);
+
+    int getKeyCode();
 private:
+    jobject keyBinding;
+
     jmethodID mdOnTick;
     jmethodID mdSetKeyBindState;
+    jmethodID mdGetKeyCode;
 };
 
 

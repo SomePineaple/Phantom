@@ -80,13 +80,17 @@ void Mapping::setup() {
     method(m, "getID", "S", "()I", false);
     method(m, "getName", "h_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "f", "(Z)V", false);
-    m = make("Minecraft", "bhz");
-    field(m, "player", "h", "Lbub;", false);
-    field(m, "world", "f", "Lbrz;", false);
-    method(m, "getMinecraft", "z", "()Lbhz;", true);
     m = make("KeyBinding", "bhw");
     method(m, "setKeyBindState", "a", "(IZ)V", true);
     method(m, "onTick", "a", "(I)V", true);
+    method(m, "getKeyCode", "j", "()I", false);
+    m = make("GameSettings", "bib");
+    field(m, "keyBindAttack", "ae", "Lbhw;", false);
+    m = make("Minecraft", "bhz");
+    field(m, "player", "h", "Lbub;", false);
+    field(m, "world", "f", "Lbrz;", false);
+    field(m, "gameSettings", "t", "Lbib;", false);
+    method(m, "getMinecraft", "z", "()Lbhz;", true);
 #endif
     // obfuscated minecraft classes - 1.8.8
 #ifdef MC_1_8_8
@@ -108,13 +112,17 @@ void Mapping::setup() {
     method(m, "getID", "F", "()I", false);
     method(m, "getName", "e_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "d", "(Z)V", false);
-    m = make("Minecraft", "ave");
-    field(m, "player", "h", "Lbew;", false);
-    field(m, "world", "f", "Lbdb;", false);
-    method(m, "getMinecraft", "A", "()Lave;", true);
     m = make("KeyBinding", "avb");
     method(m, "setKeyBindState", "a", "(IZ)V", true);
     method(m, "onTick", "a", "(I)V", true);
+    method(m, "getKeyCode", "i", "()I", false);
+    m = make("GameSettings", "avh");
+    field(m, "keyBindAttack", "ah", "Lavb;", false);
+    m = make("Minecraft", "ave");
+    field(m, "player", "h", "Lbew;", false);
+    field(m, "world", "f", "Lbdb;", false);
+    field(m, "gameSettings", "t", "Lavh;", false);
+    method(m, "getMinecraft", "A", "()Lave;", true);
 #endif
 }
 

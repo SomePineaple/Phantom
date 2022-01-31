@@ -7,12 +7,27 @@
 KeyBinding::KeyBinding(Phantom *phantom) : AbstractClass(phantom, "KeyBinding") {
     mdOnTick = getMethodID("onTick");
     mdSetKeyBindState = getMethodID("setKeyBindState");
+    mdGetKeyCode = nullptr;
+    this->keyBinding = nullptr;
+}
+
+KeyBinding::KeyBinding(Phantom *phantom, jobject keyBinding) : AbstractClass(phantom, "KeyBinding") {
+    mdOnTick = getMethodID("onTick");
+    mdSetKeyBindState = getMethodID("setKeyBindState");
+    mdGetKeyCode = getMethodID("getKeyCode");
+    this->keyBinding = keyBinding;
 }
 
 void KeyBinding::onTick(jint key) {
-    callMethod(mdOnTick, (jint) key);
+    callMethod(mdOnTick, key);
 }
 
 void KeyBinding::setKeyBindState(jint key, jboolean state) {
     callMethod(mdSetKeyBindState, key, state);
+}
+
+int KeyBinding::getKeyCode() {
+    if (keyBinding == nullptr)
+        return 0;
+    return getInt(keyBinding, mdGetKeyCode);
 }
