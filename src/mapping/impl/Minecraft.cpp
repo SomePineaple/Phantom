@@ -25,7 +25,7 @@ jobject Minecraft::getWorld() {
 }
 
 jobject Minecraft::getGameSettings() {
-    return getObject(getMinecraft(), fdWorld);
+    return getObject(getMinecraft(), fdGameSettings);
 }
 
 EntityPlayerSP *Minecraft::getPlayerContainer() {
