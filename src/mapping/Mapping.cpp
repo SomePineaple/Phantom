@@ -80,6 +80,7 @@ void Mapping::setup() {
     field(m, "yaw", "field_70177_z", "F", false);
     field(m, "pitch", "field_70125_A", "F", false);
     method(m, "getID", "func_145782_y", "()I", false);
+    method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
     m = make("KeyBinding", "net.minecraft.client.settings.KeyBinding");

@@ -17,6 +17,7 @@ EntityPlayerSP::EntityPlayerSP(Phantom * phantom, Minecraft * mc) : AbstractClas
 	mdGetId = getMethodID("getID");
 	mdGetName = getMethodID("getName");
 	mdSetSprinting = getMethodID("setSprint");
+    mdGetEyeHeight = getMethodID("getEyeHeight");
 }
 
 jdouble EntityPlayerSP::getPosX() {
@@ -52,4 +53,8 @@ void EntityPlayerSP::setRotationPitch(jfloat pitch) {
 
 void EntityPlayerSP::setSprinting(jboolean sprinting) {
 	callMethod(mc->getPlayer(), mdSetSprinting, sprinting);
+}
+
+jfloat EntityPlayerSP::getEyeHeight() {
+    return getFloat(mc->getPlayer(), mdGetEyeHeight);
 }

@@ -17,6 +17,7 @@ public:
 	jdouble getPosX();
 	jdouble getPosY();
 	jdouble getPosZ();
+    jfloat getEyeHeight();
 	jint getId();
 	const char *getName();
 
@@ -32,6 +33,7 @@ private:
 	jmethodID mdGetId;
 	jmethodID mdGetName;
 	jmethodID mdSetSprinting;
+    jmethodID mdGetEyeHeight;
 
 	Minecraft *mc;
 };
