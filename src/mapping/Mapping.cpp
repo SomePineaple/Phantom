@@ -75,7 +75,7 @@ void Mapping::setup() {
     field(m, "z", "field_70161_v", "D", false);
     field(m, "yaw", "field_70177_z", "F", false);
     field(m, "pitch", "field_70125_A", "F", false);
-    method(m, "getID", "func_145782_y()", "()I", false);
+    method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
     m = make("KeyBinding", "net.minecraft.client.settings.KeyBinding");

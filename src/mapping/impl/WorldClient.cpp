@@ -22,7 +22,6 @@ void WorldClient::setWorldTime(jlong time) {
 	callMethod(mc->getWorld(), mdSetWorldTime, time);
 }
 
-JavaSet *WorldClient::getEntities() {
-	auto *set = new JavaSet(phantom, getEntityList());
-	return set;
+JavaList *WorldClient::getEntities() {
+	return new JavaList(phantom, getEntityList());
 }

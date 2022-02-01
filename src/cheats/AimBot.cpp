@@ -30,7 +30,7 @@ void AimBot::run(Minecraft *mc) {
     float closestDist = range;
 
     // Get all the entities, calculate the closest one
-    JavaSet *entities = world->getEntities();
+    JavaList *entities = world->getEntities();
     Entity *closest = nullptr;
     for (int i = 0; i < entities->size(); i++) {
         auto * entity = new Entity(phantom, mc, entities->get(i));

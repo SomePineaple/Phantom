@@ -6,7 +6,7 @@
 #define PHANTOM_WORLDCLIENT_H
 
 #include "../AbstractClass.h"
-#include "JavaSet.h"
+#include "JavaList.h"
 
 class Minecraft;
 class WorldClient : public AbstractClass {
@@ -16,7 +16,7 @@ public:
 	jobject getEntityList();
 	void setWorldTime(jlong time);
 
-	JavaSet *getEntities();
+	JavaList *getEntities();
 private:
 	jfieldID fdEntityList;
 	jmethodID mdSetWorldTime;
