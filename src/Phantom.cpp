@@ -8,9 +8,7 @@
 #include "mapping/impl/Minecraft.h"
 #include "mapping/impl/WorldClient.h"
 #include "mapping/impl/EntityPlayerSP.h"
-#include "mapping/impl/JavaSystem.h"
 
-#include "utils/JvmUtils.h"
 #include "ui/Window.h"
 
 #include "cheats/AimBot.h"
@@ -38,9 +36,8 @@ void Phantom::runClient() {
     // Get minecraft instance
     auto *mc = new Minecraft(this);
 
-    auto *system = new JavaSystem(this);
-
-    system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
+    //auto *system = new JavaSystem(this);
+    //system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
 
     std::vector<Cheat*> cheats;
     cheats.push_back(new AimBot(this));

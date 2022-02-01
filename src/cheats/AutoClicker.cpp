@@ -59,7 +59,7 @@ void AutoClicker::run(Minecraft *mc) {
 void AutoClicker::renderSettings() {
     renderMouseSelector();
     ImGui::SliderFloat("AutoClicker: CPS", &cps, 4, 20);
-    ImGui::Checkbox("AutoClicker: Only in minecraft", &onlyInGame);
+    ImGui::Checkbox("AutoClicker: Only in game", &onlyInGame);
     ImGui::SameLine();
     ImGuiUtils::drawHelper("If checked, this will only click when you are in game, otherwise, this will click anytime, on any window. You could go to clickspeedtest.net and check ur clicking speed if this is not checked");
 }

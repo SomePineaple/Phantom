@@ -3,7 +3,6 @@
 //
 
 #include "Mapping.h"
-#include "../Platform.h"
 
 std::map<std::string, CM*> lookup;
 
@@ -60,72 +59,40 @@ void Mapping::setup() {
     //
     // -----------------------------------
     //
-    // obfuscated minecraft classes - 1.12
-#ifdef MC_1_12
-    m = make("Entity", "ve");
-    field(m, "x", "p", "D", false);
-    field(m, "y", "q", "D", false);
-    field(m, "z", "r", "D", false);
-    method(m, "getID", "S", "()I", false);
-    method(m, "getName", "h_", "()Ljava/lang/String;", false);
-    m = make("WorldClient", "brz");
-    field(m, "entities", "K", "Ljava/util/Set;", false);
-    method(m, "setTime", "b", "(J)V", false);
-    m = make("PlayerSP", "bub");
-    field(m, "x", "p", "D", false);
-    field(m, "y", "q", "D", false);
-    field(m, "z", "r", "D", false);
-    field(m, "yaw", "v", "F", false);
-    field(m, "pitch", "w", "F", false);
-    method(m, "getID", "S", "()I", false);
-    method(m, "getName", "h_", "()Ljava/lang/String;", false);
-    method(m, "setSprint", "f", "(Z)V", false);
-    m = make("KeyBinding", "bhw");
-    method(m, "setKeyBindState", "a", "(IZ)V", true);
-    method(m, "onTick", "a", "(I)V", true);
-    method(m, "getKeyCode", "j", "()I", false);
-    m = make("GameSettings", "bib");
-    field(m, "keyBindAttack", "ae", "Lbhw;", false);
-    m = make("Minecraft", "bhz");
-    field(m, "player", "h", "Lbub;", false);
-    field(m, "world", "f", "Lbrz;", false);
-    field(m, "gameSettings", "t", "Lbib;", false);
-    field(m, "inGameHasFocus", "x", "Z", false);
-    method(m, "getMinecraft", "z", "()Lbhz;", true);
-#endif
-    // obfuscated minecraft classes - 1.8.8
-#ifdef MC_1_8_8
-    m = make("Entity", "pk");
-    field(m, "x", "s", "D", false);
-    field(m, "y", "t", "D", false);
-    field(m, "z", "u", "D", false);
-    method(m, "getID", "F", "()I", false);
-    method(m, "getName", "e_", "()Ljava/lang/String;", false);
-    m = make("WorldClient", "bdb");
-    field(m, "entities", "c", "Ljava/util/Set;", false);
-    method(m, "setTime", "b", "(J)V", false);
-    m = make("PlayerSP", "bew");
-    field(m, "x", "s", "D", false);
-    field(m, "y", "t", "D", false);
-    field(m, "z", "u", "D", false);
-    field(m, "yaw", "y", "F", false);
-    field(m, "pitch", "z", "F", false);
-    method(m, "getID", "F", "()I", false);
-    method(m, "getName", "e_", "()Ljava/lang/String;", false);
-    method(m, "setSprint", "d", "(Z)V", false);
-    m = make("KeyBinding", "avb");
-    method(m, "setKeyBindState", "a", "(IZ)V", true);
-    method(m, "onTick", "a", "(I)V", true);
-    method(m, "getKeyCode", "i", "()I", false);
-    m = make("GameSettings", "avh");
-    field(m, "keyBindAttack", "ah", "Lavb;", false);
-    m = make("Minecraft", "ave");
-    field(m, "player", "h", "Lbew;", false);
-    field(m, "world", "f", "Lbdb;", false);
-    field(m, "gameSettings", "t", "Lavh;", false);
-    field(m, "inGameHasFocus", "w", "Z", false);
-    method(m, "getMinecraft", "A", "()Lave;", true);
-#endif
+    // obfuscated minecraft classes - 1.8.9 forge
+    m = make("Entity", "net.minecraft.entity.Entity");
+    field(m, "x", "field_70165_t", "D", false);
+    field(m, "y", "field_70163_u", "D", false);
+    field(m, "z", "field_70161_v", "D", false);
+    method(m, "getID", "func_145782_y", "()I", false);
+    method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
+    m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
+    field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
+    method(m, "setTime", "func_72877_b", "(J)V", false);
+    m = make("PlayerSP", "net.minecraft.client.entity.EntityPlayerSP");
+    field(m, "x", "field_70165_t", "D", false);
+    field(m, "y", "field_70163_u", "D", false);
+    field(m, "z", "field_70161_v", "D", false);
+    field(m, "yaw", "field_70177_z", "F", false);
+    field(m, "pitch", "field_70125_A", "F", false);
+    method(m, "getID", "func_145782_y()", "()I", false);
+    method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
+    method(m, "setSprint", "func_70031_b", "(Z)V", false);
+    m = make("KeyBinding", "net.minecraft.client.settings.KeyBinding");
+    method(m, "setKeyBindState", "func_74510_a", "(IZ)V", true);
+    method(m, "onTick", "func_74507_a", "(I)V", true);
+    method(m, "getKeyCode", "func_151463_i", "()I", false);
+    m = make("GameSettings", "net.minecraft.client.settings.GameSettings");
+    field(m, "keyBindAttack", "field_74312_F", "Lnet/minecraft/client/settings/KeyBinding;", false);
+    m = make("Minecraft", "net.minecraft.client.Minecraft");
+    field(m, "player", "field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;", false);
+    field(m, "world", "field_71441_e", "Lbdb;", false);
+    field(m, "gameSettings", "field_71474_y", "Lnet/minecraft/client/settings/GameSettings;", false);
+    field(m, "inGameHasFocus", "field_71415_G", "Z", false);
+    method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
+    method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);
+    m = make("EntityRenderer", "bfk");
+    field(m, "pointedEntity", "field_78528_u", "Lnet/minecraft/entity/Entity;", false);
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {

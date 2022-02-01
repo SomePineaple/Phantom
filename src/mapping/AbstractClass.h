@@ -17,6 +17,9 @@ public:
     //This stuff is just to make using JNI easier (it's already easy, just likes to be easier)
     //It doesn't cover everything, but covers most basic shit
 
+    jobject getClassLoader();
+    jclass getClass(const char *clsName);
+
     //Boolean
     template <class T> jboolean getBoolean(jobject parent, jmethodID method, T values...) { return phantom->getEnv()->CallBooleanMethod(parent, method, values); }
     template <class T> jboolean getBoolean(jmethodID method, T values...) { return phantom->getEnv()->CallStaticBooleanMethod(cls, method, values); }
