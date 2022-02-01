@@ -12,6 +12,9 @@ WorldClient::WorldClient(Phantom *phantom, Minecraft *mc) : AbstractClass::Abstr
 }
 
 jobject WorldClient::getEntityList() {
+    if (mc->getWorld() == nullptr)
+        return nullptr;
+
 	return getObject(mc->getWorld(), fdEntityList);
 }
 
@@ -19,7 +22,7 @@ void WorldClient::setWorldTime(jlong time) {
 	callMethod(mc->getWorld(), mdSetWorldTime, time);
 }
 
-JavaSet * WorldClient::getEntities() {
-	auto * set = new JavaSet(phantom, getEntityList());
+JavaSet *WorldClient::getEntities() {
+	auto *set = new JavaSet(phantom, getEntityList());
 	return set;
 }

@@ -4,7 +4,9 @@
 
 #include "AbstractClass.h"
 
-AbstractClass::AbstractClass(Phantom * phantom, const char * clsName) {
+#include "../utils/JvmUtils.h"
+
+AbstractClass::AbstractClass(Phantom *phantom, const char *clsName) {
     this->phantom = phantom;
     this->clsKey = clsName;
 
@@ -13,10 +15,7 @@ AbstractClass::AbstractClass(Phantom * phantom, const char * clsName) {
 
     //Check for exceptions. I got lazy, and this is the only time I actually check for errors
     //Basically, checks if there's an error, prints the stack trace to the console, then clears the error
-    if (phantom->getEnv()->ExceptionCheck()) {
-        phantom->getEnv()->ExceptionDescribe();
-        phantom->getEnv()->ExceptionClear();
-    }
+    JvmUtils::checkJavaErrors(phantom);
 }
 
 jobject AbstractClass::getClassLoader() {

@@ -12,7 +12,7 @@
 
 class AbstractClass {
 public:
-    AbstractClass(Phantom *phantom, const char * clsName);
+    AbstractClass(Phantom *phantom, const char *clsName);
 
     //This stuff is just to make using JNI easier (it's already easy, just likes to be easier)
     //It doesn't cover everything, but covers most basic shit

@@ -31,18 +31,18 @@ void Mapping::setup() {
     // -------------------------
     //
     // base - normal jvm classes
-    struct CM* m = make("List", "java/util/List");
+    struct CM* m = make("List", "java.util.List");
     method(m, "get", "(I)Ljava/lang/Object;", false);
     method(m, "toArray", "()[Ljava/lang/Object;", false);
     method(m, "size", "()I", false);
-    m = make("Set", "java/util/Set");
+    m = make("Set", "java.util.Set");
     method(m, "toArray", "()[Ljava/lang/Object;", false);
     method(m, "size", "()I", false);
-    m = make("System", "java/lang/System");
+    m = make("System", "java.lang.System");
     field(m, "out", "Ljava/io/PrintStream;", true);
-    m = make("PrintStream", "java/io/PrintStream");
+    m = make("PrintStream", "java.io.PrintStream");
     method(m, "println", "(Ljava/lang/String;)V", false);
-    m = make("Mouse", "org/lwjgl/input/Mouse");
+    m = make("Mouse", "org.lwjgl.input.Mouse");
     method(m, "isButtonDown", "(I)Z", true);
 
     // How to define mappings:
@@ -86,7 +86,7 @@ void Mapping::setup() {
     field(m, "keyBindAttack", "field_74312_F", "Lnet/minecraft/client/settings/KeyBinding;", false);
     m = make("Minecraft", "net.minecraft.client.Minecraft");
     field(m, "player", "field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;", false);
-    field(m, "world", "field_71441_e", "Lbdb;", false);
+    field(m, "world", "field_71441_e", "Lnet/minecraft/client/multiplayer/WorldClient;", false);
     field(m, "gameSettings", "field_71474_y", "Lnet/minecraft/client/settings/GameSettings;", false);
     field(m, "inGameHasFocus", "field_71415_G", "Z", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);

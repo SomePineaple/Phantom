@@ -11,6 +11,7 @@
 
 namespace JvmUtils {
     jstring getJString(Phantom *phantom, const char *str);
+    void checkJavaErrors(Phantom *phantom);
 }
 
 
