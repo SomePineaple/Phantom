@@ -36,7 +36,7 @@ XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long devi
                 buttonState = (XButtonState *) cls;
                 state->numButtons = buttonState->num_buttons;
                 state->buttonStates = (bool *) malloc(state->numButtons * sizeof(bool));
-                for (i2 = 0; i2 < buttonState->num_buttons; i2++)
+                for (i2 = 1; i2 < buttonState->num_buttons; i2++)
                     state->buttonStates[i2] = (buttonState->buttons[i2 / 8] & (1 << (i2 % 8))) != 0;
                 break;
             case KeyClass:

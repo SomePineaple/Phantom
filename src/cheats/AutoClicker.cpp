@@ -37,16 +37,16 @@ void AutoClicker::run(Minecraft *mc) {
         isDeviceShit = false;
     }
 
-    if (mouseState->buttonStates[0]) {
+    if (mouseState->buttonStates[1]) {
         double speedLeft = 1.0 / MathHelper::randDouble(cps - 2.2, cps + 2);
         if ((double)(MiscUtils::currentTimeMS() - lastClick) > speedLeft * 1000) {
             lastClick = MiscUtils::currentTimeMS();
             if (leftHold < lastClick)
                 leftHold = lastClick;
-            XTestFakeButtonEvent(dpy, 1, true, CurrentTime);
+            XTestFakeButtonEvent(dpy, 1, True, CurrentTime);
             XFlush(dpy);
         } else if ((double)(MiscUtils::currentTimeMS() - leftHold) > leftHoldLength * 1000) {
-            XTestFakeButtonEvent(dpy, 1, false, CurrentTime);
+            XTestFakeButtonEvent(dpy, 1, False, CurrentTime);
             XFlush(dpy);
         }
     }
