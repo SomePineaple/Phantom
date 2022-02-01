@@ -8,12 +8,13 @@
 
 #include "../Phantom.h"
 #include "../mapping/impl/Minecraft.h"
+#include "Cheat.h"
 
-class AimBot {
+class AimBot : public Cheat {
 public:
     AimBot(Phantom *phantom);
-    void run(Minecraft *mc);
-    bool enabled;
+    void run(Minecraft *mc) override;
+    void renderSettings() override;
     float range;
 private:
     Phantom *phantom;

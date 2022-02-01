@@ -5,16 +5,16 @@
 #ifndef MC_INJECTION_WINDOW_H
 #define MC_INJECTION_WINDOW_H
 
+#include <vector>
 #include <SDL.h>
-#include "../cheats/AimBot.h"
-#include "../cheats/AutoClicker.h"
+#include "../cheats/Cheat.h"
 
 class Window {
 public:
     Window(int width, int height, const char *title);
     void setup();
     void destruct();
-    void update(AimBot *aim, AutoClicker *clicker, bool &running, bool inGame);
+    void update(const std::vector<Cheat*>& cheats, bool &running, bool inGame);
 private:
     int width, height;
     const char *title;

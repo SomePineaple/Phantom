@@ -4,13 +4,13 @@
 
 #include "AutoClicker.h"
 #include "../utils/MathHelper.h"
+#include "../vendor/imgui/imgui.h"
 
-AutoClicker::AutoClicker(Phantom *phantom) {
+AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker") {
     cps = 12;
 
     mouse = new Mouse(phantom);
 
-    enabled = false;
     holding = false;
     lastClick = new MSTimer();
     hold = new MSTimer();
@@ -22,9 +22,8 @@ void AutoClicker::run(Minecraft *mc) {
     if (!enabled)
         return;
 
-    KeyBinding *keyBindAttack = mc->getGameSettingsContainer()->getKeyBindAttackContainer();
-
     if (mouse->isButtonDown(0)) {
+        KeyBinding *keyBindAttack = mc->getGameSettingsContainer()->getKeyBindAttackContainer();
         int keyCode = keyBindAttack->getKeyCode();
 
         if (lastClick->hasTimePassed((long)(speed * 1000.0)) && !holding) {
@@ -74,4 +73,8 @@ void AutoClicker::updateVals() {
 
     speed = 1.0 / MathHelper::randDouble(min, max);
     holdLength = speed / MathHelper::randDouble(min, max);
+}
+
+void AutoClicker::renderSettings() {
+    ImGui::SliderFloat("AutoClicker: CPS", &cps, 4, 20);
 }

@@ -8,10 +8,10 @@
 #include "../mapping/impl/WorldClient.h"
 #include "../mapping/impl/EntityPlayerSP.h"
 #include "../utils/MathHelper.h"
+#include "../vendor/imgui/imgui.h"
 
-AimBot::AimBot(Phantom *phantom) {
+AimBot::AimBot(Phantom *phantom) : Cheat("AimBot") {
     this->phantom = phantom;
-    enabled = false;
 
     range = 3.5;
 }
@@ -45,4 +45,8 @@ void AimBot::run(Minecraft *mc) {
         player->setRotationYaw((float)rotation[0]);
         player->setRotationPitch((float)rotation[1]);
     }
+}
+
+void AimBot::renderSettings() {
+    ImGui::SliderFloat("AimBot: range", &range, 0, 6);
 }

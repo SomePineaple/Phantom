@@ -10,13 +10,14 @@
 #include "../mapping/impl/Mouse.h"
 #include "../mapping/impl/KeyBinding.h"
 #include "../mapping/impl/Minecraft.h"
+#include "Cheat.h"
 
-class AutoClicker {
+class AutoClicker : public Cheat {
 public:
     explicit AutoClicker(Phantom *phantom);
-    void run(Minecraft *mc);
+    void run(Minecraft *mc) override;
+    void renderSettings() override;
 
-    bool enabled;
     float cps;
 private:
     void updateVals();

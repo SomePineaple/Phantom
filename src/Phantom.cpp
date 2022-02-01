@@ -42,8 +42,9 @@ void Phantom::runClient() {
 
     system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
 
-    auto *aim = new AimBot(this);
-    auto *clicker = new AutoClicker(this);
+    std::vector<Cheat*> cheats;
+    cheats.push_back(new AimBot(this));
+    cheats.push_back(new AutoClicker(this));
 
     auto *window = new Window(500, 400, "Phantom");
     window->setup();
@@ -55,14 +56,14 @@ void Phantom::runClient() {
         WorldClient *world = mc->getWorldContainer();
         // Ensure the player and world are not null (IE, check if in-game)
         if (player == nullptr || world == nullptr) {
-            window->update(aim, clicker, running, false);
+            window->update(cheats, running, false);
             continue;
         }
 
-        aim->run(mc);
-        clicker->run(mc);
+        for (Cheat *cheat : cheats)
+            cheat->run(mc);
 
-        window->update(aim, clicker, running, true);
+        window->update(cheats, running, true);
     }
 
     window->destruct();
