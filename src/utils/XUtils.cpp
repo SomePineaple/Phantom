@@ -9,7 +9,49 @@
 #include <cstdlib>
 #include <cstdio>
 
-XDeviceInfo* XUtils::findDeviceInfo(Display *display, char *name, bool only_extended) {
+XUtils::DeviceState XUtils::getButtonList(Display *display, unsigned long deviceID) {
+    DeviceState state{};
+
+    XDevice *device = XOpenDevice(display, deviceID);
+    XDeviceState *xState = XQueryDeviceState(display, device);
+
+    XValuatorState *valState;
+    XButtonState *buttonState;
+    XKeyState *keyState;
+
+    if (xState) {
+        XInputClass *cls = xState->data;
+
+        for (int i = 0; i < xState->num_classes; i++) {
+            switch(cls->c_class) {
+            case ValuatorClass:
+                valState = (XValuatorState *) cls;
+                state.numValuators = valState->num_valuators;
+                for (int i2 = 0; i2 < valState->num_valuators; i2++)
+                    state.valuatorStates[i2] = valState->valuators[i2];
+                break;
+            case ButtonClass:
+                buttonState = (XButtonState *) cls;
+                state.numButtons = buttonState->num_buttons;
+                for (int i2 = 0; i2 < buttonState->num_buttons; i2++)
+                    state.buttonStates[i2] = (buttonState->buttons[i2 / 8] & (1 << (i2 % 8))) != 0;
+                break;
+            case KeyClass:
+                keyState = (XKeyState *) cls;
+                state.numKeys = keyState->num_keys;
+                for (int i2 = 0; i2 < keyState->num_keys; i2++)
+                    state.keyStates[i2] = (keyState->keys[i2 / 8] & (1 << (i2 % 8))) != 0;
+                break;
+            }
+            cls = (XInputClass *) ((char *) cls + cls->length);
+        }
+        XFreeDeviceState(xState);
+    }
+
+    return state;
+}
+
+XDeviceInfo* XUtils::findDeviceInfo(Display *display, const char *name, bool only_extended) {
     XDeviceInfo	*devices;
     XDeviceInfo *found = nullptr;
     int		loop;

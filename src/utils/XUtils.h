@@ -9,7 +9,18 @@
 #include "X11/Xlib.h"
 
 namespace XUtils {
-    XDeviceInfo* findDeviceInfo(Display *display, char *name, bool only_extended);
+    struct DeviceState {
+        bool *buttonStates;
+        bool *keyStates;
+        int *valuatorStates;
+
+        int numKeys;
+        int numButtons;
+        int numValuators;
+    };
+
+    XDeviceInfo* findDeviceInfo(Display *display, const char *name, bool only_extended);
+    DeviceState getButtonList(Display *display, unsigned long deviceID);
 }
 
 #endif //MC_INJECTION_XUTILS_H
