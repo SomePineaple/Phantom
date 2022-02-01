@@ -90,6 +90,7 @@ void Mapping::setup() {
     field(m, "player", "h", "Lbub;", false);
     field(m, "world", "f", "Lbrz;", false);
     field(m, "gameSettings", "t", "Lbib;", false);
+    field(m, "inGameHasFocus", "x", "Z", false);
     method(m, "getMinecraft", "z", "()Lbhz;", true);
 #endif
     // obfuscated minecraft classes - 1.8.8
@@ -122,6 +123,7 @@ void Mapping::setup() {
     field(m, "player", "h", "Lbew;", false);
     field(m, "world", "f", "Lbdb;", false);
     field(m, "gameSettings", "t", "Lavh;", false);
+    field(m, "inGameHasFocus", "w", "Z", false);
     method(m, "getMinecraft", "A", "()Lave;", true);
 #endif
 }

@@ -19,6 +19,7 @@ public:
 	jobject getPlayer();
 	jobject getWorld();
     jobject getGameSettings();
+    jboolean isInGameHasFocus();
 
 	EntityPlayerSP *getPlayerContainer();
 	WorldClient *getWorldContainer();
@@ -27,6 +28,7 @@ private:
 	jfieldID fdPlayer;
 	jfieldID fdWorld;
     jfieldID fdGameSettings;
+    jfieldID fdInGameHasFocus;
 	jmethodID smdGetMinecraft;
 
 	EntityPlayerSP *playerContainer;

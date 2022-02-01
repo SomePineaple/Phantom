@@ -6,11 +6,13 @@
 
 #include <thread>
 #include "../utils/MathHelper.h"
+#include "../utils/ImGuiUtils.h"
 #include "../vendor/imgui/imgui.h"
 #include "../utils/XUtils.h"
 
 AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse clicky thingy") {
     cps = 12;
+    onlyInGame = true;
 
     mouseDeviceIndex = 0;
     mouseDeviceID = 0;
@@ -19,6 +21,7 @@ AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse cl
     clickTimer = new MSTimer();
     eventTimer = new MSTimer();
 
+    nextDelay = 0;
     eventDelay = 350;
     nextEventDelay = (int)(MathHelper::randFloat(0.8, 1.2) * (float)eventDelay);
     dropChance = 0.3;
@@ -28,7 +31,7 @@ AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse cl
 }
 
 void AutoClicker::run(Minecraft *mc) {
-    if (!enabled || mouseDeviceID == 0)
+    if (!enabled || mouseDeviceID == 0 || (!mc->isInGameHasFocus() && onlyInGame))
         return;
 
     Display *dpy = XOpenDisplay(nullptr);
@@ -54,28 +57,11 @@ void AutoClicker::run(Minecraft *mc) {
 }
 
 void AutoClicker::renderSettings() {
+    renderMouseSelector();
     ImGui::SliderFloat("AutoClicker: CPS", &cps, 4, 20);
-    Display *dpy = XOpenDisplay(nullptr);
-    XDeviceInfo *devices;
-    int numDevices;
-    devices = XListInputDevices(dpy, &numDevices);
-
-    if (isDeviceShit)
-        ImGui::Text("Please select a valid mouse device");
-    else
-        ImGui::Text("Valid Mouse Selected");
-
-    std::string comboItems;
-    for (int i = 0; i < numDevices; i++) {
-        comboItems.append(devices[i].name);
-        comboItems.push_back('\0');
-    }
-
-    if (ImGui::Combo("AutoClicker: Select your mouse", &mouseDeviceIndex, comboItems.c_str()))
-        mouseDeviceID = devices[mouseDeviceIndex].id;
-
-    XFreeDeviceList(devices);
-    XCloseDisplay(dpy);
+    ImGui::Checkbox("AutoClicker: Only in minecraft", &onlyInGame);
+    ImGui::SameLine();
+    ImGuiUtils::drawHelper("If checked, this will only click when you are in game, otherwise, this will click anytime, on any window. You could go to clickspeedtest.net and check ur clicking speed if this is not checked");
 }
 
 void AutoClicker::updateValues() {
@@ -108,4 +94,28 @@ void AutoClicker::updateValues() {
     minCps = middleCps - 2;
 
     nextDelay = (int)(((float) 1000) / MathHelper::randFloat(minCps, maxCps));
+}
+
+void AutoClicker::renderMouseSelector() {
+    Display *dpy = XOpenDisplay(nullptr);
+    XDeviceInfo *devices;
+    int numDevices;
+    devices = XListInputDevices(dpy, &numDevices);
+
+    if (isDeviceShit)
+        ImGui::Text("Please select a valid mouse device");
+    else
+        ImGui::Text("Valid Mouse Selected");
+
+    std::string comboItems;
+    for (int i = 0; i < numDevices; i++) {
+        comboItems.append(devices[i].name);
+        comboItems.push_back('\0');
+    }
+
+    if (ImGui::Combo("AutoClicker: Select your mouse", &mouseDeviceIndex, comboItems.c_str()))
+        mouseDeviceID = devices[mouseDeviceIndex].id;
+
+    XFreeDeviceList(devices);
+    XCloseDisplay(dpy);
 }

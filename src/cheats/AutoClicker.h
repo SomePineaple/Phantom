@@ -20,6 +20,8 @@ public:
 private:
     void updateValues();
 
+    void renderMouseSelector();
+
     int mouseDeviceIndex;
     unsigned long mouseDeviceID;
     bool isDeviceShit;
@@ -28,6 +30,8 @@ private:
     MSTimer *eventTimer;
 
     float cps;
+    bool onlyInGame;
+
     int nextDelay;
     int eventDelay;
     int nextEventDelay;

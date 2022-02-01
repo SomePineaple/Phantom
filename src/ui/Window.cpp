@@ -5,6 +5,7 @@
 #include "Window.h"
 
 #include <SDL_opengl.h>
+#include "../utils/ImGuiUtils.h"
 
 #include "../vendor/imgui/imgui.h"
 #include "../vendor/imgui/imgui_impl_sdl.h"
@@ -89,7 +90,7 @@ void Window::update(const std::vector<Cheat*>& cheats, bool &running, bool inGam
                 ImGui::Checkbox(cheat->getName(), &cheat->enabled);
                 if (strlen(cheat->getDescription()) > 0) {
                     ImGui::SameLine();
-                    drawHelper(cheat->getDescription());
+                    ImGuiUtils::drawHelper(cheat->getDescription());
                 }
                 if (cheat->enabled)
                     cheat->renderSettings();
@@ -124,15 +125,4 @@ void Window::destruct() {
     SDL_GL_DeleteContext(glContext);
     SDL_DestroyWindow(window);
     SDL_Quit();
-}
-
-void Window::drawHelper(const char *desc) {
-    ImGui::TextDisabled("(?)");
-    if (ImGui::IsItemHovered()) {
-        ImGui::BeginTooltip();
-        ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
-        ImGui::TextUnformatted(desc);
-        ImGui::PopTextWrapPos();
-        ImGui::EndTooltip();
-    }
 }

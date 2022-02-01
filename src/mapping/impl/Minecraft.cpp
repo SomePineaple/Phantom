@@ -11,6 +11,7 @@ Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "
 	fdPlayer = getFieldID("player");
 	fdWorld = getFieldID("world");
     fdGameSettings = getFieldID("gameSettings");
+    fdInGameHasFocus = getFieldID("inGameHasFocus");
 
     playerContainer = nullptr;
     worldContainer = nullptr;
@@ -57,4 +58,8 @@ GameSettings *Minecraft::getGameSettingsContainer() {
     if (!gameSettingsContainer)
         gameSettingsContainer = new GameSettings(phantom, getGameSettings());
     return gameSettingsContainer;
+}
+
+jboolean Minecraft::isInGameHasFocus() {
+    return getBoolean(getMinecraft(), fdInGameHasFocus);
 }
