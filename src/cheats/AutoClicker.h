@@ -5,6 +5,7 @@
 #ifndef MC_INJECTION_AUTOCLICKER_H
 #define MC_INJECTION_AUTOCLICKER_H
 
+#include <mutex>
 #include "../Phantom.h"
 #include "../mapping/impl/Mouse.h"
 #include "../mapping/impl/KeyBinding.h"

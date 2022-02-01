@@ -46,7 +46,7 @@ void Phantom::runClient() {
     cheats.push_back(new AimBot(this));
     cheats.push_back(new AutoClicker(this));
 
-    auto *window = new Window(600, 400, "Phantom");
+    auto *window = new Window(700, 500, "Phantom");
     window->setup();
 
     running = true;

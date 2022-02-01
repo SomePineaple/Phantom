@@ -58,7 +58,8 @@ XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long devi
     return state;
 }
 
-void XUtils::clickMouseXEvent(Display *dpy, int button, long delayMS) {
+void XUtils::clickMouseXEvent(int button, long delayMS) {
+    Display *dpy = XOpenDisplay(nullptr);
     XButtonEvent event;
     memset(&event, 0, sizeof(event));
     event.button = button;

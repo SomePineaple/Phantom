@@ -22,7 +22,7 @@ namespace XUtils {
     XDeviceInfo *findDeviceInfo(Display *display, const char *name, bool only_extended);
     DeviceState *getDeviceState(Display *display, unsigned long deviceID);
     void clickMouseXTest(Display *dpy, int button, long delayMS);
-    void clickMouseXEvent(Display *dpy, int button, long delayMS);
+    void clickMouseXEvent(int button, long delayMS);
 }
 
 #endif //MC_INJECTION_XUTILS_H

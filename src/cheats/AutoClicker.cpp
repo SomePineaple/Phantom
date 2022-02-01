@@ -33,9 +33,9 @@ void AutoClicker::run(Minecraft *mc) {
 
     Display *dpy = XOpenDisplay(nullptr);
     XUtils::DeviceState *mouseState = XUtils::getDeviceState(dpy, mouseDeviceID);
+    XCloseDisplay(dpy);
 
     if (mouseState->numButtons == 0) {
-        XCloseDisplay(dpy);
         isDeviceShit = true;
         return;
     } else {
@@ -46,13 +46,11 @@ void AutoClicker::run(Minecraft *mc) {
         if (clickTimer->hasTimePassed(nextDelay)) {
             clickTimer->reset();
             updateValues();
-            XUtils::clickMouseXEvent(dpy, 1, nextDelay / 2);
+            std::thread(XUtils::clickMouseXEvent, 1, nextDelay / 2).detach();
         }
     } else {
         clickTimer->reset();
     }
-
-    XCloseDisplay(dpy);
 }
 
 void AutoClicker::renderSettings() {
