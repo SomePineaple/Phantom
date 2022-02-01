@@ -1,3 +1,7 @@
+//
+// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #ifndef PHANTOM_JAVALIST_H
 #define PHANTOM_JAVALIST_H
 

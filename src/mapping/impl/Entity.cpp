@@ -1,7 +1,11 @@
-#include "Minecraft.h"
-#include "Entity.h"
+//
+// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
 
-Entity::Entity(Phantom * phantom, Minecraft * mc, jobject entity) : AbstractClass::AbstractClass(phantom, "Entity")
+#include "Entity.h"
+#include "Minecraft.h"
+
+Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass::AbstractClass(phantom, "Entity")
 {
 	this->mc = mc;
 	this->entity = entity;

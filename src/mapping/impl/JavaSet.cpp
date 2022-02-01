@@ -1,3 +1,7 @@
+//
+// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #include "JavaSet.h"
 
 JavaSet::JavaSet(Phantom *phantom, jobject set) : AbstractClass(phantom, "Set") {

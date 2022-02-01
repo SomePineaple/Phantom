@@ -1,3 +1,7 @@
+//
+// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #include "JavaList.h"
 
 JavaList::JavaList(Phantom * phantom, jobject list) : AbstractClass::AbstractClass(phantom, "List") {

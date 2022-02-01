@@ -1,3 +1,7 @@
+//
+// Some of this code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #include "Minecraft.h"
 #include "EntityPlayerSP.h"
 #include "WorldClient.h"

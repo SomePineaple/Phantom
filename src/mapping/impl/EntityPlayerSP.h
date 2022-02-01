@@ -1,3 +1,7 @@
+//
+// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #ifndef PHANTOM_ENTITYPLAYERSP_H
 #define PHANTOM_ENTITYPLAYERSP_H
 

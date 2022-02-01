@@ -1,3 +1,7 @@
+//
+// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #ifndef PHANTOM_WORLDCLIENT_H
 #define PHANTOM_WORLDCLIENT_H
 
@@ -5,8 +9,7 @@
 #include "../AbstractClass.h"
 
 class Minecraft;
-class WorldClient : public AbstractClass
-{
+class WorldClient : public AbstractClass {
 public:
 	WorldClient(Phantom *phantom, Minecraft * mc);
 

@@ -1,3 +1,7 @@
+//
+// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #ifndef PHANTOM_JAVASET_H
 #define PHANTOM_JAVASET_H
 

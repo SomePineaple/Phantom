@@ -1,3 +1,7 @@
+//
+// Some of this code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+//
+
 #ifndef PHANTOM_MINECRAFT_H
 #define PHANTOM_MINECRAFT_H
 

@@ -1,5 +1,5 @@
 //
-// Created by somepineaple on 1/25/22.
+// Some of this code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
 //
 
 #include "Mapping.h"
