@@ -2,16 +2,16 @@
 // Created by somepineaple on 1/30/22.
 //
 
-#ifndef PHANTOM_WINDOW_H
-#define PHANTOM_WINDOW_H
+#ifndef PHANTOM_PHANTOMWINDOW_H
+#define PHANTOM_PHANTOMWINDOW_H
 
 #include <vector>
 #include <SDL.h>
 #include "../cheats/Cheat.h"
 
-class Window {
+class PhantomWindow {
 public:
-    Window(int width, int height, const char *title);
+    PhantomWindow(int width, int height, const char *title);
     void setup();
     void destruct();
     void update(const std::vector<Cheat*>& cheats, bool &running, bool inGame);
@@ -24,4 +24,4 @@ private:
 };
 
 
-#endif //PHANTOM_WINDOW_H
+#endif //PHANTOM_PHANTOMWINDOW_H

@@ -62,12 +62,16 @@ void Mapping::setup() {
     // obfuscated minecraft classes - 1.8.9 forge
     m = make("Entity", "net.minecraft.entity.Entity");
     field(m, "x", "field_70165_t", "D", false);
+    field(m, "lastTickPosX", "field_70142_S", "D", false);
     field(m, "y", "field_70163_u", "D", false);
     field(m, "z", "field_70161_v", "D", false);
+    field(m, "lastTickPosZ", "field_70136_U", "D", false);
+    method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
+    field(m, "players", "field_73010_i", "Ljava/utils/List;", false);
     method(m, "setTime", "func_72877_b", "(J)V", false);
     m = make("PlayerSP", "net.minecraft.client.entity.EntityPlayerSP");
     field(m, "x", "field_70165_t", "D", false);
@@ -91,8 +95,26 @@ void Mapping::setup() {
     field(m, "inGameHasFocus", "field_71415_G", "Z", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
     method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);
-    m = make("EntityRenderer", "bfk");
+    m = make("EntityRenderer", "net.minecraft.client.renderer.EntityRenderer");
     field(m, "pointedEntity", "field_78528_u", "Lnet/minecraft/entity/Entity;", false);
+    m = make("EntityLivingBase", "net.minecraft.entity.EntityLivingBase");
+    field(m, "x", "field_70165_t", "D", false);
+    field(m, "lastTickPosX", "field_70142_S", "D", false);
+    field(m, "y", "field_70163_u", "D", false);
+    field(m, "z", "field_70161_v", "D", false);
+    field(m, "lastTickPosZ", "field_70136_U", "D", false);
+    method(m, "getEyeHeight", "func_70047_e", "()F", false);
+    method(m, "getID", "func_145782_y", "()I", false);
+    method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
+    m = make("EntityPlayer", "net.minecraft.entity.player.EntityPlayer");
+    field(m, "x", "field_70165_t", "D", false);
+    field(m, "y", "field_70163_u", "D", false);
+    field(m, "z", "field_70161_v", "D", false);
+    field(m, "yaw", "field_70177_z", "F", false);
+    field(m, "pitch", "field_70125_A", "F", false);
+    method(m, "getID", "func_145782_y", "()I", false);
+    method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
+    method(m, "setSprint", "func_70031_b", "(Z)V", false);
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {

@@ -8,7 +8,6 @@
 #include "../mapping/impl/WorldClient.h"
 #include "../mapping/impl/EntityPlayerSP.h"
 #include "../utils/MathHelper.h"
-#include "../utils/JvmUtils.h"
 #include "../vendor/imgui/imgui.h"
 
 AimBot::AimBot(Phantom *phantom) : Cheat("AimBot","Automatically puts cursor over the nearest entity. "

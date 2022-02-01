@@ -19,6 +19,12 @@ namespace XUtils {
         int numValuators;
     };
 
+    extern int mouseDeviceIndex;
+    extern unsigned long mouseDeviceID;
+    extern bool isDeviceShit;
+
+    void renderMouseSelector();
+
     XDeviceInfo *findDeviceInfo(Display *display, const char *name, bool only_extended);
     DeviceState *getDeviceState(Display *display, unsigned long deviceID);
     void clickMouseXTest(Display *dpy, int button, long delayMS);

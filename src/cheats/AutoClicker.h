@@ -20,12 +20,6 @@ public:
 private:
     void updateValues();
 
-    void renderMouseSelector();
-
-    int mouseDeviceIndex;
-    unsigned long mouseDeviceID;
-    bool isDeviceShit;
-
     MSTimer *clickTimer;
     MSTimer *eventTimer;
 

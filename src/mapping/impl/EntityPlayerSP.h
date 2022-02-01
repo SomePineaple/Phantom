@@ -10,8 +10,7 @@
 
 class Phantom;
 class Minecraft;
-class EntityPlayerSP : public AbstractClass
-{
+class EntityPlayerSP : public AbstractClass {
 public:
 	EntityPlayerSP(Phantom *phantom, Minecraft *mc);
 

@@ -19,6 +19,7 @@ public:
 
     jobject getClassLoader();
     jclass getClass(const char *clsName);
+    jclass getClass();
 
     //Boolean
     template <class T> jboolean getBoolean(jobject parent, jmethodID method, T values...) { return phantom->getEnv()->CallBooleanMethod(parent, method, values); }
@@ -128,8 +129,8 @@ public:
 
 protected:
     const char* clsKey;
-    Phantom *phantom;
     jclass cls;
+    Phantom *phantom;
     // Field getter that uses the mapping class so only a clear-text name needs to be defined.
     // "name" : Clear-text name used by 'Mapping.h' to define the field.
     // Return: JNI field wrapper

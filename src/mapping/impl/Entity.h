@@ -17,16 +17,24 @@ public:
 	jdouble getPosX();
 	jdouble getPosY();
 	jdouble getPosZ();
+
+    jdouble getLastTickPosX();
+    jfloat getEyeHeight();
+    jdouble getLastTickPosZ();
+
 	jint getId();
 	const char * getName();
 private:
 	jfieldID fdPosX;
+    jfieldID fdLastTickPosX;
 	jfieldID fdPosY;
 	jfieldID fdPosZ;
+    jfieldID fdLastTickPosZ;
+    jmethodID mdGetEyeHeight;
 	jmethodID mdGetId;
 	jmethodID mdGetName;
 
-	Minecraft * mc;
+	Minecraft *mc;
 	jobject entity;
 };
 

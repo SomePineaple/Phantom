@@ -9,7 +9,7 @@
 #include "mapping/impl/WorldClient.h"
 #include "mapping/impl/EntityPlayerSP.h"
 
-#include "ui/Window.h"
+#include "ui/PhantomWindow.h"
 
 #include "cheats/AimBot.h"
 #include "cheats/AutoClicker.h"
@@ -43,7 +43,7 @@ void Phantom::runClient() {
     cheats.push_back(new AimBot(this));
     cheats.push_back(new AutoClicker(this));
 
-    auto *window = new Window(700, 500, "Phantom");
+    auto *window = new PhantomWindow(700, 500, "Phantom");
     window->setup();
 
     running = true;

@@ -32,3 +32,7 @@ jclass AbstractClass::getClass(const char *clsName) {
     jmethodID mid = phantom->getEnv()->GetMethodID(phantom->getEnv()->GetObjectClass(classLoader), "findClass", "(Ljava/lang/String;)Ljava/lang/Class;");
     return (jclass)phantom->getEnv()->CallObjectMethod(classLoader, mid, name);
 }
+
+jclass AbstractClass::getClass() {
+    return cls;
+}

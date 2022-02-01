@@ -2,16 +2,17 @@
 // Created by somepineaple on 1/30/22.
 //
 
-#include "Window.h"
+#include "PhantomWindow.h"
 
 #include <SDL_opengl.h>
 #include "../utils/ImGuiUtils.h"
+#include "../utils/XUtils.h"
 
 #include "../vendor/imgui/imgui.h"
 #include "../vendor/imgui/imgui_impl_sdl.h"
 #include "../vendor/imgui/imgui_impl_opengl3.h"
 
-Window::Window(int width, int height, const char *title) {
+PhantomWindow::PhantomWindow(int width, int height, const char *title) {
     this->width = width;
     this->height = height;
     this->title = title;
@@ -20,7 +21,7 @@ Window::Window(int width, int height, const char *title) {
     glContext = nullptr;
 }
 
-void Window::setup() {
+void PhantomWindow::setup() {
     // Setup SDL
     // (Some versions of SDL before <2.0.10 appears to have performance/stalling issues on a minority of Windows systems,
     // depending on whether SDL_INIT_GAMECONTROLLER is enabled or disabled.. updating to latest version of SDL is recommended!)
@@ -60,7 +61,7 @@ void Window::setup() {
     ImGui_ImplOpenGL3_Init(glsl_version);
 }
 
-void Window::update(const std::vector<Cheat*>& cheats, bool &running, bool inGame) {
+void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, bool inGame) {
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     SDL_Event event;
@@ -82,6 +83,8 @@ void Window::update(const std::vector<Cheat*>& cheats, bool &running, bool inGam
         ImGui::SetNextWindowPos(ImVec2(0, 0));
         ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y));
         ImGui::Begin("Phantom Settings", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+
+        XUtils::renderMouseSelector();
 
         if (inGame) {
             ImGui::Text("Cheats:");
@@ -116,7 +119,7 @@ void Window::update(const std::vector<Cheat*>& cheats, bool &running, bool inGam
     SDL_GL_SwapWindow(window);
 }
 
-void Window::destruct() {
+void PhantomWindow::destruct() {
     // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplSDL2_Shutdown();

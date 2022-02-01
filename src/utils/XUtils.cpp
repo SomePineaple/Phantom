@@ -9,6 +9,13 @@
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
+#include "../vendor/imgui/imgui.h"
+
+#include "ImGuiUtils.h"
+
+int XUtils::mouseDeviceIndex = 0;
+unsigned long XUtils::mouseDeviceID = 0;
+bool XUtils::isDeviceShit = false;
 
 XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long deviceID) {
     auto *state = new DeviceState();
@@ -82,6 +89,33 @@ void XUtils::clickMouseXEvent(int button, long delayMS) {
     event.type = ButtonRelease;
     XSendEvent(dpy, PointerWindow, True, ButtonReleaseMask, (XEvent*)&event);
     XFlush(dpy);
+    XCloseDisplay(dpy);
+}
+
+void XUtils::renderMouseSelector() {
+    Display *dpy = XOpenDisplay(nullptr);
+    XDeviceInfo *devices;
+    int numDevices;
+    devices = XListInputDevices(dpy, &numDevices);
+
+    if (isDeviceShit)
+        ImGui::Text("Please select a valid mouse device");
+    else
+        ImGui::Text("Valid Mouse Selected");
+
+    std::string comboItems;
+    for (int i = 0; i < numDevices; i++) {
+        comboItems.append(devices[i].name);
+        comboItems.push_back('\0');
+    }
+
+    if (ImGui::Combo("AutoClicker: Select your mouse", &mouseDeviceIndex, comboItems.c_str()))
+        mouseDeviceID = devices[mouseDeviceIndex].id;
+
+    ImGui::SameLine();
+    ImGuiUtils::drawHelper("You must select the mouse you use to click with in minecraft. If you don't, autoclicker and aimassist won't work");
+
+    XFreeDeviceList(devices);
     XCloseDisplay(dpy);
 }
 

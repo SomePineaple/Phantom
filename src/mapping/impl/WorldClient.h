@@ -14,11 +14,14 @@ public:
 	WorldClient(Phantom *phantom, Minecraft * mc);
 
 	jobject getEntityList();
+    jobject getPlayerList();
 	void setWorldTime(jlong time);
 
 	JavaList *getEntities();
+    JavaList *getPlayers();
 private:
 	jfieldID fdEntityList;
+    jfieldID fdPlayerList;
 	jmethodID mdSetWorldTime;
 
 	Minecraft * mc;

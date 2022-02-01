@@ -14,10 +14,6 @@ AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse cl
     cps = 12;
     onlyInGame = true;
 
-    mouseDeviceIndex = 0;
-    mouseDeviceID = 0;
-    isDeviceShit = true;
-
     clickTimer = new MSTimer();
     eventTimer = new MSTimer();
 
@@ -31,18 +27,18 @@ AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse cl
 }
 
 void AutoClicker::run(Minecraft *mc) {
-    if (!enabled || mouseDeviceID == 0 || (!mc->isInGameHasFocus() && onlyInGame))
+    if (!enabled || XUtils::mouseDeviceID == 0 || (!mc->isInGameHasFocus() && onlyInGame))
         return;
 
     Display *dpy = XOpenDisplay(nullptr);
-    XUtils::DeviceState *mouseState = XUtils::getDeviceState(dpy, mouseDeviceID);
+    XUtils::DeviceState *mouseState = XUtils::getDeviceState(dpy, XUtils::mouseDeviceID);
     XCloseDisplay(dpy);
 
     if (mouseState->numButtons == 0) {
-        isDeviceShit = true;
+        XUtils::isDeviceShit = true;
         return;
     } else {
-        isDeviceShit = false;
+        XUtils::isDeviceShit = false;
     }
 
     if (mouseState->buttonStates[1]) {
@@ -57,7 +53,6 @@ void AutoClicker::run(Minecraft *mc) {
 }
 
 void AutoClicker::renderSettings() {
-    renderMouseSelector();
     ImGui::SliderFloat("AutoClicker: CPS", &cps, 4, 20);
     ImGui::Checkbox("AutoClicker: Only in game", &onlyInGame);
     ImGui::SameLine();
@@ -94,28 +89,4 @@ void AutoClicker::updateValues() {
     minCps = middleCps - 2;
 
     nextDelay = (int)(((float) 1000) / MathHelper::randFloat(minCps, maxCps));
-}
-
-void AutoClicker::renderMouseSelector() {
-    Display *dpy = XOpenDisplay(nullptr);
-    XDeviceInfo *devices;
-    int numDevices;
-    devices = XListInputDevices(dpy, &numDevices);
-
-    if (isDeviceShit)
-        ImGui::Text("Please select a valid mouse device");
-    else
-        ImGui::Text("Valid Mouse Selected");
-
-    std::string comboItems;
-    for (int i = 0; i < numDevices; i++) {
-        comboItems.append(devices[i].name);
-        comboItems.push_back('\0');
-    }
-
-    if (ImGui::Combo("AutoClicker: Select your mouse", &mouseDeviceIndex, comboItems.c_str()))
-        mouseDeviceID = devices[mouseDeviceIndex].id;
-
-    XFreeDeviceList(devices);
-    XCloseDisplay(dpy);
 }
