@@ -5,7 +5,6 @@
 #ifndef MC_INJECTION_AUTOCLICKER_H
 #define MC_INJECTION_AUTOCLICKER_H
 
-#include "../utils/MSTimer.h"
 #include "../Phantom.h"
 #include "../mapping/impl/Mouse.h"
 #include "../mapping/impl/KeyBinding.h"
@@ -20,19 +19,12 @@ public:
 
     float cps;
 private:
-    void updateVals();
-
     Mouse *mouse;
 
-    MSTimer *lastClick;
-    MSTimer *hold;
-    double speed, holdLength, min, max;
+    int mouseDeviceIndex;
+    unsigned long mouseDeviceID;
 
-    bool holding;
-
-    MSTimer *eventTimer;
-    bool isSpiking, isDropping;
-    int nextEventDelay;
+    long lastClick, leftHold;
 };
 
 

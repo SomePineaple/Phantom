@@ -87,6 +87,10 @@ void Window::update(const std::vector<Cheat*>& cheats, bool &running, bool inGam
 
             for (Cheat *cheat : cheats) {
                 ImGui::Checkbox(cheat->getName(), &cheat->enabled);
+                if (strlen(cheat->getDescription()) > 0) {
+                    ImGui::SameLine();
+                    drawHelper(cheat->getDescription());
+                }
                 if (cheat->enabled)
                     cheat->renderSettings();
             }

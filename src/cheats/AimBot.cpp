@@ -10,7 +10,10 @@
 #include "../utils/MathHelper.h"
 #include "../vendor/imgui/imgui.h"
 
-AimBot::AimBot(Phantom *phantom) : Cheat("AimBot") {
+AimBot::AimBot(Phantom *phantom) : Cheat("AimBot","Automatically puts cursor over the nearest entity. "
+                                                   "Please note: there is no antibot, and also this is not aim assist. "
+                                                   "This will probably insta-ban on most servers with a semi-decent "
+                                                   "anticheat.") {
     this->phantom = phantom;
 
     range = 3.5;

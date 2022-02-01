@@ -10,14 +10,16 @@
 
 class Cheat {
 public:
-    explicit Cheat(const char *name);
+    explicit Cheat(const char *name, const char *description = "");
     virtual void run(Minecraft *mc);
     virtual void renderSettings();
     const char *getName();
+    const char *getDescription();
 
     bool enabled;
 private:
     const char *name;
+    const char *description;
 };
 
 

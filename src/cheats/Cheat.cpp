@@ -4,9 +4,10 @@
 
 #include "Cheat.h"
 
-Cheat::Cheat(const char *name) {
+Cheat::Cheat(const char *name, const char *description) {
     this->name = name;
     this->enabled = false;
+    this->description = description;
 }
 
 void Cheat::run(Minecraft *mc) {}
@@ -15,4 +16,8 @@ void Cheat::renderSettings() {}
 
 const char *Cheat::getName() {
     return name;
+}
+
+const char *Cheat::getDescription() {
+    return description;
 }
