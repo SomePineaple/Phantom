@@ -82,6 +82,7 @@ void XUtils::clickMouseXEvent(int button, long delayMS) {
     event.type = ButtonRelease;
     XSendEvent(dpy, PointerWindow, True, ButtonReleaseMask, (XEvent*)&event);
     XFlush(dpy);
+    XCloseDisplay(dpy);
 }
 
 void XUtils::clickMouseXTest(Display *dpy, int button, long delayMS) {
