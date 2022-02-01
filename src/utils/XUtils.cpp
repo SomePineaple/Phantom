@@ -8,6 +8,7 @@
 #include <cctype>
 #include <cstdlib>
 #include <iostream>
+#include <unistd.h>
 
 XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long deviceID) {
     auto *state = new DeviceState();
@@ -52,7 +53,42 @@ XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long devi
         XFreeDeviceState(xState);
     }
 
+    XCloseDevice(display, device);
+
     return state;
+}
+
+void XUtils::clickMouseXEvent(Display *dpy, int button, long delayMS) {
+    XButtonEvent event;
+    memset(&event, 0, sizeof(event));
+    event.button = button;
+    event.same_screen = true;
+    event.subwindow = DefaultRootWindow(dpy);
+
+    while (event.subwindow) {
+        event.window = event.subwindow;
+        XQueryPointer(dpy, event.window,
+                      &event.root, &event.subwindow,
+                      &event.x_root, &event.y_root,
+                      &event.x, &event.y,
+                      &event.state);
+    }
+
+    event.type = ButtonPress;
+    XSendEvent(dpy, PointerWindow, True, ButtonPressMask, (XEvent *)&event);
+    XFlush(dpy);
+    usleep(delayMS * 1000);
+    event.type = ButtonRelease;
+    XSendEvent(dpy, PointerWindow, True, ButtonReleaseMask, (XEvent*)&event);
+    XFlush(dpy);
+}
+
+void XUtils::clickMouseXTest(Display *dpy, int button, long delayMS) {
+    XTestFakeButtonEvent(dpy, button, True, CurrentTime);
+    XFlush(dpy);
+    usleep(delayMS * 1000);
+    XTestFakeButtonEvent(dpy, button, False, CurrentTime);
+    XFlush(dpy);
 }
 
 XDeviceInfo* XUtils::findDeviceInfo(Display *display, const char *name, bool only_extended) {

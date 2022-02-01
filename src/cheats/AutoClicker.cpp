@@ -4,33 +4,38 @@
 
 #include "AutoClicker.h"
 
+#include <thread>
 #include "../utils/MathHelper.h"
-#include "../utils/MiscUtils.h"
 #include "../vendor/imgui/imgui.h"
 #include "../utils/XUtils.h"
 
 AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse clicky thingy") {
     cps = 12;
 
-    lastClick = MiscUtils::currentTimeMS();
-    leftHold = MiscUtils::currentTimeMS();
-
     mouseDeviceIndex = 0;
     mouseDeviceID = 0;
     isDeviceShit = true;
+
+    clickTimer = new MSTimer();
+    eventTimer = new MSTimer();
+
+    eventDelay = 350;
+    nextEventDelay = (int)(MathHelper::randFloat(0.8, 1.2) * (float)eventDelay);
+    dropChance = 0.3;
+    spikeChance = 0.2;
+    isSpiking = false;
+    isDropping = false;
 }
 
 void AutoClicker::run(Minecraft *mc) {
     if (!enabled || mouseDeviceID == 0)
         return;
 
-    double speedLeft1 = 1.0 / MathHelper::randDouble(cps - 2.2, cps + 2);
-    double leftHoldLength = speedLeft1 / MathHelper::randDouble(cps - 2.2, cps + 2);
-
     Display *dpy = XOpenDisplay(nullptr);
     XUtils::DeviceState *mouseState = XUtils::getDeviceState(dpy, mouseDeviceID);
 
     if (mouseState->numButtons == 0) {
+        XCloseDisplay(dpy);
         isDeviceShit = true;
         return;
     } else {
@@ -38,17 +43,13 @@ void AutoClicker::run(Minecraft *mc) {
     }
 
     if (mouseState->buttonStates[1]) {
-        double speedLeft = 1.0 / MathHelper::randDouble(cps - 2.2, cps + 2);
-        if ((double)(MiscUtils::currentTimeMS() - lastClick) > speedLeft * 1000) {
-            lastClick = MiscUtils::currentTimeMS();
-            if (leftHold < lastClick)
-                leftHold = lastClick;
-            XTestFakeButtonEvent(dpy, 1, True, CurrentTime);
-            XFlush(dpy);
-        } else if ((double)(MiscUtils::currentTimeMS() - leftHold) > leftHoldLength * 1000) {
-            XTestFakeButtonEvent(dpy, 1, False, CurrentTime);
-            XFlush(dpy);
+        if (clickTimer->hasTimePassed(nextDelay)) {
+            clickTimer->reset();
+            updateValues();
+            XUtils::clickMouseXEvent(dpy, 1, nextDelay / 2);
         }
+    } else {
+        clickTimer->reset();
     }
 
     XCloseDisplay(dpy);
@@ -77,4 +78,36 @@ void AutoClicker::renderSettings() {
 
     XFreeDeviceList(devices);
     XCloseDisplay(dpy);
+}
+
+void AutoClicker::updateValues() {
+    if (eventTimer->hasTimePassed(nextEventDelay)) {
+        float randomFloat = MathHelper::randFloat(0, 1);
+        if (randomFloat < spikeChance) {
+            isSpiking = true;
+            isDropping = false;
+        } else if (randomFloat < spikeChance + dropChance) {
+            isDropping = true;
+            isSpiking = false;
+        } else {
+            isDropping = false;
+            isSpiking = false;
+        }
+        eventTimer->reset();
+        nextEventDelay = (int)((float)eventDelay * MathHelper::randFloat(0.8, 1.2));
+    }
+
+    float minCps;
+    float maxCps;
+
+    float middleCps = cps;
+    if (isSpiking)
+        middleCps *= MathHelper::randFloat(1.1, 1.2);
+    else if (isDropping)
+        middleCps *= MathHelper::randFloat(0.8, 0.9);
+
+    maxCps = middleCps + 2;
+    minCps = middleCps - 2;
+
+    nextDelay = (int)(((float) 1000) / MathHelper::randFloat(minCps, maxCps));
 }

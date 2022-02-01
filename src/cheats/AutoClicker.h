@@ -10,20 +10,31 @@
 #include "../mapping/impl/KeyBinding.h"
 #include "../mapping/impl/Minecraft.h"
 #include "Cheat.h"
+#include "../utils/MSTimer.h"
 
 class AutoClicker : public Cheat {
 public:
     explicit AutoClicker(Phantom *phantom);
     void run(Minecraft *mc) override;
     void renderSettings() override;
-
-    float cps;
 private:
+    void updateValues();
+
     int mouseDeviceIndex;
     unsigned long mouseDeviceID;
     bool isDeviceShit;
 
-    long lastClick, leftHold;
+    MSTimer *clickTimer;
+    MSTimer *eventTimer;
+
+    float cps;
+    int nextDelay;
+    int eventDelay;
+    int nextEventDelay;
+    float dropChance;
+    float spikeChance;
+    bool isSpiking;
+    bool isDropping;
 };
 
 

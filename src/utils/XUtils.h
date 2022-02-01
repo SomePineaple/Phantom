@@ -6,7 +6,7 @@
 #define MC_INJECTION_XUTILS_H
 
 #include <X11/extensions/XTest.h>
-#include "X11/Xlib.h"
+#include <X11/Xlib.h>
 
 namespace XUtils {
     struct DeviceState {
@@ -19,8 +19,10 @@ namespace XUtils {
         int numValuators;
     };
 
-    XDeviceInfo* findDeviceInfo(Display *display, const char *name, bool only_extended);
+    XDeviceInfo *findDeviceInfo(Display *display, const char *name, bool only_extended);
     DeviceState *getDeviceState(Display *display, unsigned long deviceID);
+    void clickMouseXTest(Display *dpy, int button, long delayMS);
+    void clickMouseXEvent(Display *dpy, int button, long delayMS);
 }
 
 #endif //MC_INJECTION_XUTILS_H
