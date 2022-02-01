@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PHANTOM_ENTITY_H
+#define PHANTOM_ENTITY_H
 
 #include "JavaSet.h"
 #include "../AbstractClass.h"
@@ -25,3 +26,4 @@ private:
 	jobject entity;
 };
 
+#endif //PHANTOM_ENTITY_H

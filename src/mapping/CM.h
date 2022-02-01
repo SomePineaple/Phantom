@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/25/22.
 //
 
-#ifndef MC_INJECTION_CM_H
-#define MC_INJECTION_CM_H
+#ifndef PHANTOM_CM_H
+#define PHANTOM_CM_H
 
 #include <map>
 #include <string>
@@ -16,4 +16,4 @@ struct CM {
     explicit CM(const char* clsName) : name(clsName) {}
 };
 
-#endif //MC_INJECTION_CM_H
+#endif //PHANTOM_CM_H

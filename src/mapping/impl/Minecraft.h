@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PHANTOM_MINECRAFT_H
+#define PHANTOM_MINECRAFT_H
 
 #include "../AbstractClass.h"
 #include "GameSettings.h"
@@ -28,3 +29,5 @@ private:
 	WorldClient *worldContainer;
     GameSettings *gameSettingsContainer;
 };
+
+#endif //PHANTOM_MINECRAFT_H

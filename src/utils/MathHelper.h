@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/28/22.
 //
 
-#ifndef MC_INJECTION_MATHHELPER_H
-#define MC_INJECTION_MATHHELPER_H
+#ifndef PHANTOM_MATHHELPER_H
+#define PHANTOM_MATHHELPER_H
 
 
 namespace MathHelper {
@@ -21,4 +21,4 @@ namespace MathHelper {
 }
 
 
-#endif //MC_INJECTION_MATHHELPER_H
+#endif //PHANTOM_MATHHELPER_H

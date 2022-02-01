@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/30/22.
 //
 
-#ifndef MC_INJECTION_AUTOCLICKER_H
-#define MC_INJECTION_AUTOCLICKER_H
+#ifndef PHANTOM_AUTOCLICKER_H
+#define PHANTOM_AUTOCLICKER_H
 
 #include "../Phantom.h"
 #include "../mapping/impl/Mouse.h"
@@ -38,4 +38,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_AUTOCLICKER_H
+#endif //PHANTOM_AUTOCLICKER_H

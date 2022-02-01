@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/31/22.
 //
 
-#ifndef MC_INJECTION_CHEAT_H
-#define MC_INJECTION_CHEAT_H
+#ifndef PHANTOM_CHEAT_H
+#define PHANTOM_CHEAT_H
 
 
 #include "../mapping/impl/Minecraft.h"
@@ -23,4 +23,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_CHEAT_H
+#endif //PHANTOM_CHEAT_H

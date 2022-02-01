@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/29/22.
 //
 
-#ifndef MC_INJECTION_JAVASYSTEM_H
-#define MC_INJECTION_JAVASYSTEM_H
+#ifndef PHANTOM_JAVASYSTEM_H
+#define PHANTOM_JAVASYSTEM_H
 
 #include "../AbstractClass.h"
 #include "JavaPrintStream.h"
@@ -16,4 +16,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_JAVASYSTEM_H
+#endif //PHANTOM_JAVASYSTEM_H

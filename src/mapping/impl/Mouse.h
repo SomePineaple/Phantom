@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/30/22.
 //
 
-#ifndef MC_INJECTION_MOUSE_H
-#define MC_INJECTION_MOUSE_H
+#ifndef PHANTOM_MOUSE_H
+#define PHANTOM_MOUSE_H
 
 
 #include "../AbstractClass.h"
@@ -17,4 +17,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_MOUSE_H
+#endif //PHANTOM_MOUSE_H

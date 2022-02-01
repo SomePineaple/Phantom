@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PHANTOM_ENTITYPLAYERSP_H
+#define PHANTOM_ENTITYPLAYERSP_H
 
 #include "../AbstractClass.h"
 
@@ -32,3 +33,4 @@ private:
 	Minecraft *mc;
 };
 
+#endif //PHANTOM_ENTITYPLAYERSP_H

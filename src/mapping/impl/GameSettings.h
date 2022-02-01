@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/30/22.
 //
 
-#ifndef MC_INJECTION_GAMESETTINGS_H
-#define MC_INJECTION_GAMESETTINGS_H
+#ifndef PHANTOM_GAMESETTINGS_H
+#define PHANTOM_GAMESETTINGS_H
 
 
 #include "../AbstractClass.h"
@@ -23,4 +23,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_GAMESETTINGS_H
+#endif //PHANTOM_GAMESETTINGS_H

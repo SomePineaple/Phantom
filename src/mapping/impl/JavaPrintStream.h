@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/29/22.
 //
 
-#ifndef MC_INJECTION_JAVAPRINTSTREAM_H
-#define MC_INJECTION_JAVAPRINTSTREAM_H
+#ifndef PHANTOM_JAVAPRINTSTREAM_H
+#define PHANTOM_JAVAPRINTSTREAM_H
 
 #include "../AbstractClass.h"
 
@@ -18,4 +18,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_JAVAPRINTSTREAM_H
+#endif //PHANTOM_JAVAPRINTSTREAM_H

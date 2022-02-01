@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/25/22.
 //
 
-#ifndef MC_INJECTION_PHANTOM_H
-#define MC_INJECTION_PHANTOM_H
+#ifndef PHANTOM_PHANTOM_H
+#define PHANTOM_PHANTOM_H
 
 #include <jvmti.h>
 
@@ -24,4 +24,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_PHANTOM_H
+#endif //PHANTOM_PHANTOM_H

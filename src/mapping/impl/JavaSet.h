@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PHANTOM_JAVASET_H
+#define PHANTOM_JAVASET_H
 
 #include "../AbstractClass.h"
 
@@ -17,3 +18,4 @@ private:
 	jobject set;
 };
 
+#endif //PHANTOM_JAVASET_H

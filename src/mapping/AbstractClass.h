@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/25/22.
 //
 
-#ifndef MC_INJECTION_ABSTRACTCLASS_H
-#define MC_INJECTION_ABSTRACTCLASS_H
+#ifndef PHANTOM_ABSTRACTCLASS_H
+#define PHANTOM_ABSTRACTCLASS_H
 
 #include <jvmti.h>
 #include "CM.h"
@@ -157,4 +157,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_ABSTRACTCLASS_H
+#endif //PHANTOM_ABSTRACTCLASS_H

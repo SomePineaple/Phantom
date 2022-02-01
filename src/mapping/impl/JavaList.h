@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PHANTOM_JAVALIST_H
+#define PHANTOM_JAVALIST_H
 
 #include "../AbstractClass.h"
 
@@ -18,3 +19,4 @@ private:
 	jobject list;
 };
 
+#endif //PHANTOM_JAVALIST_H

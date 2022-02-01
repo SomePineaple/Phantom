@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/29/22.
 //
 
-#ifndef MC_INJECTION_JVMUTILS_H
-#define MC_INJECTION_JVMUTILS_H
+#ifndef PHANTOM_JVMUTILS_H
+#define PHANTOM_JVMUTILS_H
 
 
 #include <jvmti.h>
@@ -14,4 +14,4 @@ namespace JvmUtils {
 }
 
 
-#endif //MC_INJECTION_JVMUTILS_H
+#endif //PHANTOM_JVMUTILS_H

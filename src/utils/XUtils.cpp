@@ -24,7 +24,7 @@ XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long devi
         XInputClass *cls = xState->data;
 
         for (int i = 0; i < xState->num_classes; i++) {
-            int i2 = 0;
+            int i2;
             switch(cls->c_class) {
             case ValuatorClass:
                 valState = (XValuatorState *) cls;

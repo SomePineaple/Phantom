@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/30/22.
 //
 
-#ifndef MC_INJECTION_WINDOW_H
-#define MC_INJECTION_WINDOW_H
+#ifndef PHANTOM_WINDOW_H
+#define PHANTOM_WINDOW_H
 
 #include <vector>
 #include <SDL.h>
@@ -26,4 +26,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_WINDOW_H
+#endif //PHANTOM_WINDOW_H

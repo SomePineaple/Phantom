@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/25/22.
 //
 
-#ifndef MC_INJECTION_MAPPING_H
-#define MC_INJECTION_MAPPING_H
+#ifndef PHANTOM_MAPPING_H
+#define PHANTOM_MAPPING_H
 
 #include <map>
 #include <string>
@@ -39,4 +39,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_MAPPING_H
+#endif //PHANTOM_MAPPING_H

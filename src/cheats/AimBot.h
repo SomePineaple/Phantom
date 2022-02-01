@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/30/22.
 //
 
-#ifndef MC_INJECTION_AIMBOT_H
-#define MC_INJECTION_AIMBOT_H
+#ifndef PHANTOM_AIMBOT_H
+#define PHANTOM_AIMBOT_H
 
 
 #include "../Phantom.h"
@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif //MC_INJECTION_AIMBOT_H
+#endif //PHANTOM_AIMBOT_H

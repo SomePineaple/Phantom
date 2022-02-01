@@ -2,8 +2,8 @@
 // Created by somepineaple on 1/31/22.
 //
 
-#ifndef MC_INJECTION_XUTILS_H
-#define MC_INJECTION_XUTILS_H
+#ifndef PHANTOM_XUTILS_H
+#define PHANTOM_XUTILS_H
 
 #include <X11/extensions/XTest.h>
 #include <X11/Xlib.h>
@@ -25,4 +25,4 @@ namespace XUtils {
     void clickMouseXEvent(int button, long delayMS);
 }
 
-#endif //MC_INJECTION_XUTILS_H
+#endif //PHANTOM_XUTILS_H

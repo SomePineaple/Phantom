@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PHANTOM_WORLDCLIENT_H
+#define PHANTOM_WORLDCLIENT_H
 
 #include "JavaSet.h"
 #include "../AbstractClass.h"
@@ -20,3 +21,4 @@ private:
 	Minecraft * mc;
 };
 
+#endif //PHANTOM_WORLDCLIENT_H
