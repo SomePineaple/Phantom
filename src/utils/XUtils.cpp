@@ -7,10 +7,10 @@
 #include <cstring>
 #include <cctype>
 #include <cstdlib>
-#include <cstdio>
+#include <iostream>
 
-XUtils::DeviceState XUtils::getButtonList(Display *display, unsigned long deviceID) {
-    DeviceState state{};
+XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long deviceID) {
+    auto *state = new DeviceState();
 
     XDevice *device = XOpenDevice(display, deviceID);
     XDeviceState *xState = XQueryDeviceState(display, device);
@@ -23,24 +23,28 @@ XUtils::DeviceState XUtils::getButtonList(Display *display, unsigned long device
         XInputClass *cls = xState->data;
 
         for (int i = 0; i < xState->num_classes; i++) {
+            int i2 = 0;
             switch(cls->c_class) {
             case ValuatorClass:
                 valState = (XValuatorState *) cls;
-                state.numValuators = valState->num_valuators;
-                for (int i2 = 0; i2 < valState->num_valuators; i2++)
-                    state.valuatorStates[i2] = valState->valuators[i2];
+                state->numValuators = valState->num_valuators;
+                state->valuatorStates = (int *) malloc(state->numValuators * sizeof(int));
+                for (i2 = 0; i2 < valState->num_valuators; i2++)
+                    state->valuatorStates[i2] = valState->valuators[i2];
                 break;
             case ButtonClass:
                 buttonState = (XButtonState *) cls;
-                state.numButtons = buttonState->num_buttons;
-                for (int i2 = 0; i2 < buttonState->num_buttons; i2++)
-                    state.buttonStates[i2] = (buttonState->buttons[i2 / 8] & (1 << (i2 % 8))) != 0;
+                state->numButtons = buttonState->num_buttons;
+                state->buttonStates = (bool *) malloc(state->numButtons * sizeof(bool));
+                for (i2 = 0; i2 < buttonState->num_buttons; i2++)
+                    state->buttonStates[i2] = (buttonState->buttons[i2 / 8] & (1 << (i2 % 8))) != 0;
                 break;
             case KeyClass:
                 keyState = (XKeyState *) cls;
-                state.numKeys = keyState->num_keys;
-                for (int i2 = 0; i2 < keyState->num_keys; i2++)
-                    state.keyStates[i2] = (keyState->keys[i2 / 8] & (1 << (i2 % 8))) != 0;
+                state->numKeys = keyState->num_keys;
+                state->keyStates = (bool *) malloc(state->numKeys * sizeof(bool));
+                for (i2 = 0; i2 < keyState->num_keys; i2++)
+                    state->keyStates[i2] = (keyState->keys[i2 / 8] & (1 << (i2 % 8))) != 0;
                 break;
             }
             cls = (XInputClass *) ((char *) cls + cls->length);

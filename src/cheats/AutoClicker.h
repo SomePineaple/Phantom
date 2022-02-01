@@ -19,10 +19,9 @@ public:
 
     float cps;
 private:
-    Mouse *mouse;
-
     int mouseDeviceIndex;
     unsigned long mouseDeviceID;
+    bool isDeviceShit;
 
     long lastClick, leftHold;
 };

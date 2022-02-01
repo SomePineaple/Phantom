@@ -20,7 +20,7 @@ namespace XUtils {
     };
 
     XDeviceInfo* findDeviceInfo(Display *display, const char *name, bool only_extended);
-    DeviceState getButtonList(Display *display, unsigned long deviceID);
+    DeviceState *getDeviceState(Display *display, unsigned long deviceID);
 }
 
 #endif //MC_INJECTION_XUTILS_H

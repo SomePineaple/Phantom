@@ -12,36 +12,46 @@
 AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse clicky thingy") {
     cps = 12;
 
-    mouse = new Mouse(phantom);
     lastClick = MiscUtils::currentTimeMS();
     leftHold = MiscUtils::currentTimeMS();
 
     mouseDeviceIndex = 0;
     mouseDeviceID = 0;
+    isDeviceShit = true;
 }
 
 void AutoClicker::run(Minecraft *mc) {
-    if (!enabled)
+    if (!enabled || mouseDeviceID == 0)
         return;
 
     double speedLeft1 = 1.0 / MathHelper::randDouble(cps - 2.2, cps + 2);
     double leftHoldLength = speedLeft1 / MathHelper::randDouble(cps - 2.2, cps + 2);
 
-    if (mouse->isButtonDown(0)) {
-        KeyBinding *keyBindAttack = mc->getGameSettingsContainer()->getKeyBindAttackContainer();
-        int keyCode = keyBindAttack->getKeyCode();
+    Display *dpy = XOpenDisplay(nullptr);
+    XUtils::DeviceState *mouseState = XUtils::getDeviceState(dpy, mouseDeviceID);
 
+    if (mouseState->numButtons == 0) {
+        isDeviceShit = true;
+        return;
+    } else {
+        isDeviceShit = false;
+    }
+
+    if (mouseState->buttonStates[0]) {
         double speedLeft = 1.0 / MathHelper::randDouble(cps - 2.2, cps + 2);
         if ((double)(MiscUtils::currentTimeMS() - lastClick) > speedLeft * 1000) {
             lastClick = MiscUtils::currentTimeMS();
             if (leftHold < lastClick)
                 leftHold = lastClick;
-            keyBindAttack->setKeyBindState(keyCode, true);
-            keyBindAttack->onTick(keyCode);
+            XTestFakeButtonEvent(dpy, 1, true, CurrentTime);
+            XFlush(dpy);
         } else if ((double)(MiscUtils::currentTimeMS() - leftHold) > leftHoldLength * 1000) {
-            keyBindAttack->setKeyBindState(keyCode, false);
+            XTestFakeButtonEvent(dpy, 1, false, CurrentTime);
+            XFlush(dpy);
         }
     }
+
+    XCloseDisplay(dpy);
 }
 
 void AutoClicker::renderSettings() {
@@ -50,6 +60,11 @@ void AutoClicker::renderSettings() {
     XDeviceInfo *devices;
     int numDevices;
     devices = XListInputDevices(dpy, &numDevices);
+
+    if (isDeviceShit)
+        ImGui::Text("Please select a valid mouse device");
+    else
+        ImGui::Text("Valid Mouse Selected");
 
     std::string comboItems;
     for (int i = 0; i < numDevices; i++) {
