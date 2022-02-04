@@ -36,6 +36,9 @@ void AutoClicker::run(Minecraft *mc) {
 
     if (mouseState->numButtons == 0) {
         XUtils::isDeviceShit = true;
+        free(mouseState->keyStates);
+        free(mouseState->buttonStates);
+        free(mouseState->valuatorStates);
         return;
     } else {
         XUtils::isDeviceShit = false;
@@ -50,6 +53,10 @@ void AutoClicker::run(Minecraft *mc) {
     } else {
         clickTimer->reset();
     }
+
+    free(mouseState->keyStates);
+    free(mouseState->buttonStates);
+    free(mouseState->valuatorStates);
 }
 
 void AutoClicker::renderSettings() {

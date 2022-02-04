@@ -58,3 +58,11 @@ void EntityPlayerSP::setSprinting(jboolean sprinting) {
 jfloat EntityPlayerSP::getEyeHeight() {
     return getFloat(mc->getPlayer(), mdGetEyeHeight);
 }
+
+jfloat EntityPlayerSP::getRotationYaw() {
+    return getFloat(mc->getPlayer(), fdRotationYaw);
+}
+
+jfloat EntityPlayerSP::getRotationPitch() {
+    return getFloat(mc->getPlayer(), fdRotationPitch);
+}

@@ -4,7 +4,7 @@
 
 #include "MathHelper.h"
 
-#include "../mapping/impl/EntityLivingBase.h"
+#include "../mapping/impl/EntityPlayer.h"
 #include "../mapping/impl/EntityPlayerSP.h"
 #include <cmath>
 
@@ -36,6 +36,11 @@ float MathHelper::wrapAngleTo180(float angle) {
     }
 
     return angleWrapped;
+}
+
+float MathHelper::getAngleDiff(float a, float b) {
+    float phi = findMod(std::abs(b - a), 360);
+    return phi > 180 ? 360 - phi : phi;
 }
 
 double MathHelper::toDegrees(double rad) {
@@ -84,7 +89,7 @@ float MathHelper::findMod(float a, float b) {
     return mod;
 }
 
-float *MathHelper::getRotations(EntityPlayerSP *player, EntityLivingBase *target) {
+float *MathHelper::getRotations(EntityPlayerSP *player, EntityPlayer *target) {
     double deltaX = target->getPosX() + (target->getPosX() - target->getLastTickPosX()) - player->getPosX();
     double deltaY = target->getPosY() - 3.5 + target->getEyeHeight() - player->getPosY() + player->getEyeHeight();
     double deltaZ = target->getPosZ() + (target->getPosZ() - target->getLastTickPosZ()) - player->getPosZ();
@@ -104,4 +109,22 @@ float *MathHelper::getRotations(EntityPlayerSP *player, EntityLivingBase *target
     rotations[0] = yaw;
     rotations[1] = pitch;
     return rotations;
+}
+
+int MathHelper::getDirection(float currentYaw, float targetYaw) {
+    if (currentYaw >= 0) {
+        if (targetYaw > currentYaw)
+            return 1;
+        if (-180 + currentYaw < targetYaw)
+            return -1;
+        else
+            return 1;
+    } else {
+        if (targetYaw < currentYaw)
+            return -1;
+        if (180 + currentYaw > targetYaw)
+            return 1;
+        else
+            return -1;
+    }
 }

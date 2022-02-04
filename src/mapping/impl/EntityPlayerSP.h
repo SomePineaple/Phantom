@@ -17,7 +17,12 @@ public:
 	jdouble getPosX();
 	jdouble getPosY();
 	jdouble getPosZ();
+
     jfloat getEyeHeight();
+
+    jfloat getRotationYaw();
+    jfloat getRotationPitch();
+
 	jint getId();
 	const char *getName();
 

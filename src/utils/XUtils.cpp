@@ -109,7 +109,7 @@ void XUtils::renderMouseSelector() {
         comboItems.push_back('\0');
     }
 
-    if (ImGui::Combo("AutoClicker: Select your mouse", &mouseDeviceIndex, comboItems.c_str()))
+    if (ImGui::Combo("Select your mouse", &mouseDeviceIndex, comboItems.c_str()))
         mouseDeviceID = devices[mouseDeviceIndex].id;
 
     ImGui::SameLine();

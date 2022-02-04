@@ -6,7 +6,7 @@
 #define PHANTOM_MATHHELPER_H
 
 
-class EntityLivingBase;
+class EntityPlayer;
 class EntityPlayerSP;
 namespace MathHelper {
     double toDegrees(double rad);
@@ -18,6 +18,7 @@ namespace MathHelper {
     double *direction(double x1, double y1, double z1, double x2, double y2, double z2);
 
     float wrapAngleTo180(float angle);
+    float getAngleDiff(float a, float b);
 
     int randInt(int min, int max);
     float randFloat(float min, float max);
@@ -25,7 +26,8 @@ namespace MathHelper {
 
     float findMod(float a, float b);
 
-    float *getRotations(EntityPlayerSP *player, EntityLivingBase *target);
+    float *getRotations(EntityPlayerSP *player, EntityPlayer *target);
+    int getDirection(float currentYaw, float targetYaw);
 }
 
 

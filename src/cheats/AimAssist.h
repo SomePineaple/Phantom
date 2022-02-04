@@ -8,6 +8,7 @@
 
 #include "Cheat.h"
 
+class EntityPlayer;
 class AimAssist : public Cheat {
 public:
     explicit AimAssist(Phantom *phantom);
@@ -15,6 +16,8 @@ public:
     void run(Minecraft *mc) override;
     void renderSettings() override;
 private:
+    static bool isInFOV(EntityPlayer *entity, Minecraft *mc, float fov);
+
     Phantom *phantom;
 
     // Settings

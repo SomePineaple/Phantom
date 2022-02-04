@@ -13,6 +13,7 @@
 
 #include "cheats/AimBot.h"
 #include "cheats/AutoClicker.h"
+#include "cheats/AimAssist.h"
 
 Phantom::Phantom() {
     running = false;
@@ -41,6 +42,7 @@ void Phantom::runClient() {
 
     std::vector<Cheat*> cheats;
     cheats.push_back(new AimBot(this));
+    cheats.push_back(new AimAssist(this));
     cheats.push_back(new AutoClicker(this));
 
     auto *window = new PhantomWindow(700, 500, "Phantom");

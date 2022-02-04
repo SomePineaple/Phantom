@@ -35,5 +35,8 @@ JavaList *WorldClient::getEntities() {
 }
 
 JavaList *WorldClient::getPlayers() {
+    if (getPlayerList() == nullptr)
+        return nullptr;
+
     return new JavaList(phantom, getPlayerList());
 }
