@@ -6,8 +6,7 @@ for the window, but the cheats and stuff are my own.
 
 ### Different MC Versions
 
-By default, Phantom is configured to build for version 1.8.9 forge. At this point in time, forge is not supported. To
-change the target minecraft version, edit the `Platform.h` file in the `src` directory.
+By default, Phantom is configured to build for version 1.8.9 forge. If you want other versions, edit the Mappings.cpp file.
 
 ### Building
 
