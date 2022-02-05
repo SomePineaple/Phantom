@@ -6,7 +6,7 @@ for the window, but the cheats and stuff are my own.
 
 ### Different MC Versions
 
-By default, Phantom is configured to build for version 1.8.9 forge. If you want other versions, edit the Mappings.cpp file.
+By default, Phantom is configured to build for version 1.8.9 forge. If you want other versions, edit the Mapping.cpp file in the src/mappings directory.
 
 ### Building
 
