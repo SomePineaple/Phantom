@@ -1,5 +1,5 @@
 //
-// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+// Some of this code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
 //
 
 #include "Entity.h"
@@ -21,6 +21,7 @@ Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass:
     mdRayTrace = getMethodID("rayTrace");
     mdGetPositionEyes = getMethodID("getPositionEyes");
     mdGetLook = getMethodID("getLook");
+    mdGetEntityBoundingBox = getMethodID("getEntityBoundingBox");
 }
 
 jdouble Entity::getPosX() {
@@ -70,10 +71,21 @@ jobject Entity::getLook(jfloat partialTicks) {
     return getObject(entity, mdGetLook, partialTicks);
 }
 
+jobject Entity::getEntityBoundingBox() {
+    return getObject(entity, mdGetEntityBoundingBox);
+}
+
 Vec3 *Entity::getPositionEyesContainer() {
     return new Vec3(phantom, getPositionEyes());
 }
 
 Vec3 *Entity::getLookContainer(jfloat partialTicks) {
     return new Vec3(phantom, getLook(partialTicks));
+}
+
+AxisAlignedBB *Entity::getEntityBoundingBoxContainer() {
+    if (getEntityBoundingBox() == nullptr)
+        return nullptr;
+
+    return new AxisAlignedBB(phantom, getEntityBoundingBox());
 }

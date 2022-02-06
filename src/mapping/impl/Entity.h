@@ -1,5 +1,5 @@
 //
-// This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
+// Some of this code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
 //
 
 #ifndef PHANTOM_ENTITY_H
@@ -8,10 +8,10 @@
 #include "JavaSet.h"
 #include "../AbstractClass.h"
 #include "Vec3.h"
+#include "AxisAlignedBB.h"
 
 class Minecraft;
-class Entity : public AbstractClass
-{
+class Entity : public AbstractClass {
 public:
 	Entity(Phantom *phantom, Minecraft * mc, jobject entity);
 
@@ -26,9 +26,12 @@ public:
     jobject rayTrace(jdouble distance, jfloat partialTicks);
     jobject getPositionEyes();
     jobject getLook(jfloat partialTicks);
+    jobject getEntityBoundingBox();
 
     Vec3 *getPositionEyesContainer();
     Vec3 *getLookContainer(jfloat partialTicks);
+
+    AxisAlignedBB *getEntityBoundingBoxContainer();
 
 	jint getId();
 	const char *getName();
@@ -44,6 +47,7 @@ private:
     jmethodID mdRayTrace;
     jmethodID mdGetPositionEyes;
     jmethodID mdGetLook;
+    jmethodID mdGetEntityBoundingBox;
 
 	Minecraft *mc;
 	jobject entity;
