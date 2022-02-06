@@ -70,6 +70,8 @@ void Mapping::setup() {
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "rayTrace", "func_174822_a", "(FD)Lnet/minecraft/util/math/RayTraceResult;", false);
+    method(m, "getPositionEyes", "func_174824_e", "()Lnet/minecraft/util/Vec3;", false);
+    method(m, "getLook", "func_70676_i", "(F)Lnet/minecraft/util/Vec3;", false);
     m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);
@@ -120,6 +122,8 @@ void Mapping::setup() {
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
+    m = make("Vec3", "net.minecraft.util.Vec3");
+    method(m, "addVector", "func_72441_c", "(DDD)Lnet/minecraft/util/Vec3;", false);
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {
