@@ -123,6 +123,9 @@ void Mapping::setup() {
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
     m = make("Vec3", "net.minecraft.util.Vec3");
+    field(m, "xCoord", "field_72450_a", "D", false);
+    field(m, "yCoord", "field_72448_b", "D", false);
+    field(m, "zCoord", "field_72449_c", "D", false);
     method(m, "addVector", "func_72441_c", "(DDD)Lnet/minecraft/util/Vec3;", false);
 }
 

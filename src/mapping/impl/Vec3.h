@@ -12,9 +12,16 @@ class Vec3 : public AbstractClass {
 public:
     Vec3(Phantom *phantom, jobject vec3);
 
+    jdouble getXCoord();
+    jdouble getYCoord();
+    jdouble getZCoord();
+
     jobject addVector(jdouble x, jdouble y, jdouble z);
     Vec3 *addVectorContainer(jdouble x, jdouble y, jdouble z);
 private:
+    jfieldID fdXCoord;
+    jfieldID fdYCoord;
+    jfieldID fdZCoord;
     jmethodID mdAddVector;
 
     jobject vec3;
