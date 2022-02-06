@@ -95,8 +95,12 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
                     ImGui::SameLine();
                     ImGuiUtils::drawHelper(cheat->getDescription());
                 }
-                if (cheat->enabled)
+
+                if (cheat->enabled) {
+                    ImGui::Indent(20);
                     cheat->renderSettings();
+                    ImGui::Unindent(20);
+                }
             }
 
         } else {

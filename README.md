@@ -17,4 +17,3 @@ need the development headers for SDL2 and OpenGL.
 ### Injecting into Minecraft
 
 To inject, you need some form of shader object injector for linux. I use [injector](https://github.com/kubo/injector).
-
