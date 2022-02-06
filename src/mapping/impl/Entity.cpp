@@ -22,6 +22,7 @@ Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass:
     mdGetPositionEyes = getMethodID("getPositionEyes");
     mdGetLook = getMethodID("getLook");
     mdGetEntityBoundingBox = getMethodID("getEntityBoundingBox");
+    mdGetCollisionBorderSize = getMethodID("getCollisionBorderSize");
 }
 
 jdouble Entity::getPosX() {
@@ -73,6 +74,10 @@ jobject Entity::getLook(jfloat partialTicks) {
 
 jobject Entity::getEntityBoundingBox() {
     return getObject(entity, mdGetEntityBoundingBox);
+}
+
+jfloat Entity::getCollisionBorderSize() {
+    return getFloat(entity, mdGetCollisionBorderSize);
 }
 
 Vec3 *Entity::getPositionEyesContainer() {

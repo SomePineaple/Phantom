@@ -73,6 +73,7 @@ void Mapping::setup() {
     method(m, "getPositionEyes", "func_174824_e", "()Lnet/minecraft/util/Vec3;", false);
     method(m, "getLook", "func_70676_i", "(F)Lnet/minecraft/util/Vec3;", false);
     method(m, "getEntityBoundingBox", "func_174813_aQ", "()Lnet/minecraft/util/AxisAlignedBB;", false);
+    method(m, "getCollisionBorderSize", "func_70111_Y", "()F", false);
     m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);

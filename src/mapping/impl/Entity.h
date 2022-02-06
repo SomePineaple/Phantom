@@ -23,6 +23,8 @@ public:
     jfloat getEyeHeight();
     jdouble getLastTickPosZ();
 
+    jfloat getCollisionBorderSize();
+
     jobject rayTrace(jdouble distance, jfloat partialTicks);
     jobject getPositionEyes();
     jobject getLook(jfloat partialTicks);
@@ -48,6 +50,7 @@ private:
     jmethodID mdGetPositionEyes;
     jmethodID mdGetLook;
     jmethodID mdGetEntityBoundingBox;
+    jmethodID mdGetCollisionBorderSize;
 
 	Minecraft *mc;
 	jobject entity;
