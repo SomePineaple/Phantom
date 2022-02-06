@@ -72,6 +72,7 @@ void Mapping::setup() {
     method(m, "rayTrace", "func_174822_a", "(FD)Lnet/minecraft/util/math/RayTraceResult;", false);
     method(m, "getPositionEyes", "func_174824_e", "()Lnet/minecraft/util/Vec3;", false);
     method(m, "getLook", "func_70676_i", "(F)Lnet/minecraft/util/Vec3;", false);
+    method(m, "getEntityBoundingBox", "func_174813_aQ", "()Lnet/minecraft/util/AxisAlignedBB;", false);
     m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);
@@ -127,6 +128,9 @@ void Mapping::setup() {
     field(m, "yCoord", "field_72448_b", "D", false);
     field(m, "zCoord", "field_72449_c", "D", false);
     method(m, "addVector", "func_72441_c", "(DDD)Lnet/minecraft/util/Vec3;", false);
+    m = make("AxisAlignedBB", "net.minecraft.util.AxisAlignedBB");
+    method(m, "addCoord", "func_72321_a", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
+    method(m, "expand", "func_72314_b", "(FFF)Lnet/minecraft/util/AxisAlignedBB;");
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {
