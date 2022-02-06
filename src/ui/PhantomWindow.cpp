@@ -102,7 +102,6 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
                     ImGui::Unindent(20);
                 }
             }
-
         } else {
             ImGui::Text("Please join a world");
         }

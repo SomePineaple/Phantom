@@ -5,8 +5,8 @@
 #ifndef PHANTOM_WORLDCLIENT_H
 #define PHANTOM_WORLDCLIENT_H
 
-#include "../AbstractClass.h"
-#include "JavaList.h"
+#include "../../../../../AbstractClass.h"
+#include "../../../../java/util/JavaList.h"
 
 class Minecraft;
 class WorldClient : public AbstractClass {

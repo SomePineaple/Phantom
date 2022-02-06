@@ -6,7 +6,7 @@
 #define PHANTOM_VEC3_H
 
 
-#include "../AbstractClass.h"
+#include "../../../../AbstractClass.h"
 
 class Vec3 : public AbstractClass {
 public:

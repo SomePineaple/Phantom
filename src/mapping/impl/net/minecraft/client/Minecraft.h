@@ -5,8 +5,8 @@
 #ifndef PHANTOM_MINECRAFT_H
 #define PHANTOM_MINECRAFT_H
 
-#include "../AbstractClass.h"
-#include "GameSettings.h"
+#include "../../../../AbstractClass.h"
+#include "settings/GameSettings.h"
 
 class Phantom;
 class EntityPlayerSP;

@@ -2,7 +2,7 @@
 // This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
 //
 
-#include "Minecraft.h"
+#include "../client/Minecraft.h"
 #include "EntityPlayerSP.h"
 
 EntityPlayerSP::EntityPlayerSP(Phantom * phantom, Minecraft * mc) : AbstractClass(phantom, "PlayerSP") {

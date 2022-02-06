@@ -7,7 +7,7 @@
 
 
 #include "../Phantom.h"
-#include "../mapping/impl/Minecraft.h"
+#include "../mapping/impl/net/minecraft/client/Minecraft.h"
 #include "Cheat.h"
 
 class AimBot : public Cheat {

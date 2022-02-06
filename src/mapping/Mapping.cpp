@@ -132,7 +132,11 @@ void Mapping::setup() {
     method(m, "addVector", "func_72441_c", "(DDD)Lnet/minecraft/util/Vec3;", false);
     m = make("AxisAlignedBB", "net.minecraft.util.AxisAlignedBB");
     method(m, "addCoord", "func_72321_a", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
-    method(m, "expand", "func_72314_b", "(FFF)Lnet/minecraft/util/AxisAlignedBB;");
+    method(m, "expand", "func_72314_b", "(FFF)Lnet/minecraft/util/AxisAlignedBB;", false);
+    method(m, "calculateIntercept", "func_72327_a", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;)Lnet/minecraft/util/MovinObjectPosition;", false);
+    method(m, "isVecInside", "func_72318_a", "(Lnet/minecraft/util/Vec3;)Z", false);
+    m = make("MovingObjectPosition", "net.minecraft.util.MovingObjectPosition");
+    field(m, "hitVec", "field_72307_f", "Lnet/minecraft/util/Vec3;", false);
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {

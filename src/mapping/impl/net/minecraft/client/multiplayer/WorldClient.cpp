@@ -2,7 +2,7 @@
 // This code was copied from UDP-CPP: https://github.com/UnknownDetectionParty/UDP-CPP
 //
 
-#include "Minecraft.h"
+#include "../Minecraft.h"
 #include "WorldClient.h"
 
 WorldClient::WorldClient(Phantom *phantom, Minecraft *mc) : AbstractClass::AbstractClass(phantom, "WorldClient") {

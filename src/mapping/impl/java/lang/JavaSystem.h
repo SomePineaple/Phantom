@@ -5,8 +5,8 @@
 #ifndef PHANTOM_JAVASYSTEM_H
 #define PHANTOM_JAVASYSTEM_H
 
-#include "../AbstractClass.h"
-#include "JavaPrintStream.h"
+#include "../../../AbstractClass.h"
+#include "../io/JavaPrintStream.h"
 
 class JavaSystem : public AbstractClass {
 public:

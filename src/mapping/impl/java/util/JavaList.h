@@ -5,7 +5,7 @@
 #ifndef PHANTOM_JAVALIST_H
 #define PHANTOM_JAVALIST_H
 
-#include "../AbstractClass.h"
+#include "../../../AbstractClass.h"
 
 class JavaList : public AbstractClass
 {

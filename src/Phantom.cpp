@@ -5,9 +5,9 @@
 #include "Phantom.h"
 
 #include <iostream>
-#include "mapping/impl/Minecraft.h"
-#include "mapping/impl/WorldClient.h"
-#include "mapping/impl/EntityPlayerSP.h"
+#include "mapping/impl/net/minecraft/client/Minecraft.h"
+#include "mapping/impl/net/minecraft/client/multiplayer/WorldClient.h"
+#include "mapping/impl/net/minecraft/entity/EntityPlayerSP.h"
 
 #include "ui/PhantomWindow.h"
 

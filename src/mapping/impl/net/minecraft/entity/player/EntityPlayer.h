@@ -5,9 +5,9 @@
 #ifndef PHANTOM_ENTITYPLAYER_H
 #define PHANTOM_ENTITYPLAYER_H
 
-#include "../AbstractClass.h"
-#include "../../Phantom.h"
-#include "EntityLivingBase.h"
+#include "../../../../../AbstractClass.h"
+#include "../../../../../../Phantom.h"
+#include "../EntityLivingBase.h"
 
 
 class EntityPlayer : public AbstractClass {

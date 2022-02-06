@@ -5,7 +5,7 @@
 #ifndef PHANTOM_ENTITYLIVINGBASE_H
 #define PHANTOM_ENTITYLIVINGBASE_H
 
-#include "../AbstractClass.h"
+#include "../../../../AbstractClass.h"
 
 class EntityLivingBase : public AbstractClass {
 public:

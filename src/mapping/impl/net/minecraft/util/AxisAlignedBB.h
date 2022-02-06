@@ -6,7 +6,7 @@
 #define PHANTOM_AXISALIGNEDBB_H
 
 
-#include "../AbstractClass.h"
+#include "../../../../AbstractClass.h"
 
 class AxisAlignedBB : public AbstractClass {
 public:
@@ -14,12 +14,16 @@ public:
 
     jobject expand(jfloat x, jfloat y, jfloat z);
     jobject addCoord(jdouble x, jdouble y, jdouble z);
+    jobject calculateIntercept(jobject vec1, jobject vec2);
+    jboolean isVecInside(jobject vec);
 
     AxisAlignedBB *getExpandContainer(jfloat x, jfloat y, jfloat z);
     AxisAlignedBB *getAddCoordContainer(jdouble x, jdouble y, jdouble z);
 private:
     jmethodID mdExpand;
     jmethodID mdAddCoord;
+    jmethodID mdCalculateIntercept;
+    jmethodID mdIsVecInside;
 
     jobject aabb;
 };

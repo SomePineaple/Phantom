@@ -5,7 +5,7 @@
 #ifndef PHANTOM_JAVASET_H
 #define PHANTOM_JAVASET_H
 
-#include "../AbstractClass.h"
+#include "../../../AbstractClass.h"
 
 class JavaSet : public AbstractClass {
 public:

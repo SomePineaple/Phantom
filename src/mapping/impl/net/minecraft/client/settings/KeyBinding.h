@@ -6,7 +6,7 @@
 #define PHANTOM_KEYBINDING_H
 
 
-#include "../AbstractClass.h"
+#include "../../../../../AbstractClass.h"
 
 class KeyBinding : public AbstractClass {
 public:

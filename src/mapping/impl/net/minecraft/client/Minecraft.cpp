@@ -4,9 +4,9 @@
 
 #include "Minecraft.h"
 
-#include "EntityPlayerSP.h"
-#include "WorldClient.h"
-#include "Entity.h"
+#include "../entity/EntityPlayerSP.h"
+#include "multiplayer/WorldClient.h"
+#include "../entity/Entity.h"
 
 Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "Minecraft") {
 	smdGetMinecraft = getMethodID("getMinecraft");

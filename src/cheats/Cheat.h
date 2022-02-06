@@ -6,7 +6,7 @@
 #define PHANTOM_CHEAT_H
 
 
-#include "../mapping/impl/Minecraft.h"
+#include "../mapping/impl/net/minecraft/client/Minecraft.h"
 
 class Cheat {
 public:

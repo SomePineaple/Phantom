@@ -5,10 +5,10 @@
 #ifndef PHANTOM_ENTITY_H
 #define PHANTOM_ENTITY_H
 
-#include "JavaSet.h"
-#include "../AbstractClass.h"
-#include "Vec3.h"
-#include "AxisAlignedBB.h"
+#include "../../../java/util/JavaSet.h"
+#include "../../../../AbstractClass.h"
+#include "../util/Vec3.h"
+#include "../util/AxisAlignedBB.h"
 
 class Minecraft;
 class Entity : public AbstractClass {

@@ -5,7 +5,7 @@
 #ifndef PHANTOM_JAVAPRINTSTREAM_H
 #define PHANTOM_JAVAPRINTSTREAM_H
 
-#include "../AbstractClass.h"
+#include "../../../AbstractClass.h"
 
 class JavaPrintStream : public AbstractClass {
 public:

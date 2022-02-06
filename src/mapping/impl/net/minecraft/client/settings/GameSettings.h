@@ -6,7 +6,7 @@
 #define PHANTOM_GAMESETTINGS_H
 
 
-#include "../AbstractClass.h"
+#include "../../../../../AbstractClass.h"
 #include "KeyBinding.h"
 
 class GameSettings : public AbstractClass {

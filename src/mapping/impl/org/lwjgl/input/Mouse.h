@@ -6,11 +6,11 @@
 #define PHANTOM_MOUSE_H
 
 
-#include "../AbstractClass.h"
+#include "../../../../AbstractClass.h"
 
 class Mouse : public AbstractClass {
 public:
-    Mouse(Phantom *phantom);
+    explicit Mouse(Phantom *phantom);
     bool isButtonDown(int button);
 private:
     jmethodID mdIsButtonDown;

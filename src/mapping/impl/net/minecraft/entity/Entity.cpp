@@ -3,7 +3,7 @@
 //
 
 #include "Entity.h"
-#include "Minecraft.h"
+#include "../client/Minecraft.h"
 
 Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass::AbstractClass(phantom, "Entity") {
 	this->mc = mc;

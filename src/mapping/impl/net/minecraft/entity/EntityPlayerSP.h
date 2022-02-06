@@ -5,7 +5,7 @@
 #ifndef PHANTOM_ENTITYPLAYERSP_H
 #define PHANTOM_ENTITYPLAYERSP_H
 
-#include "../AbstractClass.h"
+#include "../../../../AbstractClass.h"
 
 
 class Phantom;

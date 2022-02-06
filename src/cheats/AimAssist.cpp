@@ -6,9 +6,9 @@
 
 #include "../vendor/imgui/imgui.h"
 #include "../utils/XUtils.h"
-#include "../mapping/impl/EntityPlayer.h"
-#include "../mapping/impl/EntityPlayerSP.h"
-#include "../mapping/impl/WorldClient.h"
+#include "../mapping/impl/net/minecraft/entity/player/EntityPlayer.h"
+#include "../mapping/impl/net/minecraft/entity/EntityPlayerSP.h"
+#include "../mapping/impl/net/minecraft/client/multiplayer/WorldClient.h"
 #include "../utils/MathHelper.h"
 
 AimAssist::AimAssist(Phantom *phantom) : Cheat("AimAssist", "Aims for u, but smoooothly.") {
