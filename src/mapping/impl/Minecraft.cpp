@@ -22,6 +22,7 @@ Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "
 
     playerContainer = nullptr;
     worldContainer = nullptr;
+    gameSettingsContainer = nullptr;
 }
 
 jobject Minecraft::getMinecraft() {

@@ -22,6 +22,8 @@ public:
     jfloat getEyeHeight();
     jdouble getLastTickPosZ();
 
+    jobject rayTrace(jdouble distance, jfloat partialTicks);
+
 	jint getId();
 	const char * getName();
 private:
@@ -33,6 +35,7 @@ private:
     jmethodID mdGetEyeHeight;
 	jmethodID mdGetId;
 	jmethodID mdGetName;
+    jmethodID mdRayTrace;
 
 	Minecraft *mc;
 	jobject entity;
