@@ -36,3 +36,12 @@ AxisAlignedBB *AxisAlignedBB::getExpandContainer(jfloat x, jfloat y, jfloat z) {
 AxisAlignedBB *AxisAlignedBB::getAddCoordContainer(jdouble x, jdouble y, jdouble z) {
     return new AxisAlignedBB(phantom, addCoord(x, y, z));
 }
+
+MovingObjectPosition *AxisAlignedBB::getCalculateInterceptContainer(jobject vec1, jobject vec2) {
+    jobject mvObjecpPos = calculateIntercept(vec1, vec2);
+
+    if (mvObjecpPos == nullptr)
+        return nullptr;
+
+    return new MovingObjectPosition(phantom, mvObjecpPos);
+}

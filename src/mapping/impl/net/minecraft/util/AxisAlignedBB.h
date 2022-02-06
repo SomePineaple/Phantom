@@ -7,6 +7,7 @@
 
 
 #include "../../../../AbstractClass.h"
+#include "MovingObjectPosition.h"
 
 class AxisAlignedBB : public AbstractClass {
 public:
@@ -19,6 +20,7 @@ public:
 
     AxisAlignedBB *getExpandContainer(jfloat x, jfloat y, jfloat z);
     AxisAlignedBB *getAddCoordContainer(jdouble x, jdouble y, jdouble z);
+    MovingObjectPosition *getCalculateInterceptContainer(jobject vec1, jobject vec2);
 private:
     jmethodID mdExpand;
     jmethodID mdAddCoord;
