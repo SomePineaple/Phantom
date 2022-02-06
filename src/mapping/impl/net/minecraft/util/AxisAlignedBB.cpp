@@ -38,10 +38,10 @@ AxisAlignedBB *AxisAlignedBB::getAddCoordContainer(jdouble x, jdouble y, jdouble
 }
 
 MovingObjectPosition *AxisAlignedBB::getCalculateInterceptContainer(jobject vec1, jobject vec2) {
-    jobject mvObjecpPos = calculateIntercept(vec1, vec2);
+    jobject mvObjectPos = calculateIntercept(vec1, vec2);
 
-    if (mvObjecpPos == nullptr)
+    if (mvObjectPos == nullptr)
         return nullptr;
 
-    return new MovingObjectPosition(phantom, mvObjecpPos);
+    return new MovingObjectPosition(phantom, mvObjectPos);
 }

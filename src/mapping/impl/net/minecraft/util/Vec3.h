@@ -16,6 +16,8 @@ public:
     jdouble getYCoord();
     jdouble getZCoord();
 
+    jdouble distanceTo(jobject vec);
+
     jobject addVector(jdouble x, jdouble y, jdouble z);
     Vec3 *addVectorContainer(jdouble x, jdouble y, jdouble z);
 private:
@@ -23,6 +25,7 @@ private:
     jfieldID fdYCoord;
     jfieldID fdZCoord;
     jmethodID mdAddVector;
+    jmethodID mdDistanceTo;
 
     jobject vec3;
 };

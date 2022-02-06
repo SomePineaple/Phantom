@@ -130,6 +130,7 @@ void Mapping::setup() {
     field(m, "yCoord", "field_72448_b", "D", false);
     field(m, "zCoord", "field_72449_c", "D", false);
     method(m, "addVector", "func_72441_c", "(DDD)Lnet/minecraft/util/Vec3;", false);
+    method(m, "distanceTo", "func_72438_d", "(Lnet/minecraft/util/Vec3;)D", false);
     m = make("AxisAlignedBB", "net.minecraft.util.AxisAlignedBB");
     method(m, "addCoord", "func_72321_a", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
     method(m, "expand", "func_72314_b", "(FFF)Lnet/minecraft/util/AxisAlignedBB;", false);
