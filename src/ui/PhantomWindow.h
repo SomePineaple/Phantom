@@ -16,6 +16,8 @@ public:
     void destruct();
     void update(const std::vector<Cheat*>& cheats, bool &running, bool inGame);
 private:
+    static void setColors();
+
     int width, height;
     const char *title;
 
