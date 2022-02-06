@@ -15,6 +15,7 @@ Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass:
 	fdPosY = getFieldID("y");
 	fdPosZ = getFieldID("z");
     fdLastTickPosZ = getFieldID("lastTickPosZ");
+    fdRidingEntity = getFieldID("ridingEntity");
     mdGetEyeHeight = getMethodID("getEyeHeight");
 	mdGetId = getMethodID("getID");
 	mdGetName = getMethodID("getName");
@@ -23,6 +24,7 @@ Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass:
     mdGetLook = getMethodID("getLook");
     mdGetEntityBoundingBox = getMethodID("getEntityBoundingBox");
     mdGetCollisionBorderSize = getMethodID("getCollisionBorderSize");
+    mdCanRiderInteract = getMethodID("canRiderInteract");
 }
 
 jdouble Entity::getPosX() {
@@ -80,6 +82,14 @@ jfloat Entity::getCollisionBorderSize() {
     return getFloat(entity, mdGetCollisionBorderSize);
 }
 
+jobject Entity::getRidingEntity() {
+    return getObject(entity, fdRidingEntity);
+}
+
+jboolean Entity::canRiderInteract() {
+    return getBoolean(entity, mdCanRiderInteract);
+}
+
 Vec3 *Entity::getPositionEyesContainer() {
     return new Vec3(phantom, getPositionEyes());
 }
@@ -89,8 +99,19 @@ Vec3 *Entity::getLookContainer(jfloat partialTicks) {
 }
 
 AxisAlignedBB *Entity::getEntityBoundingBoxContainer() {
-    if (getEntityBoundingBox() == nullptr)
+    jobject entityBoundingBox = getEntityBoundingBox();
+
+    if (entityBoundingBox == nullptr)
         return nullptr;
 
-    return new AxisAlignedBB(phantom, getEntityBoundingBox());
+    return new AxisAlignedBB(phantom, entityBoundingBox);
+}
+
+Entity *Entity::getRidingEntityContainer() {
+    jobject ridingEntity = getRidingEntity();
+
+    if (ridingEntity == nullptr)
+        return nullptr;
+
+    return new Entity(phantom, mc, ridingEntity);
 }

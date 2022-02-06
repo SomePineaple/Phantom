@@ -29,11 +29,15 @@ public:
     jobject getPositionEyes();
     jobject getLook(jfloat partialTicks);
     jobject getEntityBoundingBox();
+    jobject getRidingEntity();
+    jboolean canRiderInteract();
 
     Vec3 *getPositionEyesContainer();
     Vec3 *getLookContainer(jfloat partialTicks);
 
     AxisAlignedBB *getEntityBoundingBoxContainer();
+
+    Entity *getRidingEntityContainer();
 
 	jint getId();
 	const char *getName();
@@ -43,6 +47,7 @@ private:
 	jfieldID fdPosY;
 	jfieldID fdPosZ;
     jfieldID fdLastTickPosZ;
+    jfieldID fdRidingEntity;
     jmethodID mdGetEyeHeight;
 	jmethodID mdGetId;
 	jmethodID mdGetName;
@@ -51,6 +56,7 @@ private:
     jmethodID mdGetLook;
     jmethodID mdGetEntityBoundingBox;
     jmethodID mdGetCollisionBorderSize;
+    jmethodID mdCanRiderInteract;
 
 	Minecraft *mc;
 	jobject entity;
