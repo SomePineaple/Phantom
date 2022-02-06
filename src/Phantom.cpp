@@ -37,9 +37,6 @@ void Phantom::runClient() {
     // Get minecraft instance
     auto *mc = new Minecraft(this);
 
-    //auto *system = new JavaSystem(this);
-    //system->out->println(JvmUtils::getJString(this, "Phantom: Got the minecraft instance"));
-
     std::vector<Cheat*> cheats;
     cheats.push_back(new AimBot(this));
     cheats.push_back(new AimAssist(this));
@@ -66,6 +63,7 @@ void Phantom::runClient() {
     }
 
     window->destruct();
+    jvm->DetachCurrentThread();
 }
 
 JavaVM *Phantom::getJvm() {

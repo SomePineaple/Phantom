@@ -69,6 +69,7 @@ void Mapping::setup() {
     method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
+    method(m, "rayTrace", "func_174822_a", "(FD)Lnet/minecraft/util/math/RayTraceResult;", false);
     m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);
@@ -94,10 +95,10 @@ void Mapping::setup() {
     field(m, "world", "field_71441_e", "Lnet/minecraft/client/multiplayer/WorldClient;", false);
     field(m, "gameSettings", "field_71474_y", "Lnet/minecraft/client/settings/GameSettings;", false);
     field(m, "inGameHasFocus", "field_71415_G", "Z", false);
+    field(m, "pointedEntity", "field_147125_j", "Lnet/minecraft/entity/Entity;", false);
+    field(m, "objectMouseOver", "field_71476_x", "Lnet/minecraft/util/math/RayTraceResult;", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
     method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);
-    m = make("EntityRenderer", "net.minecraft.client.renderer.EntityRenderer");
-    field(m, "pointedEntity", "field_78528_u", "Lnet/minecraft/entity/Entity;", false);
     m = make("EntityLivingBase", "net.minecraft.entity.EntityLivingBase");
     field(m, "x", "field_70165_t", "D", false);
     field(m, "lastTickPosX", "field_70142_S", "D", false);

@@ -127,6 +127,9 @@ public:
     void setDouble(jobject parent, jfieldID field, jdouble value) { phantom->getEnv()->SetDoubleField(parent, field, value); }
     void setDouble(jfieldID field, jdouble value) { phantom->getEnv()->SetStaticDoubleField(cls, field, value); }
 
+    void setObject(jobject parent, jfieldID field, jobject value) { phantom->getEnv()->SetObjectField(parent, field, value); }
+    void setObject(jfieldID field, jobject value) { phantom->getEnv()->SetStaticObjectField(cls, field, value); }
+
 protected:
     const char* clsKey;
     jclass cls;
