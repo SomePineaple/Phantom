@@ -10,6 +10,7 @@ WorldClient::WorldClient(Phantom *phantom, Minecraft *mc) : AbstractClass::Abstr
 	fdEntityList = getFieldID("entities");
     fdPlayerList = getFieldID("players");
 	mdSetWorldTime = getMethodID("setTime");
+    mdGetEntitiesWithinAABBExcluding = getMethodID("getEntitiesWithinAABBExcluding");
 }
 
 jobject WorldClient::getEntityList() {
@@ -26,6 +27,13 @@ jobject WorldClient::getPlayerList() {
     return getObject(mc->getWorld(), fdPlayerList);
 }
 
+jobject WorldClient::getEntitiesWithinAABBExcludingList(jobject entity, jobject AABB) {
+    if (mc->getWorld() == nullptr)
+        return nullptr;
+
+    return getObject(mc->getWorld(), mdGetEntitiesWithinAABBExcluding, entity, AABB);
+}
+
 void WorldClient::setWorldTime(jlong time) {
 	callMethod(mc->getWorld(), mdSetWorldTime, time);
 }
@@ -39,4 +47,12 @@ JavaList *WorldClient::getPlayers() {
         return nullptr;
 
     return new JavaList(phantom, getPlayerList());
+}
+
+JavaList *WorldClient::getEntitiesWithinAABBExcluding(jobject entity, jobject AABB) {
+    jobject entitiesWithinAABB = getEntitiesWithinAABBExcludingList(entity, AABB);
+    if (entitiesWithinAABB == nullptr)
+        return nullptr;
+
+    return new JavaList(phantom, entitiesWithinAABB);
 }

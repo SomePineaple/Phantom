@@ -77,6 +77,7 @@ void Mapping::setup() {
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);
     method(m, "setTime", "func_72877_b", "(J)V", false);
+    method(m, "getEntitiesWithinAABBExcluding", "func_72839_b", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/AxisAlignedBB;)Ljava/util/List;", false);
     m = make("PlayerSP", "net.minecraft.client.entity.EntityPlayerSP");
     field(m, "x", "field_70165_t", "D", false);
     field(m, "y", "field_70163_u", "D", false);

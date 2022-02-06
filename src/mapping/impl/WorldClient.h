@@ -15,14 +15,17 @@ public:
 
 	jobject getEntityList();
     jobject getPlayerList();
+    jobject getEntitiesWithinAABBExcludingList(jobject entity, jobject AABB);
 	void setWorldTime(jlong time);
 
 	JavaList *getEntities();
     JavaList *getPlayers();
+    JavaList *getEntitiesWithinAABBExcluding(jobject entity, jobject AABB);
 private:
 	jfieldID fdEntityList;
     jfieldID fdPlayerList;
 	jmethodID mdSetWorldTime;
+    jmethodID mdGetEntitiesWithinAABBExcluding;
 
 	Minecraft * mc;
 };
