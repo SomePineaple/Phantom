@@ -7,6 +7,7 @@
 
 #include "JavaSet.h"
 #include "../AbstractClass.h"
+#include "Vec3.h"
 
 class Minecraft;
 class Entity : public AbstractClass
@@ -23,9 +24,14 @@ public:
     jdouble getLastTickPosZ();
 
     jobject rayTrace(jdouble distance, jfloat partialTicks);
+    jobject getPositionEyes();
+    jobject getLook(jfloat partialTicks);
+
+    Vec3 *getPositionEyesContainer();
+    Vec3 *getLookContainer(jfloat partialTicks);
 
 	jint getId();
-	const char * getName();
+	const char *getName();
 private:
 	jfieldID fdPosX;
     jfieldID fdLastTickPosX;
@@ -36,6 +42,8 @@ private:
 	jmethodID mdGetId;
 	jmethodID mdGetName;
     jmethodID mdRayTrace;
+    jmethodID mdGetPositionEyes;
+    jmethodID mdGetLook;
 
 	Minecraft *mc;
 	jobject entity;

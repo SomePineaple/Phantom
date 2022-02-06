@@ -19,6 +19,8 @@ Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass:
 	mdGetId = getMethodID("getID");
 	mdGetName = getMethodID("getName");
     mdRayTrace = getMethodID("rayTrace");
+    mdGetPositionEyes = getMethodID("getPositionEyes");
+    mdGetLook = getMethodID("getLook");
 }
 
 jdouble Entity::getPosX() {
@@ -58,4 +60,20 @@ jfloat Entity::getEyeHeight() {
 
 jobject Entity::rayTrace(jdouble distance, jfloat partialTicks) {
     return getObject(entity, mdRayTrace, distance, partialTicks);
+}
+
+jobject Entity::getPositionEyes() {
+    return getObject(entity, mdGetPositionEyes);
+}
+
+jobject Entity::getLook(jfloat partialTicks) {
+    return getObject(entity, mdGetLook, partialTicks);
+}
+
+Vec3 *Entity::getPositionEyesContainer() {
+    return new Vec3(phantom, getPositionEyes());
+}
+
+Vec3 *Entity::getLookContainer(jfloat partialTicks) {
+    return new Vec3(phantom, getLook(partialTicks));
 }
