@@ -6,6 +6,7 @@
 
 #include "../vendor/imgui/imgui.h"
 #include "../utils/XUtils.h"
+#include "../utils/MCUtils.h"
 #include "../mapping/impl/net/minecraft/entity/player/EntityPlayer.h"
 #include "../mapping/impl/net/minecraft/entity/EntityPlayerSP.h"
 #include "../mapping/impl/net/minecraft/client/multiplayer/WorldClient.h"
@@ -21,6 +22,7 @@ AimAssist::AimAssist(Phantom *phantom) : Cheat("AimAssist", "Aims for u, but smo
     onlyOnClick = true;
     center = true;
     dead = false;
+    teams = false;
 }
 
 void AimAssist::run(Minecraft *mc) {
@@ -50,7 +52,7 @@ void AimAssist::run(Minecraft *mc) {
 
         for (int i = 0; i < players->size(); i++) {
             auto *player = new EntityPlayer(phantom, players->get(i));
-            if ((player->getId() != mc->getPlayerContainer()->getId()) && isInFOV(player, mc, fov)) {
+            if ((player->getId() != mc->getPlayerContainer()->getId()) && isInFOV(player, mc, fov) && !(MCUtils::sameTeam(mc, player) && teams)) {
                 auto newDist = (float) MathHelper::distance(player->getPosX(), player->getPosY(), player->getPosZ(), thePlayer->getPosX(), thePlayer->getPosY(), thePlayer->getPosZ());
                 if (newDist < closestDistance) {
                     closestDistance = newDist;
@@ -88,6 +90,7 @@ void AimAssist::renderSettings() {
     ImGui::SliderFloat("AimAssist: hSpeed", &hSpeed, 0, 100, "%.2f");
     ImGui::SliderFloat("AimAssist: vSpeed", &vSpeed, 0, 100, "%.2f");
     ImGui::Checkbox("AimAssist: Only while clicking", &onlyOnClick);
+    ImGui::Checkbox("AimAssist: Teams Check", &teams);
     ImGui::Checkbox("AimAssist: Center", &center);
     ImGui::Checkbox("AimAssist: Target Dead", &dead);
 }

@@ -28,6 +28,7 @@ private:
     bool onlyOnClick;
     bool center;
     bool dead;
+    bool teams;
 };
 
 
