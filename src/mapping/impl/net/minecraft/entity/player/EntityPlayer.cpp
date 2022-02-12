@@ -18,6 +18,10 @@ EntityPlayer::EntityPlayer(Phantom *phantom, jobject player) :  AbstractClass(ph
     mdGetName = getMethodID("getName");
     mdSetSprinting = getMethodID("setSprint");
     mdGetEyeHeight = getMethodID("getEyeHeight");
+    mdGetDisplayName = getMethodID("getDisplayName");
+
+    jclass IChatComponent = getClass("net.minecraft.util.IChatComponent");
+    mdIChatComponentGetFmtTxt = phantom->getEnv()->GetMethodID(IChatComponent, "func_150254_d", "()Ljava/lang/String;");
 }
 
 jdouble EntityPlayer::getPosX() {
@@ -36,7 +40,7 @@ jint EntityPlayer::getId() {
     return getInt(player, mdGetId);
 }
 
-const char * EntityPlayer::getName() {
+const char *EntityPlayer::getName() {
     //Needs to get the name as a jstring, then convert that to something usable
     auto str = (jstring)getObject(player, mdGetName);
     jboolean notTrue = false;
@@ -69,4 +73,12 @@ jdouble EntityPlayer::getLastTickPosX() {
 
 jdouble EntityPlayer::getLastTickPosZ() {
     return getDouble(player, fdLastTickPosZ);
+}
+
+const char *EntityPlayer::getFormattedDisplayName() {
+    jobject displayName = getObject(player, mdGetDisplayName);
+    auto str = (jstring) getObject(displayName, mdIChatComponentGetFmtTxt);
+
+    jboolean notTrue = false;
+    return phantom->getEnv()->GetStringUTFChars(str, &notTrue);
 }

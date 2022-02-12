@@ -25,6 +25,7 @@ public:
 
 	jint getId();
 	const char *getName();
+    const char *getFormattedDisplayName();
 
 	void setRotationYaw(jfloat yaw);
 	void setRotationPitch(jfloat pitch);
@@ -39,6 +40,9 @@ private:
 	jmethodID mdGetName;
 	jmethodID mdSetSprinting;
     jmethodID mdGetEyeHeight;
+    jmethodID mdGetDisplayName;
+
+    jmethodID mdIChatComponentGetFmtTxt;
 
 	Minecraft *mc;
 };

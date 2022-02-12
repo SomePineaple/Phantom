@@ -25,6 +25,7 @@ public:
     void setRotationYaw(jfloat yaw);
     void setRotationPitch(jfloat pitch);
     void setSprinting(jboolean sprinting);
+    const char *getFormattedDisplayName();
 
     jdouble getLastTickPosX();
     jfloat getEyeHeight();
@@ -41,6 +42,9 @@ protected:
     jmethodID mdGetName;
     jmethodID mdSetSprinting;
     jmethodID mdGetEyeHeight;
+    jmethodID mdGetDisplayName;
+
+    jmethodID mdIChatComponentGetFmtTxt;
 
     jobject player;
 };

@@ -92,6 +92,7 @@ void Mapping::setup() {
     method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
+    method(m, "getDisplayName", "func_145748_c_", "()Lnet/minecraft/util/IChatComponent;", false);
     m = make("KeyBinding", "net.minecraft.client.settings.KeyBinding");
     method(m, "setKeyBindState", "func_74510_a", "(IZ)V", true);
     method(m, "onTick", "func_74507_a", "(I)V", true);
@@ -128,6 +129,7 @@ void Mapping::setup() {
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
+    method(m, "getDisplayName", "func_145748_c_", "()Lnet/minecraft/util/IChatComponent;", false);
     m = make("Vec3", "net.minecraft.util.Vec3");
     field(m, "xCoord", "field_72450_a", "D", false);
     field(m, "yCoord", "field_72448_b", "D", false);

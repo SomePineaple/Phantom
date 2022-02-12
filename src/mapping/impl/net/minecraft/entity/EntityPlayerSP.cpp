@@ -18,6 +18,10 @@ EntityPlayerSP::EntityPlayerSP(Phantom * phantom, Minecraft * mc) : AbstractClas
 	mdGetName = getMethodID("getName");
 	mdSetSprinting = getMethodID("setSprint");
     mdGetEyeHeight = getMethodID("getEyeHeight");
+    mdGetDisplayName = getMethodID("getDisplayName");
+
+    jclass IChatComponent = getClass("net.minecraft.util.IChatComponent");
+    mdIChatComponentGetFmtTxt = phantom->getEnv()->GetMethodID(IChatComponent, "func_150254_d", "()Ljava/lang/String;");
 }
 
 jdouble EntityPlayerSP::getPosX() {
@@ -65,4 +69,12 @@ jfloat EntityPlayerSP::getRotationYaw() {
 
 jfloat EntityPlayerSP::getRotationPitch() {
     return getFloat(mc->getPlayer(), fdRotationPitch);
+}
+
+const char *EntityPlayerSP::getFormattedDisplayName() {
+    jobject displayName = getObject(mc->getPlayer(), mdGetDisplayName);
+    auto str = (jstring) getObject(displayName, mdIChatComponentGetFmtTxt);
+
+    jboolean notTrue = false;
+    return phantom->getEnv()->GetStringUTFChars(str, &notTrue);
 }
