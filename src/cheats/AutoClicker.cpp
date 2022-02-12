@@ -48,7 +48,7 @@ void AutoClicker::run(Minecraft *mc) {
         if (clickTimer->hasTimePassed(nextDelay)) {
             clickTimer->reset();
             updateValues();
-            std::thread(XUtils::clickMouseXEvent, 1, nextDelay / 2).detach();
+            std::thread(XUtils::clickMouseXEvent, 1, nextDelay / 3).detach();
         }
     } else {
         clickTimer->reset();
