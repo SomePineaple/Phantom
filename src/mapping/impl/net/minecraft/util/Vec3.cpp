@@ -15,6 +15,10 @@ Vec3::Vec3(Phantom *phantom, jobject vec3) : AbstractClass(phantom, "Vec3") {
     this->vec3 = vec3;
 }
 
+jobject Vec3::getVec3() {
+    return vec3;
+}
+
 jdouble Vec3::getXCoord() {
     return getDouble(vec3, fdXCoord);
 }
