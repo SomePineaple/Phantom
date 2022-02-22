@@ -7,6 +7,7 @@
 
 #include "../../../../AbstractClass.h"
 #include "settings/GameSettings.h"
+#include "../util/Timer.h"
 
 class Phantom;
 class EntityPlayerSP;
@@ -26,11 +27,13 @@ public:
     jobject getPointedEntity();
     void setPointedEntity(jobject object);
     jboolean isInGameHasFocus();
+    jobject getTimer();
 
 	EntityPlayerSP *getPlayerContainer();
 	WorldClient *getWorldContainer();
     GameSettings *getGameSettingsContainer();
     Entity *getRenderViewEntityContainer();
+    Timer *getTimerContainer();
 private:
 	jfieldID fdPlayer;
 	jfieldID fdWorld;
@@ -38,6 +41,7 @@ private:
     jfieldID fdInGameHasFocus;
     jfieldID fdObjectMouseOver;
     jfieldID fdPointedEntity;
+    jfieldID fdTimer;
 	jmethodID smdGetMinecraft;
     jmethodID mdGetRenderViewEntity;
 

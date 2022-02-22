@@ -26,13 +26,13 @@ public:
     jfloat getCollisionBorderSize();
 
     jobject rayTrace(jdouble distance, jfloat partialTicks);
-    jobject getPositionEyes();
+    jobject getPositionEyes(jfloat partialTicks);
     jobject getLook(jfloat partialTicks);
     jobject getEntityBoundingBox();
     jobject getRidingEntity();
     jboolean canRiderInteract();
 
-    Vec3 *getPositionEyesContainer();
+    Vec3 *getPositionEyesContainer(jfloat partialTicks);
     Vec3 *getLookContainer(jfloat partialTicks);
 
     AxisAlignedBB *getEntityBoundingBoxContainer();

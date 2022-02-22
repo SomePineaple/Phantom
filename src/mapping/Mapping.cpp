@@ -106,6 +106,7 @@ void Mapping::setup() {
     field(m, "inGameHasFocus", "field_71415_G", "Z", false);
     field(m, "pointedEntity", "field_147125_j", "Lnet/minecraft/entity/Entity;", false);
     field(m, "objectMouseOver", "field_71476_x", "Lnet/minecraft/util/math/RayTraceResult;", false);
+    field(m, "timer", "field_71428_T", "Lnet/minecraft/util/Timer;", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
     method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);
     m = make("EntityLivingBase", "net.minecraft.entity.EntityLivingBase");
@@ -143,6 +144,8 @@ void Mapping::setup() {
     method(m, "isVecInside", "func_72318_a", "(Lnet/minecraft/util/Vec3;)Z", false);
     m = make("MovingObjectPosition", "net.minecraft.util.MovingObjectPosition");
     field(m, "hitVec", "field_72307_f", "Lnet/minecraft/util/Vec3;", false);
+    m = make("Timer", "net.minecraft.util.Timer");
+    field(m, "partialTicks", "field_74281_c", "F", false);
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {

@@ -66,8 +66,8 @@ jobject Entity::rayTrace(jdouble distance, jfloat partialTicks) {
     return getObject(entity, mdRayTrace, distance, partialTicks);
 }
 
-jobject Entity::getPositionEyes() {
-    return getObject(entity, mdGetPositionEyes);
+jobject Entity::getPositionEyes(jfloat partialTicks) {
+    return getObject(entity, mdGetPositionEyes, partialTicks);
 }
 
 jobject Entity::getLook(jfloat partialTicks) {
@@ -90,8 +90,8 @@ jboolean Entity::canRiderInteract() {
     return getBoolean(entity, mdCanRiderInteract);
 }
 
-Vec3 *Entity::getPositionEyesContainer() {
-    return new Vec3(phantom, getPositionEyes());
+Vec3 *Entity::getPositionEyesContainer(jfloat partialTicks) {
+    return new Vec3(phantom, getPositionEyes(partialTicks));
 }
 
 Vec3 *Entity::getLookContainer(jfloat partialTicks) {
