@@ -13,7 +13,7 @@
 class Minecraft;
 class Entity : public AbstractClass {
 public:
-	Entity(Phantom *phantom, Minecraft * mc, jobject entity);
+	Entity(Phantom *phantom, jobject entity);
 
 	jdouble getPosX();
 	jdouble getPosY();
@@ -58,7 +58,6 @@ private:
     jmethodID mdGetCollisionBorderSize;
     jmethodID mdCanRiderInteract;
 
-	Minecraft *mc;
 	jobject entity;
 };
 

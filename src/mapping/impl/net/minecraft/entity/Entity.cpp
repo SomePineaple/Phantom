@@ -5,8 +5,7 @@
 #include "Entity.h"
 #include "../client/Minecraft.h"
 
-Entity::Entity(Phantom *phantom, Minecraft *mc, jobject entity) : AbstractClass::AbstractClass(phantom, "Entity") {
-	this->mc = mc;
+Entity::Entity(Phantom *phantom, jobject entity) : AbstractClass::AbstractClass(phantom, "Entity") {
 	this->entity = entity;
 
 	//Get all the field and method IDs for Entity that we want (mappings are for 1.12)
@@ -113,5 +112,5 @@ Entity *Entity::getRidingEntityContainer() {
     if (ridingEntity == nullptr)
         return nullptr;
 
-    return new Entity(phantom, mc, ridingEntity);
+    return new Entity(phantom, ridingEntity);
 }

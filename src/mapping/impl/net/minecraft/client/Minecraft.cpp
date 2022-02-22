@@ -18,6 +18,7 @@ Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "
     fdGameSettings = getFieldID("gameSettings");
     fdInGameHasFocus = getFieldID("inGameHasFocus");
     fdTimer = getFieldID("timer");
+    fdEntityRenderer = getFieldID("entityRenderer");
 
     mdGetRenderViewEntity = getMethodID("getRenderViewEntity");
 
@@ -70,6 +71,10 @@ jobject Minecraft::getTimer() {
     return getObject(getMinecraft(), fdTimer);
 }
 
+jobject Minecraft::getEntityRenderer() {
+    return getObject(getMinecraft(), fdEntityRenderer);
+}
+
 EntityPlayerSP *Minecraft::getPlayerContainer() {
     if (getPlayer() == nullptr)
         return nullptr;
@@ -101,7 +106,7 @@ Entity *Minecraft::getRenderViewEntityContainer() {
     if (getRenderViewEntity() == nullptr)
         return nullptr;
 
-    return new Entity(phantom, this, getRenderViewEntity());
+    return new Entity(phantom, getRenderViewEntity());
 }
 
 Timer *Minecraft::getTimerContainer() {
@@ -109,4 +114,11 @@ Timer *Minecraft::getTimerContainer() {
     if (timer == nullptr)
         return nullptr;
     return new Timer(phantom, timer);
+}
+
+EntityRenderer *Minecraft::getEntityRendererContainer() {
+    jobject entityRenderer = getEntityRenderer();
+    if (entityRenderer == nullptr)
+        return nullptr;
+    return new EntityRenderer(phantom, entityRenderer);
 }

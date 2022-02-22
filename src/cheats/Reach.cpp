@@ -26,5 +26,6 @@ void Reach::run(Minecraft *mc) {
 
         Vec3 *var6 = mc->getRenderViewEntityContainer()->getPositionEyesContainer(partialTicks);
         Vec3 *var7 = renderViewEntity->getLookContainer(partialTicks);
+        Vec3 *var8 = var6->addVectorContainer(var7->getXCoord() * var2, var7->getYCoord() * var2, var7->getZCoord() * var2);
     }
 }

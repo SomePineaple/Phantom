@@ -32,7 +32,7 @@ void AimBot::run(Minecraft *mc) {
     JavaList *entities = world->getEntities();
     Entity *closest = nullptr;
     for (int i = 0; i < entities->size(); i++) {
-        auto * entity = new Entity(phantom, mc, entities->get(i));
+        auto * entity = new Entity(phantom, entities->get(i));
         if (entity->getId() != player->getId()) {
             auto newDist = (float)MathHelper::distance(entity->getPosX(), entity->getPosY(), entity->getPosZ(), player->getPosX(), player->getPosY(), player->getPosZ());
             if (newDist < closestDist) {

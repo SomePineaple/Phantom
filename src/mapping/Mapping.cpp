@@ -107,6 +107,7 @@ void Mapping::setup() {
     field(m, "pointedEntity", "field_147125_j", "Lnet/minecraft/entity/Entity;", false);
     field(m, "objectMouseOver", "field_71476_x", "Lnet/minecraft/util/math/RayTraceResult;", false);
     field(m, "timer", "field_71428_T", "Lnet/minecraft/util/Timer;", false);
+    field(m, "entityRenderer", "field_71460_t", "Lnet/minecraft/client/renderer/EntityRenderer;", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
     method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);
     m = make("EntityLivingBase", "net.minecraft.entity.EntityLivingBase");
@@ -146,6 +147,8 @@ void Mapping::setup() {
     field(m, "hitVec", "field_72307_f", "Lnet/minecraft/util/Vec3;", false);
     m = make("Timer", "net.minecraft.util.Timer");
     field(m, "partialTicks", "field_74281_c", "F", false);
+    m = make("EntityRenderer", "net.minecraft.client.renderer.EntityRenderer");
+    field(m, "pointedEntity", "field_78528_u", "Lnet/minecraft/entity/Entity;");
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {
