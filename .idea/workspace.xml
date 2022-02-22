@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="phantom" targetName="phantom" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-G &quot;Unix Makefiles&quot;" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="Finish w/ reach (probably crashes game tho, it's untested)">
+      <change beforePath="$PROJECT_DIR$/src/Phantom.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phantom.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cheats/AutoClicker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cheats/AutoClicker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cheats/AutoClicker.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cheats/AutoClicker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cheats/Reach.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cheats/Reach.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cheats/Reach.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cheats/Reach.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/Mapping.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/Mapping.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3.3" />
+  </component>
+  <component name="ProjectId" id="25G1Dh6bK1HMwdzTFaAwwuXSkzb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../injector" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="phantom" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="phantom" TARGET_NAME="phantom" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="" />
+      <created>1645138490779</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645138490779</updated>
+      <workItem from="1645138491993" duration="541000" />
+      <workItem from="1645139364139" duration="601000" />
+      <workItem from="1645487585933" duration="8937000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add theme switcher">
+      <created>1645488106875</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645488106875</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Timer mappings">
+      <created>1645490004421</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645490004421</updated>
+    </task>
+    <task id="LOCAL-00003" summary="EntityRenderer">
+      <created>1645491171698</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645491171698</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add src/mapping/impl to include dirs">
+      <created>1645495688987</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645495688987</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Finish w/ reach (probably crashes game tho, it's untested)">
+      <created>1645497151730</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645497151730</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add theme switcher" />
+    <MESSAGE value="Timer mappings" />
+    <MESSAGE value="EntityRenderer" />
+    <MESSAGE value="Add src/mapping/impl to include dirs" />
+    <MESSAGE value="Finish w/ reach (probably crashes game tho, it's untested)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish w/ reach (probably crashes game tho, it's untested)" />
+  </component>
+</project>
