@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/mc-injection.iml" filepath="$PROJECT_DIR$/.idea/mc-injection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Phantom.iml" filepath="$PROJECT_DIR$/.idea/Phantom.iml" />
     </modules>
   </component>
 </project>

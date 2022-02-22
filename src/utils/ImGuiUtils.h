@@ -8,6 +8,7 @@
 
 namespace ImGuiUtils {
     void drawHelper(const char *desc);
+    void styleColorsGold();
 }
 
 
