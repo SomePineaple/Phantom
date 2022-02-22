@@ -71,7 +71,7 @@ void Mapping::setup() {
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "rayTrace", "func_174822_a", "(FD)Lnet/minecraft/util/math/RayTraceResult;", false);
-    method(m, "getPositionEyes", "func_174824_e", "()Lnet/minecraft/util/Vec3;", false);
+    method(m, "getPositionEyes", "func_174824_e", "(F)Lnet/minecraft/util/Vec3;", false);
     method(m, "getLook", "func_70676_i", "(F)Lnet/minecraft/util/Vec3;", false);
     method(m, "getEntityBoundingBox", "func_174813_aQ", "()Lnet/minecraft/util/AxisAlignedBB;", false);
     method(m, "getCollisionBorderSize", "func_70111_Y", "()F", false);
@@ -142,7 +142,7 @@ void Mapping::setup() {
     m = make("AxisAlignedBB", "net.minecraft.util.AxisAlignedBB");
     method(m, "addCoord", "func_72321_a", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
     method(m, "expand", "func_72314_b", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
-    method(m, "calculateIntercept", "func_72327_a", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;)Lnet/minecraft/util/MovinObjectPosition;", false);
+    method(m, "calculateIntercept", "func_72327_a", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;)Lnet/minecraft/util/MovingObjectPosition;", false);
     method(m, "isVecInside", "func_72318_a", "(Lnet/minecraft/util/Vec3;)Z", false);
     m = make("MovingObjectPosition", "net.minecraft.util.MovingObjectPosition");
     field(m, "hitVec", "field_72307_f", "Lnet/minecraft/util/Vec3;", false);

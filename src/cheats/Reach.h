@@ -10,10 +10,11 @@
 
 class Reach : public Cheat {
 public:
-    Reach();
+    explicit Reach(Phantom *phantom);
     void renderSettings() override;
     void run(Minecraft *mc) override;
 private:
+    Phantom *phantom;
     float reach;
 };
 

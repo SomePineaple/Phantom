@@ -11,7 +11,7 @@
 
 class AutoClicker : public Cheat {
 public:
-    explicit AutoClicker(Phantom *phantom);
+    explicit AutoClicker();
     void run(Minecraft *mc) override;
     void renderSettings() override;
 private:

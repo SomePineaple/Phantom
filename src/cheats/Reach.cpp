@@ -8,8 +8,9 @@
 #include <net/minecraft/client/multiplayer/WorldClient.h>
 #include "../vendor/imgui/imgui.h"
 
-Reach::Reach() : Cheat("Reach", "Long arm hack") {
+Reach::Reach(Phantom *phantom) : Cheat("Reach", "Long arm hack") {
     reach = 3;
+    this->phantom = phantom;
 }
 
 void Reach::renderSettings() {
@@ -17,10 +18,13 @@ void Reach::renderSettings() {
 }
 
 void Reach::run(Minecraft *mc) {
+    if (!enabled)
+        return;
+
     Entity *renderViewEntity = mc->getRenderViewEntityContainer();
     EntityRenderer *entityRenderer = mc->getEntityRendererContainer();
-    Vec3 *hitVec = nullptr;
-    Entity *ridingEntity = nullptr;
+    Vec3 *hitVec;
+    Entity *ridingEntity;
 
     if (renderViewEntity != nullptr) {
         float partialTicks = mc->getTimerContainer()->getPartialTicks();
@@ -58,7 +62,7 @@ void Reach::run(Minecraft *mc) {
                     double var19 = var6->distanceTo(hitVec->getVec3());
                     if (var19 < var12 || var12 == 0) {
                         ridingEntity = renderViewEntity->getRidingEntityContainer();
-                        if (var15->getId() == ridingEntity->getId()) {
+                        if (ridingEntity != nullptr && var15->getId() == ridingEntity->getId()) {
                             if (var12 == 0) {
                                 entityRenderer->setPointedEntity(var15->getEntity());
                                 var9 = hitVec;
@@ -75,8 +79,8 @@ void Reach::run(Minecraft *mc) {
 
         if (entityRenderer->getPointedEntityContainer() != nullptr && var12 > 3) {
             jclass MovingObjectPosition = mc->getClass("net.minecraft.util.MovingObjectPosition");
-            jmethodID movingObjectPostitionConstructor = mc->getPhantom()->getEnv()->GetMethodID(MovingObjectPosition, "<init>", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/Vec3;)V");
-            mc->setObjectMouseOver(mc->getPhantom()->getEnv()->NewObject(MovingObjectPosition, movingObjectPostitionConstructor, entityRenderer->getPointedEntity(), var9->getVec3()));
+            jmethodID movingObjectPostitionConstructor = phantom->getEnv()->GetMethodID(MovingObjectPosition, "<init>", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/Vec3;)V");
+            mc->setObjectMouseOver(phantom->getEnv()->NewObject(MovingObjectPosition, movingObjectPostitionConstructor, entityRenderer->getPointedEntity(), var9->getVec3()));
         }
     }
 }

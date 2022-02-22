@@ -10,7 +10,7 @@
 #include "../vendor/imgui/imgui.h"
 #include "../utils/XUtils.h"
 
-AutoClicker::AutoClicker(Phantom *phantom) : Cheat("AutoClicker", "Does mouse clicky thingy") {
+AutoClicker::AutoClicker() : Cheat("AutoClicker", "Does mouse clicky thingy") {
     cps = 12;
     onlyInGame = true;
 
