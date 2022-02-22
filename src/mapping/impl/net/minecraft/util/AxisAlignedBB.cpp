@@ -13,7 +13,7 @@ AxisAlignedBB::AxisAlignedBB(Phantom *phantom, jobject aabb) : AbstractClass(pha
     this->aabb = aabb;
 }
 
-jobject AxisAlignedBB::expand(jfloat x, jfloat y, jfloat z) {
+jobject AxisAlignedBB::expand(jdouble x, jdouble y, jdouble z) {
     return getObject(aabb, mdExpand, x, y, z);
 }
 
@@ -29,7 +29,7 @@ jboolean AxisAlignedBB::isVecInside(jobject vec) {
     return getBoolean(aabb, mdIsVecInside, vec);
 }
 
-AxisAlignedBB *AxisAlignedBB::getExpandContainer(jfloat x, jfloat y, jfloat z) {
+AxisAlignedBB *AxisAlignedBB::getExpandContainer(jdouble x, jdouble y, jdouble z) {
     return new AxisAlignedBB(phantom, expand(x, y, z));
 }
 

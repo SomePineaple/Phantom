@@ -5,9 +5,9 @@
 #include "Phantom.h"
 
 #include <iostream>
-#include "mapping/impl/net/minecraft/client/Minecraft.h"
-#include "mapping/impl/net/minecraft/client/multiplayer/WorldClient.h"
-#include "mapping/impl/net/minecraft/entity/EntityPlayerSP.h"
+#include <net/minecraft/client/Minecraft.h>
+#include <net/minecraft/client/multiplayer/WorldClient.h>
+#include <net/minecraft/entity/EntityPlayerSP.h>
 
 #include "ui/PhantomWindow.h"
 
@@ -17,6 +17,8 @@
 
 Phantom::Phantom() {
     running = false;
+    jvm = nullptr;
+    env = nullptr;
 
     jsize count;
     if (JNI_GetCreatedJavaVMs(&jvm, 1, &count) != JNI_OK || count == 0) {

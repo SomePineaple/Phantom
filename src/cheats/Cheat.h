@@ -5,8 +5,7 @@
 #ifndef PHANTOM_CHEAT_H
 #define PHANTOM_CHEAT_H
 
-
-#include "../mapping/impl/net/minecraft/client/Minecraft.h"
+#include <net/minecraft/client/Minecraft.h>
 
 class Cheat {
 public:

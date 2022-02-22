@@ -4,7 +4,7 @@
 
 #include "MCUtils.h"
 
-#include "../mapping/impl/net/minecraft/entity/EntityPlayerSP.h"
+#include <net/minecraft/entity/EntityPlayerSP.h>
 #include "MiscUtils.h"
 
 bool MCUtils::sameTeam(Minecraft *mc, EntityPlayer *player) {

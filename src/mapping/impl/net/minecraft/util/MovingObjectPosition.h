@@ -7,7 +7,7 @@
 
 
 #include "../../../../AbstractClass.h"
-#include "Vec3.h"
+#include <net/minecraft/util/Vec3.h>
 
 class MovingObjectPosition : public AbstractClass {
 public:

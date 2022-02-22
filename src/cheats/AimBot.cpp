@@ -4,9 +4,8 @@
 
 #include "AimBot.h"
 
-#include "../mapping/impl/net/minecraft/entity/Entity.h"
-#include "../mapping/impl/net/minecraft/client/multiplayer/WorldClient.h"
-#include "../mapping/impl/net/minecraft/entity/EntityPlayerSP.h"
+#include <net/minecraft/client/multiplayer/WorldClient.h>
+#include <net/minecraft/entity/EntityPlayerSP.h>
 #include "../utils/MathHelper.h"
 #include "../vendor/imgui/imgui.h"
 

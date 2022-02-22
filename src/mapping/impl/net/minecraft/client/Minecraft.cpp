@@ -4,9 +4,8 @@
 
 #include "Minecraft.h"
 
-#include "../entity/EntityPlayerSP.h"
-#include "multiplayer/WorldClient.h"
-#include "../entity/Entity.h"
+#include <net/minecraft/entity/EntityPlayerSP.h>
+#include <net/minecraft/client/multiplayer/WorldClient.h>
 
 Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "Minecraft") {
 	smdGetMinecraft = getMethodID("getMinecraft");
@@ -121,4 +120,8 @@ EntityRenderer *Minecraft::getEntityRendererContainer() {
     if (entityRenderer == nullptr)
         return nullptr;
     return new EntityRenderer(phantom, entityRenderer);
+}
+
+Phantom *Minecraft::getPhantom() {
+    return phantom;
 }

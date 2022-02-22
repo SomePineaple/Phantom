@@ -5,15 +5,16 @@
 #ifndef PHANTOM_ENTITY_H
 #define PHANTOM_ENTITY_H
 
-#include "../../../java/util/JavaSet.h"
 #include "../../../../AbstractClass.h"
-#include "../util/Vec3.h"
-#include "../util/AxisAlignedBB.h"
+#include <java/util/JavaSet.h>
+#include <net/minecraft/util/Vec3.h>
+#include <net/minecraft/util/AxisAlignedBB.h>
 
-class Minecraft;
 class Entity : public AbstractClass {
 public:
 	Entity(Phantom *phantom, jobject entity);
+
+    jobject getEntity();
 
 	jdouble getPosX();
 	jdouble getPosY();
@@ -31,6 +32,7 @@ public:
     jobject getEntityBoundingBox();
     jobject getRidingEntity();
     jboolean canRiderInteract();
+    jboolean canBeCollidedWith();
 
     Vec3 *getPositionEyesContainer(jfloat partialTicks);
     Vec3 *getLookContainer(jfloat partialTicks);
@@ -57,6 +59,7 @@ private:
     jmethodID mdGetEntityBoundingBox;
     jmethodID mdGetCollisionBorderSize;
     jmethodID mdCanRiderInteract;
+    jmethodID mdCanBeCollodedWith;
 
 	jobject entity;
 };

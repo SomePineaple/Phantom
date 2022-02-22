@@ -6,9 +6,9 @@
 #define PHANTOM_MINECRAFT_H
 
 #include "../../../../AbstractClass.h"
-#include "settings/GameSettings.h"
-#include "../util/Timer.h"
-#include "renderer/EntityRenderer.h"
+#include <net/minecraft/client/settings/GameSettings.h>
+#include <net/minecraft/util/Timer.h>
+#include <net/minecraft/client/renderer/EntityRenderer.h>
 
 class Phantom;
 class EntityPlayerSP;
@@ -37,6 +37,7 @@ public:
     Entity *getRenderViewEntityContainer();
     Timer *getTimerContainer();
     EntityRenderer *getEntityRendererContainer();
+    Phantom *getPhantom();
 private:
 	jfieldID fdPlayer;
 	jfieldID fdWorld;

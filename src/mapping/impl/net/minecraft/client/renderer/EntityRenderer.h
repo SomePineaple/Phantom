@@ -7,7 +7,7 @@
 
 
 #include "../../../../../AbstractClass.h"
-#include "../../entity/Entity.h"
+#include <net/minecraft/entity/Entity.h>
 
 class EntityRenderer : public AbstractClass {
 public:

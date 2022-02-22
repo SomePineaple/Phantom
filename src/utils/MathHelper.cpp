@@ -4,8 +4,8 @@
 
 #include "MathHelper.h"
 
-#include "../mapping/impl/net/minecraft/entity/player/EntityPlayer.h"
-#include "../mapping/impl/net/minecraft/entity/EntityPlayerSP.h"
+#include <net/minecraft/entity/player/EntityPlayer.h>
+#include <net/minecraft/entity/EntityPlayerSP.h>
 #include <cmath>
 
 double MathHelper::distance(double x, double y) {

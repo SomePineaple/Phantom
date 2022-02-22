@@ -3,7 +3,6 @@
 //
 
 #include "Entity.h"
-#include "../client/Minecraft.h"
 
 Entity::Entity(Phantom *phantom, jobject entity) : AbstractClass::AbstractClass(phantom, "Entity") {
 	this->entity = entity;
@@ -24,6 +23,11 @@ Entity::Entity(Phantom *phantom, jobject entity) : AbstractClass::AbstractClass(
     mdGetEntityBoundingBox = getMethodID("getEntityBoundingBox");
     mdGetCollisionBorderSize = getMethodID("getCollisionBorderSize");
     mdCanRiderInteract = getMethodID("canRiderInteract");
+    mdCanBeCollodedWith = getMethodID("canBeCollidedWith");
+}
+
+jobject Entity::getEntity() {
+    return entity;
 }
 
 jdouble Entity::getPosX() {
@@ -87,6 +91,10 @@ jobject Entity::getRidingEntity() {
 
 jboolean Entity::canRiderInteract() {
     return getBoolean(entity, mdCanRiderInteract);
+}
+
+jboolean Entity::canBeCollidedWith() {
+    return getBoolean(entity, mdCanBeCollodedWith);
 }
 
 Vec3 *Entity::getPositionEyesContainer(jfloat partialTicks) {

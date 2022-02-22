@@ -6,7 +6,7 @@
 #define PHANTOM_JAVASYSTEM_H
 
 #include "../../../AbstractClass.h"
-#include "../io/JavaPrintStream.h"
+#include <java/io/JavaPrintStream.h>
 
 class JavaSystem : public AbstractClass {
 public:

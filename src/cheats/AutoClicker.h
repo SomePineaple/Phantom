@@ -6,9 +6,6 @@
 #define PHANTOM_AUTOCLICKER_H
 
 #include "../Phantom.h"
-#include "../mapping/impl/org/lwjgl/input/Mouse.h"
-#include "../mapping/impl/net/minecraft/client/settings/KeyBinding.h"
-#include "../mapping/impl/net/minecraft/client/Minecraft.h"
 #include "Cheat.h"
 #include "../utils/MSTimer.h"
 

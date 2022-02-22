@@ -7,7 +7,7 @@
 
 #include "../../../../../AbstractClass.h"
 #include "../../../../../../Phantom.h"
-#include "../EntityLivingBase.h"
+#include <net/minecraft/entity/EntityLivingBase.h>
 
 
 class EntityPlayer : public AbstractClass {
