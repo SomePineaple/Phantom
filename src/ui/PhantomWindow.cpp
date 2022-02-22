@@ -106,6 +106,8 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
                     ImGui::StyleColorsClassic();
                     break;
             }
+
+            ImGui::GetStyle().WindowRounding = 0;
         }
 
         if (inGame) {
