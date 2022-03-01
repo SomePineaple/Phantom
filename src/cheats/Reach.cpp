@@ -79,8 +79,8 @@ void Reach::run(Minecraft *mc) {
 
         if (entityRenderer->getPointedEntityContainer() != nullptr && var12 > 3) {
             jclass MovingObjectPosition = mc->getClass("net.minecraft.util.MovingObjectPosition");
-            jmethodID movingObjectPostitionConstructor = phantom->getEnv()->GetMethodID(MovingObjectPosition, "<init>", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/Vec3;)V");
-            mc->setObjectMouseOver(phantom->getEnv()->NewObject(MovingObjectPosition, movingObjectPostitionConstructor, entityRenderer->getPointedEntity(), var9->getVec3()));
+            jmethodID movingObjectPositionConstructor = phantom->getEnv()->GetMethodID(MovingObjectPosition, "<init>", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/Vec3;)V");
+            mc->setObjectMouseOver(phantom->getEnv()->NewObject(MovingObjectPosition, movingObjectPositionConstructor, entityRenderer->getPointedEntity(), var9->getVec3()));
         }
     }
 }

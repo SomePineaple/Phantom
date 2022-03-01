@@ -11,8 +11,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="add thing">
-      <change beforePath="$PROJECT_DIR$/src/ui/PhantomWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PhantomWindow.cpp" afterDir="false" />
+    <list default="true" id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="wix window rounding">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +53,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="phantom" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="phantom" TARGET_NAME="phantom" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -74,7 +69,9 @@
       <updated>1645138490779</updated>
       <workItem from="1645138491993" duration="541000" />
       <workItem from="1645139364139" duration="601000" />
-      <workItem from="1645487585933" duration="9333000" />
+      <workItem from="1645487585933" duration="9748000" />
+      <workItem from="1645501486748" duration="622000" />
+      <workItem from="1646177485949" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="Add theme switcher">
       <created>1645488106875</created>
@@ -125,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645498566478</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="wix window rounding">
+      <created>1645498759514</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645498759514</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +154,7 @@
     <MESSAGE value="Finish w/ reach (probably crashes game tho, it's untested)" />
     <MESSAGE value="The long arm heck no longer does the crash&#10;it doesn't really work tho :(" />
     <MESSAGE value="add thing" />
-    <option name="LAST_COMMIT_MESSAGE" value="add thing" />
+    <MESSAGE value="wix window rounding" />
+    <option name="LAST_COMMIT_MESSAGE" value="wix window rounding" />
   </component>
 </project>
