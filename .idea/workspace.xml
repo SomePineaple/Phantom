@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="wix window rounding">
+    <list default="true" id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="fix typo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +71,7 @@
       <workItem from="1645139364139" duration="601000" />
       <workItem from="1645487585933" duration="9748000" />
       <workItem from="1645501486748" duration="622000" />
-      <workItem from="1646177485949" duration="1000" />
+      <workItem from="1646177485949" duration="111000" />
     </task>
     <task id="LOCAL-00001" summary="Add theme switcher">
       <created>1645488106875</created>
@@ -129,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645498759514</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix typo">
+      <created>1646177534216</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1646177534216</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +162,7 @@
     <MESSAGE value="The long arm heck no longer does the crash&#10;it doesn't really work tho :(" />
     <MESSAGE value="add thing" />
     <MESSAGE value="wix window rounding" />
-    <option name="LAST_COMMIT_MESSAGE" value="wix window rounding" />
+    <MESSAGE value="fix typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix typo" />
   </component>
 </project>

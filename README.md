@@ -19,3 +19,6 @@ also need the development headers for SDL2 and OpenGL.
 
 To inject, you need some form of shared object / dll injector for linux. I use
 [injector](https://github.com/kubo/injector).
+
+## Video Tutorial
+If you want to follow a video tutorial on building and installing, take a look [here](https://youtu.be/4WHQAj3voWk)
