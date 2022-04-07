@@ -21,7 +21,9 @@ private:
     MSTimer *eventTimer;
 
     float cps;
+    float holdLength;
     bool onlyInGame;
+    bool showAdvanced;
 
     int nextDelay;
     int eventDelay;

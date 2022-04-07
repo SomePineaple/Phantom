@@ -11,8 +11,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="fix typo">
+    <list default="true" id="de28984c-4b84-4934-869e-4fc26585c0e2" name="Changes" comment="update README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cheats/AutoClicker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cheats/AutoClicker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cheats/AutoClicker.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cheats/AutoClicker.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +27,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="7u7v7c0a" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -53,6 +58,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="phantom" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="phantom" TARGET_NAME="phantom" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -72,6 +82,9 @@
       <workItem from="1645487585933" duration="9748000" />
       <workItem from="1645501486748" duration="622000" />
       <workItem from="1646177485949" duration="111000" />
+      <workItem from="1646620745642" duration="123000" />
+      <workItem from="1649291535361" duration="647000" />
+      <workItem from="1649292537902" duration="1653000" />
     </task>
     <task id="LOCAL-00001" summary="Add theme switcher">
       <created>1645488106875</created>
@@ -136,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646177534216</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update README.md">
+      <created>1646620827599</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1646620827599</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +183,7 @@
     <MESSAGE value="add thing" />
     <MESSAGE value="wix window rounding" />
     <MESSAGE value="fix typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix typo" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
 </project>
