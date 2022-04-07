@@ -50,5 +50,5 @@ void AimBot::run(Minecraft *mc) {
 }
 
 void AimBot::renderSettings() {
-    ImGui::SliderFloat("AimBot: range", &range, 0, 6);
+    ImGui::SliderFloat("range", &range, 0, 6);
 }

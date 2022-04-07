@@ -10,7 +10,7 @@
 #include "../vendor/imgui/imgui.h"
 #include "../utils/XUtils.h"
 
-AutoClicker::AutoClicker() : Cheat("AutoClicker", "Does mouse clicky thingy") {
+AutoClicker::AutoClicker() : Cheat("AutoClicker", "Clicks 4 u (so ur hand doesn't break)") {
     cps = 12;
     onlyInGame = true;
 
@@ -23,6 +23,7 @@ AutoClicker::AutoClicker() : Cheat("AutoClicker", "Does mouse clicky thingy") {
     dropChance = 0.3;
     spikeChance = 0.2;
     holdLength = 0.25;
+    holdLengthRandom = 0;
     isSpiking = false;
     isDropping = false;
     showAdvanced = false;
@@ -51,7 +52,7 @@ void AutoClicker::run(Minecraft *mc) {
             clickTimer->reset();
             updateValues();
             // Click in new detached thread so the delay doesn't affect other modules and frame times
-            std::thread(XUtils::clickMouseXEvent, 1, (int) ((float) nextDelay * holdLength)).detach();
+            std::thread(XUtils::clickMouseXEvent, 1, (int) ((float) nextDelay * holdLength * MathHelper::randFloat(1 - holdLengthRandom, 1 + holdLengthRandom))).detach();
         }
     } else {
         clickTimer->reset();
@@ -63,22 +64,25 @@ void AutoClicker::run(Minecraft *mc) {
 }
 
 void AutoClicker::renderSettings() {
-    ImGui::SliderFloat("AutoClicker: CPS", &cps, 4, 20);
-    ImGui::Checkbox("AutoClicker: Only in game", &onlyInGame);
+    ImGui::SliderFloat("CPS", &cps, 4, 20);
+    ImGui::Checkbox("Only in game", &onlyInGame);
     ImGui::SameLine();
     ImGuiUtils::drawHelper("If checked, this will only click when you are in game, otherwise, this will click "
                            "anytime, on any window. You could go to clickspeedtest.net and check ur clicking speed if "
                            "this is not checked");
-    ImGui::Checkbox("AutoClicker: Advanced Mode", &showAdvanced);
+    ImGui::Checkbox("Advanced Mode", &showAdvanced);
     if (showAdvanced) {
-        ImGui::SliderInt("AutoClicker: Event Delay", &eventDelay, 0, 10000);
+        ImGui::SliderInt("Event Delay", &eventDelay, 0, 10000);
         ImGui::SameLine();
         ImGuiUtils::drawHelper("How long between switching from regular to spiking to dropping in milliseconds");
-        ImGui::SliderFloat("AutoClicker: Spike Chance", &spikeChance, 0.0, 1.0);
-        ImGui::SliderFloat("AutoClicker: Drop Chance", &dropChance, 0.0, 1.0);
-        ImGui::SliderFloat("AutoClicker: Hold Length", &holdLength, 0.0, 0.99);
+        ImGui::SliderFloat("Spike Chance", &spikeChance, 0.0, 1.0);
+        ImGui::SliderFloat("Drop Chance", &dropChance, 0.0, 1.0);
+        ImGui::SliderFloat("Hold Length", &holdLength, 0.0, 0.99);
         ImGui::SameLine();
         ImGuiUtils::drawHelper("How long to hold the button down for in terms of the delay before the next click");
+        ImGui::SliderFloat("Hold Length Random", &holdLengthRandom, 0.0, 0.5);
+        ImGui::SameLine();
+        ImGuiUtils::drawHelper("Add extra randomness to hold length");
     }
 }
 

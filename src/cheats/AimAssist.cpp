@@ -84,14 +84,14 @@ void AimAssist::run(Minecraft *mc) {
 }
 
 void AimAssist::renderSettings() {
-    ImGui::SliderFloat("AimAssist: range", &range, 0, 6, "%.2f");
-    ImGui::SliderFloat("AimAssist: FOV", &fov, 0, 180, "%.1f");
-    ImGui::SliderFloat("AimAssist: hSpeed", &hSpeed, 0, 100, "%.2f");
-    ImGui::SliderFloat("AimAssist: vSpeed", &vSpeed, 0, 100, "%.2f");
-    ImGui::Checkbox("AimAssist: Only while clicking", &onlyOnClick);
-    ImGui::Checkbox("AimAssist: Teams Check", &teams);
-    ImGui::Checkbox("AimAssist: Center", &center);
-    ImGui::Checkbox("AimAssist: Target Dead", &dead);
+    ImGui::SliderFloat("range", &range, 0, 6, "%.2f");
+    ImGui::SliderFloat("FOV", &fov, 0, 180, "%.1f");
+    ImGui::SliderFloat("hSpeed", &hSpeed, 0, 100, "%.2f");
+    ImGui::SliderFloat("vSpeed", &vSpeed, 0, 100, "%.2f");
+    ImGui::Checkbox("Only while clicking", &onlyOnClick);
+    ImGui::Checkbox("Teams Check", &teams);
+    ImGui::Checkbox("Center", &center);
+    ImGui::Checkbox("Target Dead", &dead);
 }
 
 bool AimAssist::isInFOV(EntityPlayer *entity, Minecraft *mc, float fov) {

@@ -14,9 +14,10 @@ Reach::Reach(Phantom *phantom) : Cheat("Reach", "Long arm hack") {
 }
 
 void Reach::renderSettings() {
-    ImGui::SliderFloat("Reach: Reach", &reach, 3, 6);
+    ImGui::SliderFloat("Reach", &reach, 3, 6);
 }
 
+// This is basically a copy of how minecraft calculates what block your looking at, but with modified reach values.
 void Reach::run(Minecraft *mc) {
     if (!enabled)
         return;

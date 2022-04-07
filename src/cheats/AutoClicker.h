@@ -22,6 +22,7 @@ private:
 
     float cps;
     float holdLength;
+    float holdLengthRandom;
     bool onlyInGame;
     bool showAdvanced;
 
