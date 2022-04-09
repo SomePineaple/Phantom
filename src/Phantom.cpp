@@ -37,6 +37,8 @@ Phantom::Phantom() {
 }
 
 void Phantom::runClient() {
+    running = true;
+
     // Get minecraft instance
     auto *mc = new Minecraft(this);
 
@@ -49,7 +51,6 @@ void Phantom::runClient() {
     auto *window = new PhantomWindow(700, 500, "Phantom");
     window->setup();
 
-    running = true;
     while (running) {
         // This is in the loop so that the instances are current. IE, joining a new world not trying to reference the old one.
         EntityPlayerSP *player = mc->getPlayerContainer();
