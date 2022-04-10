@@ -22,7 +22,7 @@ AutoClicker::AutoClicker() : Cheat("AutoClicker", "Clicks 4 u (so ur hand doesn'
     nextEventDelay = (int)(MathHelper::randFloat(0.8, 1.2) * (float)eventDelay);
     dropChance = 0.3;
     spikeChance = 0.2;
-    holdLength = 0.25;
+    holdLength = 0.15;
     holdLengthRandom = 0;
     isSpiking = false;
     isDropping = false;

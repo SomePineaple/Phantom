@@ -9,7 +9,7 @@
 #include "../vendor/imgui/imgui.h"
 
 Reach::Reach(Phantom *phantom) : Cheat("Reach", "Long arm hack") {
-    reach = 3;
+    reach = 3.2;
     this->phantom = phantom;
 }
 
