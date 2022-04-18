@@ -17,8 +17,8 @@ also need the development headers for SDL2 and OpenGL.
 
 ### Injecting into Minecraft
 
-To inject, you need some form of shared object / dll injector for linux. I use
-[injector](https://github.com/kubo/injector).
+To inject, you need some form of shared object / dll injector for linux. I made one specifically for this project which
+you can find [here](https://github.com/SomePineaple/Phantom-Injector).
 
 ## Video Tutorial
 If you want a video on how to use the client, check [this](https://youtu.be/NoA4psrEZsQ) out
