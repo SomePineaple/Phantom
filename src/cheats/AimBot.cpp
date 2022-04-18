@@ -7,7 +7,7 @@
 #include <net/minecraft/client/multiplayer/WorldClient.h>
 #include <net/minecraft/entity/EntityPlayerSP.h>
 #include "../utils/MathHelper.h"
-#include "../vendor/imgui/imgui.h"
+#include <imgui.h>
 
 AimBot::AimBot(Phantom *phantom) : Cheat("AimBot","Automatically puts cursor over the nearest entity. "
                                                    "Please note: there is no antibot, and also this is not aim assist. "

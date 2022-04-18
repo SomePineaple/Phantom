@@ -7,7 +7,7 @@
 #include <thread>
 #include "../utils/MathHelper.h"
 #include "../utils/ImGuiUtils.h"
-#include "../vendor/imgui/imgui.h"
+#include <imgui.h>
 #include "../utils/XUtils.h"
 
 AutoClicker::AutoClicker() : Cheat("AutoClicker", "Clicks 4 u (so ur hand doesn't break)") {

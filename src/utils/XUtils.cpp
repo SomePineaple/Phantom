@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
-#include "../vendor/imgui/imgui.h"
+#include <imgui.h>
 
 #include "ImGuiUtils.h"
 

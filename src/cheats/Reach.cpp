@@ -6,7 +6,7 @@
 
 #include <java/util/JavaList.h>
 #include <net/minecraft/client/multiplayer/WorldClient.h>
-#include "../vendor/imgui/imgui.h"
+#include <imgui.h>
 
 Reach::Reach(Phantom *phantom) : Cheat("Reach", "Long arm hack") {
     reach = 3.2;
