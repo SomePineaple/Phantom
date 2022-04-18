@@ -28,6 +28,12 @@ endif ()
 source_group("Source Files" FILES ${PHANTOM_SOURCE_FILES})
 
 
-set(IMGUI_SOURCE_FILES vendor/imgui/imgui.cpp vendor/imgui/imgui_impl_opengl3.cpp vendor/imgui/imgui_impl_sdl.cpp vendor/imgui/imgui_draw.cpp vendor/imgui/imgui_tables.cpp vendor/imgui/imgui_widgets.cpp vendor/imgui/imgui_demo.cpp)
+set(IMGUI_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/imgui.cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/imgui_impl_opengl3.cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/imgui_impl_sdl.cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/imgui_draw.cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/imgui_tables.cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/imgui_widgets.cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/imgui_demo.cpp)
 
 add_library(phantom SHARED ${IMGUI_SOURCE_FILES} ${PHANTOM_SOURCE_FILES})
