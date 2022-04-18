@@ -17,15 +17,7 @@ include_directories(${JNI_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS} ${OPENGL_INCLUDE_DI
 link_libraries(${JNI_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SDL2_LIBRARIES} ${CMAKE_DL_LIBS} ${OPENGL_gl_LIBRARY} OpenGL::GL ${X11_LIBRARIES})
 
 if (NOT DEFINED SOURCES)
-	file(GLOB PHANTOM_SOURCE_FILES src/*.* 
-        src/*/*.* 
-        src/*/*/*.* 
-        src/*/*/*/*.* 
-        src/*/*/*/*/*.* 
-        src/*/*/*/*/*/*.*
-	src/*/*/*/*/*/*/*.*
-	src/*/*/*/*/*/*/*/*.*
-	src/*/*/*/*/*/*/*/*/*.*)
+	file(GLOB_RECURSE PHANTOM_SOURCE_FILES src/*.*)
 endif ()
 
 source_group("Source Files" FILES ${PHANTOM_SOURCE_FILES})
