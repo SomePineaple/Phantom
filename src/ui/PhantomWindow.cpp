@@ -87,6 +87,7 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
         ImGui::Begin("Phantom Settings", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
 
         XUtils::renderMouseSelector();
+        XUtils::renderKeyboardSelector();
 
         if (ImGui::Combo("Style", &style, "Gold\0Cinder\0Light\0Dark\0Classic\0")) {
             switch(style) {

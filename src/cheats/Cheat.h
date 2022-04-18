@@ -16,6 +16,8 @@ public:
     const char *getDescription();
 
     bool enabled;
+    bool binding;
+    int bind;
 private:
     const char *name;
     const char *description;

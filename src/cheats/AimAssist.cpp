@@ -25,21 +25,21 @@ AimAssist::AimAssist(Phantom *phantom) : Cheat("AimAssist", "Aims for u, but smo
 }
 
 void AimAssist::run(Minecraft *mc) {
-    if (!enabled || XUtils::mouseDeviceID == 0 || !mc->isInGameHasFocus())
+    if (XUtils::mouseDeviceID == 0 || !mc->isInGameHasFocus())
         return;
 
     Display *dpy = XOpenDisplay(nullptr);
-    XUtils::DeviceState *mouseState = XUtils::getDeviceState(dpy, XUtils::mouseDeviceID);
+    XUtils::DeviceState mouseState = XUtils::getDeviceState(dpy, XUtils::mouseDeviceID);
     XCloseDisplay(dpy);
 
-    if (mouseState->numButtons == 0) {
+    if (mouseState.numButtons == 0) {
         XUtils::isDeviceShit = true;
         return;
     } else {
         XUtils::isDeviceShit = false;
     }
 
-    if (!onlyOnClick || mouseState->buttonStates[1]) {
+    if (!onlyOnClick || mouseState.buttonStates[1]) {
         float closestDistance = range;
 
         EntityPlayerSP *thePlayer = mc->getPlayerContainer();

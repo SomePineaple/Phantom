@@ -19,9 +19,6 @@ void Reach::renderSettings() {
 
 // This is basically a copy of how minecraft calculates what block your looking at, but with modified reach values.
 void Reach::run(Minecraft *mc) {
-    if (!enabled)
-        return;
-
     Entity *renderViewEntity = mc->getRenderViewEntityContainer();
     EntityRenderer *entityRenderer = mc->getEntityRendererContainer();
     Vec3 *hitVec;

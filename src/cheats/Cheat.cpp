@@ -8,6 +8,8 @@ Cheat::Cheat(const char *name, const char *description) {
     this->name = name;
     this->enabled = false;
     this->description = description;
+    this->bind = -1;
+    this->binding = false;
 }
 
 void Cheat::run(Minecraft *mc) {}

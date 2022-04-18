@@ -21,4 +21,4 @@ To inject, you need some form of shared object / dll injector for linux. I made 
 you can find [here](https://github.com/SomePineaple/Phantom-Injector).
 
 ## Video Tutorial
-If you want a video on how to use the client, check [this](https://youtu.be/NoA4psrEZsQ) out
+If you want a video on how to use the client, check [this](https://youtu.be/NoA4psrEZsQ) out.

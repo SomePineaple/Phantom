@@ -9,7 +9,11 @@
 #include <X11/Xlib.h>
 
 namespace XUtils {
-    struct DeviceState {
+    class DeviceState {
+    public:
+        DeviceState();
+        ~DeviceState();
+
         bool *buttonStates;
         bool *keyStates;
         int *valuatorStates;
@@ -20,14 +24,16 @@ namespace XUtils {
     };
 
     extern int mouseDeviceIndex;
+    extern int keyboardDeviceIndex;
     extern unsigned long mouseDeviceID;
+    extern unsigned long keyboardDeviceID;
     extern bool isDeviceShit;
 
     void renderMouseSelector();
+    void renderKeyboardSelector();
 
     XDeviceInfo *findDeviceInfo(Display *display, const char *name, bool only_extended);
-    DeviceState *getDeviceState(Display *display, unsigned long deviceID);
-    void clickMouseXTest(Display *dpy, int button, long delayMS);
+    DeviceState getDeviceState(Display *display, unsigned long deviceID);
     void clickMouseXEvent(int button, long delayMS);
 }
 

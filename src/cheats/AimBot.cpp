@@ -19,9 +19,6 @@ AimBot::AimBot(Phantom *phantom) : Cheat("AimBot","Automatically puts cursor ove
 }
 
 void AimBot::run(Minecraft *mc) {
-    if (!enabled)
-        return;
-
     EntityPlayerSP *player = mc->getPlayerContainer();
     WorldClient *world = mc->getWorldContainer();
 

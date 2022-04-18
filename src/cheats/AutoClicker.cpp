@@ -30,24 +30,24 @@ AutoClicker::AutoClicker() : Cheat("AutoClicker", "Clicks 4 u (so ur hand doesn'
 }
 
 void AutoClicker::run(Minecraft *mc) {
-    if (!enabled || XUtils::mouseDeviceID == 0 || (!mc->isInGameHasFocus() && onlyInGame))
+    if (XUtils::mouseDeviceID == 0 || (!mc->isInGameHasFocus() && onlyInGame))
         return;
 
     Display *dpy = XOpenDisplay(nullptr);
-    XUtils::DeviceState *mouseState = XUtils::getDeviceState(dpy, XUtils::mouseDeviceID);
+    XUtils::DeviceState mouseState = XUtils::getDeviceState(dpy, XUtils::mouseDeviceID);
     XCloseDisplay(dpy);
 
-    if (mouseState->numButtons == 0) {
+    if (mouseState.numButtons == 0) {
         XUtils::isDeviceShit = true;
-        free(mouseState->keyStates);
-        free(mouseState->buttonStates);
-        free(mouseState->valuatorStates);
+        free(mouseState.keyStates);
+        free(mouseState.buttonStates);
+        free(mouseState.valuatorStates);
         return;
     } else {
         XUtils::isDeviceShit = false;
     }
 
-    if (mouseState->buttonStates[1]) {
+    if (mouseState.buttonStates[1]) {
         if (clickTimer->hasTimePassed(nextDelay)) {
             clickTimer->reset();
             updateValues();
@@ -57,10 +57,6 @@ void AutoClicker::run(Minecraft *mc) {
     } else {
         clickTimer->reset();
     }
-
-    free(mouseState->keyStates);
-    free(mouseState->buttonStates);
-    free(mouseState->valuatorStates);
 }
 
 void AutoClicker::renderSettings() {

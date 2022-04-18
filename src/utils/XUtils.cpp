@@ -14,11 +14,13 @@
 #include "ImGuiUtils.h"
 
 int XUtils::mouseDeviceIndex = 0;
+int XUtils::keyboardDeviceIndex = 0;
 unsigned long XUtils::mouseDeviceID = 0;
+unsigned long XUtils::keyboardDeviceID = 0;
 bool XUtils::isDeviceShit = false;
 
-XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long deviceID) {
-    auto *state = new DeviceState();
+XUtils::DeviceState XUtils::getDeviceState(Display *display, unsigned long deviceID) {
+    DeviceState state{};
 
     XDevice *device = XOpenDevice(display, deviceID);
     XDeviceState *xState = XQueryDeviceState(display, device);
@@ -35,24 +37,24 @@ XUtils::DeviceState *XUtils::getDeviceState(Display *display, unsigned long devi
             switch(cls->c_class) {
             case ValuatorClass:
                 valState = (XValuatorState *) cls;
-                state->numValuators = valState->num_valuators;
-                state->valuatorStates = (int *) malloc(state->numValuators * sizeof(int));
+                state.numValuators = valState->num_valuators;
+                state.valuatorStates = (int *) malloc(state.numValuators * sizeof(int));
                 for (i2 = 0; i2 < valState->num_valuators; i2++)
-                    state->valuatorStates[i2] = valState->valuators[i2];
+                    state.valuatorStates[i2] = valState->valuators[i2];
                 break;
             case ButtonClass:
                 buttonState = (XButtonState *) cls;
-                state->numButtons = buttonState->num_buttons;
-                state->buttonStates = (bool *) malloc(state->numButtons * sizeof(bool));
+                state.numButtons = buttonState->num_buttons;
+                state.buttonStates = (bool *) malloc(state.numButtons * sizeof(bool));
                 for (i2 = 1; i2 < buttonState->num_buttons; i2++)
-                    state->buttonStates[i2] = (buttonState->buttons[i2 / 8] & (1 << (i2 % 8))) != 0;
+                    state.buttonStates[i2] = (buttonState->buttons[i2 / 8] & (1 << (i2 % 8))) != 0;
                 break;
             case KeyClass:
                 keyState = (XKeyState *) cls;
-                state->numKeys = keyState->num_keys;
-                state->keyStates = (bool *) malloc(state->numKeys * sizeof(bool));
+                state.numKeys = keyState->num_keys;
+                state.keyStates = (bool *) malloc(state.numKeys * sizeof(bool));
                 for (i2 = 0; i2 < keyState->num_keys; i2++)
-                    state->keyStates[i2] = (keyState->keys[i2 / 8] & (1 << (i2 % 8))) != 0;
+                    state.keyStates[i2] = (keyState->keys[i2 / 8] & (1 << (i2 % 8))) != 0;
                 break;
             }
             cls = (XInputClass *) ((char *) cls + cls->length);
@@ -119,12 +121,26 @@ void XUtils::renderMouseSelector() {
     XCloseDisplay(dpy);
 }
 
-void XUtils::clickMouseXTest(Display *dpy, int button, long delayMS) {
-    XTestFakeButtonEvent(dpy, button, True, CurrentTime);
-    XFlush(dpy);
-    usleep(delayMS * 1000);
-    XTestFakeButtonEvent(dpy, button, False, CurrentTime);
-    XFlush(dpy);
+void XUtils::renderKeyboardSelector() {
+    Display *dpy = XOpenDisplay(nullptr);
+    XDeviceInfo  *devices;
+    int numDevices;
+    devices = XListInputDevices(dpy, &numDevices);
+
+    std::string comboItems;
+    for (int i = 0; i < numDevices; i++) {
+        comboItems.append(devices[i].name);
+        comboItems.push_back('\0');
+    }
+
+    if (ImGui::Combo("Select your keyboard", &keyboardDeviceIndex, comboItems.c_str()))
+        mouseDeviceID = devices[keyboardDeviceIndex].id;
+
+    ImGui::SameLine();
+    ImGuiUtils::drawHelper("You must select you keyboard, or else keybindings won't work");
+
+    XFreeDeviceList(devices);
+    XCloseDisplay(dpy);
 }
 
 XDeviceInfo* XUtils::findDeviceInfo(Display *display, const char *name, bool only_extended) {
@@ -144,7 +160,7 @@ XDeviceInfo* XUtils::findDeviceInfo(Display *display, const char *name, bool onl
     }
 
     if (is_id) {
-        id = atoi(name);
+        id = atol(name);
     }
 
     devices = XListInputDevices(display, &num_devices);
@@ -165,4 +181,22 @@ XDeviceInfo* XUtils::findDeviceInfo(Display *display, const char *name, bool onl
         }
     }
     return found;
+}
+
+XUtils::DeviceState::DeviceState() {
+    numKeys = 0;
+    numButtons = 0;
+    numValuators = 0;
+    keyStates = nullptr;
+    buttonStates = nullptr;
+    valuatorStates = nullptr;
+}
+
+XUtils::DeviceState::~DeviceState() {
+    if (keyStates != nullptr)
+        free(keyStates);
+    if (buttonStates != nullptr)
+        free(buttonStates);
+    if (valuatorStates != nullptr)
+        free(valuatorStates);
 }
