@@ -8,9 +8,9 @@
 #include "../utils/ImGuiUtils.h"
 #include "../utils/XUtils.h"
 
-#include "../vendor/imgui/imgui.h"
-#include "../vendor/imgui/imgui_impl_sdl.h"
-#include "../vendor/imgui/imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <imgui_impl_sdl.h>
+#include <imgui_impl_opengl3.h>
 
 PhantomWindow::PhantomWindow(int width, int height, const char *title) {
     this->width = width;

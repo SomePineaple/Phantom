@@ -6,7 +6,7 @@
 
 #include <net/minecraft/entity/EntityPlayerSP.h>
 #include <net/minecraft/client/multiplayer/WorldClient.h>
-#include "../vendor/imgui/imgui.h"
+#include <imgui.h>
 #include "../utils/XUtils.h"
 #include "../utils/MCUtils.h"
 #include "../utils/MathHelper.h"

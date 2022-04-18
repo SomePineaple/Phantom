@@ -4,7 +4,7 @@
 
 #include "ImGuiUtils.h"
 
-#include "../vendor/imgui/imgui.h"
+#include <imgui.h>
 
 void ImGuiUtils::drawHelper(const char *desc) {
     ImGui::TextDisabled("(?)");
