@@ -22,7 +22,10 @@ if (NOT DEFINED SOURCES)
         src/*/*/*.* 
         src/*/*/*/*.* 
         src/*/*/*/*/*.* 
-        src/*/*/*/*/*/*.* )
+        src/*/*/*/*/*/*.*
+	src/*/*/*/*/*/*/*.*
+	src/*/*/*/*/*/*/*/*.*
+	src/*/*/*/*/*/*/*/*/*.*)
 endif ()
 
 source_group("Source Files" FILES ${PHANTOM_SOURCE_FILES})
