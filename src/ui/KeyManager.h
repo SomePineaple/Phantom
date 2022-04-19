@@ -15,5 +15,6 @@ private:
     XUtils::DeviceState previousState;
 };
 
+void callUpdateKeys(KeyManager *manager, Phantom *phantom);
 
 #endif //PHANTOM_KEYMANAGER_H

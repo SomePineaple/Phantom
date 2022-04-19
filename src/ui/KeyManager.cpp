@@ -29,3 +29,7 @@ void KeyManager::updateKeys(Phantom *phantom) {
     previousState.numKeys = currentState.numKeys;
     memcpy(previousState.keyStates, currentState.keyStates, currentState.numKeys * sizeof(bool));
 }
+
+void callUpdateKeys(KeyManager *manager, Phantom *phantom) {
+    manager->updateKeys(phantom);
+}

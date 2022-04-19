@@ -4,6 +4,7 @@
 
 #include "Phantom.h"
 
+#include <thread>
 #include <net/minecraft/client/Minecraft.h>
 #include <net/minecraft/client/multiplayer/WorldClient.h>
 #include <net/minecraft/entity/EntityPlayerSP.h>
@@ -62,7 +63,7 @@ void Phantom::runClient() {
             continue;
         }
 
-        keyManager->updateKeys(this);
+        std::thread(callUpdateKeys, keyManager, this).detach();
         for (Cheat *cheat : cheats) {
             if (cheat->enabled)
                 cheat->run(mc);
