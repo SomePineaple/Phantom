@@ -2,7 +2,9 @@
 
 Fully C++ Minecraft injection client for linux. Mapping code is based off of
 [UDP](https://github.com/UnknownDetectionParty/UDP-CPP), and [Dear ImGui](https://github.com/ocornut/imgui) is used
-for the window, but the cheats and stuff are my own. 
+for the window, but the cheats and stuff are my own.
+
+We also now have a discord server https://discord.gg/EVCKgXmV
 
 ### Different MC Versions
 
