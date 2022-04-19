@@ -5,8 +5,9 @@
 #ifndef PHANTOM_XUTILS_H
 #define PHANTOM_XUTILS_H
 
-#include <X11/extensions/XTest.h>
+#include <X11/extensions/XInput.h>
 #include <X11/Xlib.h>
+#include <X11/X.h>
 
 namespace XUtils {
     class DeviceState {

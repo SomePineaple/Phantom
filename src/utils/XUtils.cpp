@@ -5,7 +5,6 @@
 #include "XUtils.h"
 
 #include <cstring>
-#include <cctype>
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
