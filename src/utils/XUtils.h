@@ -32,7 +32,6 @@ namespace XUtils {
     void renderMouseSelector();
     void renderKeyboardSelector();
 
-    XDeviceInfo *findDeviceInfo(Display *display, const char *name, bool only_extended);
     DeviceState getDeviceState(Display *display, unsigned long deviceID);
     void clickMouseXEvent(int button, long delayMS);
 }

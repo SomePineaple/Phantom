@@ -4,10 +4,10 @@
 
 #include "KeyManager.h"
 
-void KeyManager::updateKeys(Phantom *phantom) {
-    if (XUtils::keyboardDeviceID == 0)
-        return;
+#include <imgui.h>
+#include <malloc.h>
 
+void KeyManager::updateKeys(Phantom *phantom) {
     Display *dpy = XOpenDisplay(nullptr);
     XUtils::DeviceState currentState = XUtils::getDeviceState(dpy, XUtils::keyboardDeviceID);
     XCloseDisplay(dpy);
@@ -23,5 +23,9 @@ void KeyManager::updateKeys(Phantom *phantom) {
         }
     }
 
-    previousState = currentState;
+    if (previousState.keyStates == nullptr || previousState.numKeys != currentState.numKeys)
+        previousState.keyStates = (bool *) malloc(currentState.numKeys * sizeof(bool));
+
+    previousState.numKeys = currentState.numKeys;
+    memcpy(previousState.keyStates, currentState.keyStates, currentState.numKeys * sizeof(bool));
 }

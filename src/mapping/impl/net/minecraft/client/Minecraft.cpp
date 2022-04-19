@@ -75,8 +75,7 @@ jobject Minecraft::getEntityRenderer() {
 }
 
 EntityPlayerSP *Minecraft::getPlayerContainer() {
-    if (getPlayer() == nullptr)
-        return nullptr;
+    if (getPlayer() == nullptr) return nullptr;
 
 	if (!playerContainer)
 		playerContainer = new EntityPlayerSP(phantom, this);
@@ -84,8 +83,7 @@ EntityPlayerSP *Minecraft::getPlayerContainer() {
 }
 
 WorldClient *Minecraft::getWorldContainer() {
-    if (getWorld() == nullptr)
-        return nullptr;
+    if (getWorld() == nullptr) return nullptr;
 
 	if (!worldContainer)
 		worldContainer = new WorldClient(phantom, this);

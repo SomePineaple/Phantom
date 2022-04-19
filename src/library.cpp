@@ -2,12 +2,7 @@
 #include "Phantom.h"
 
 void startClient() {
-    auto *phantom = new Phantom();
-
-    //auto *system = new JavaSystem(phantom);
-    //system->out->println(JvmUtils::getJString(phantom, "Phantom: Injected"));
-
-    phantom->runClient();
+    (new Phantom())->runClient();
 }
 
 __attribute__((constructor)) void dllLoad() {

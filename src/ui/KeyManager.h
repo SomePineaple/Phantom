@@ -12,7 +12,7 @@ class KeyManager {
 public:
     void updateKeys(Phantom *phantom);
 private:
-    XUtils::DeviceState previousState{};
+    XUtils::DeviceState previousState;
 };
 
 

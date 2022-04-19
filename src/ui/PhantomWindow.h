@@ -8,6 +8,7 @@
 #include <vector>
 #include <SDL.h>
 #include "../cheats/Cheat.h"
+#include "KeyManager.h"
 
 class PhantomWindow {
 public:

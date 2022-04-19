@@ -128,6 +128,13 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
                     if (ImGui::CollapsingHeader(description.c_str())) {
                         ImGui::Indent(15);
                         cheat->renderSettings();
+                        if (ImGui::Button("Bind"))
+                            cheat->binding = true;
+                        ImGui::SameLine();
+                        if (cheat->binding)
+                            ImGui::Text("Bind: <...>");
+                        else
+                            ImGui::Text("Bind: <%d>", cheat->bind);
                         ImGui::Unindent(15);
                     }
                 }

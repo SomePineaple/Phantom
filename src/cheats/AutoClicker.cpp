@@ -30,7 +30,7 @@ AutoClicker::AutoClicker() : Cheat("AutoClicker", "Clicks 4 u (so ur hand doesn'
 }
 
 void AutoClicker::run(Minecraft *mc) {
-    if (XUtils::mouseDeviceID == 0 || (!mc->isInGameHasFocus() && onlyInGame))
+    if (!mc->isInGameHasFocus() && onlyInGame)
         return;
 
     Display *dpy = XOpenDisplay(nullptr);
@@ -39,9 +39,6 @@ void AutoClicker::run(Minecraft *mc) {
 
     if (mouseState.numButtons == 0) {
         XUtils::isDeviceShit = true;
-        free(mouseState.keyStates);
-        free(mouseState.buttonStates);
-        free(mouseState.valuatorStates);
         return;
     } else {
         XUtils::isDeviceShit = false;

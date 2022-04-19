@@ -76,7 +76,19 @@ void Phantom::runClient() {
 }
 
 void Phantom::onKey(int key) {
+    for (Cheat *cheat : cheats) {
+        if (cheat->binding) {
+            cheat->bind = key;
+            cheat->binding = false;
+            return;
+        }
+    }
 
+    for (Cheat *cheat : cheats) {
+        if (cheat->bind == key) {
+            cheat->enabled = !cheat->enabled;
+        }
+    }
 }
 
 JavaVM *Phantom::getJvm() {
