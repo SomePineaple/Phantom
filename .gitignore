@@ -2,3 +2,4 @@
 /cmake-build-release
 /build
 /.idea
+/compile_commands.json
