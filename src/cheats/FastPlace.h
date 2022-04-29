@@ -11,9 +11,6 @@ class FastPlace : public Cheat {
 public:
     FastPlace();
     void run(Minecraft *mc) override;
-
-private:
-    Phantom *phantom;
 };
 
 

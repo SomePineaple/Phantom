@@ -24,16 +24,14 @@ Phantom::Phantom() {
     env = nullptr;
 
     jsize count;
-    if (JNI_GetCreatedJavaVMs(&jvm, 1, &count) != JNI_OK || count == 0) {
-		  return;
-	  }
+    if (JNI_GetCreatedJavaVMs(&jvm, 1, &count) != JNI_OK || count == 0)
+        return;
 
     jint res = jvm->GetEnv((void **)&env, JNI_VERSION_1_6);
     if (res == JNI_EDETACHED)
         res = jvm->AttachCurrentThread((void **)&env, nullptr);
-    if (res != JNI_OK) {
+    if (res != JNI_OK)
         return;
-    }
 
     Mapping::setup();
 
@@ -65,6 +63,7 @@ void Phantom::runClient() {
             continue;
         }
 
+        // I don't know exactly how much time this takes, but I think calling it in a different thread upped my FPS
         std::thread(callUpdateKeys, keyManager, this).detach();
         for (Cheat *cheat : cheats) {
             if (cheat->enabled)

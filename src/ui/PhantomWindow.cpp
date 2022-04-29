@@ -6,7 +6,6 @@
 
 #include <SDL_opengl.h>
 #include "../utils/ImGuiUtils.h"
-#include "../utils/XUtils.h"
 
 #include <imgui.h>
 #include <imgui_impl_sdl.h>
