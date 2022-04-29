@@ -18,6 +18,7 @@ Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "
     fdInGameHasFocus = getFieldID("inGameHasFocus");
     fdTimer = getFieldID("timer");
     fdEntityRenderer = getFieldID("entityRenderer");
+    fdRightClickDelayTimer = getFieldID("rightClickDelayTimer");
 
     mdGetRenderViewEntity = getMethodID("getRenderViewEntity");
 
@@ -72,6 +73,14 @@ jobject Minecraft::getTimer() {
 
 jobject Minecraft::getEntityRenderer() {
     return getObject(getMinecraft(), fdEntityRenderer);
+}
+
+jint Minecraft::getRightClickDelayTimer() {
+    return getInt(getMinecraft(), fdRightClickDelayTimer);
+}
+
+void Minecraft::setRightClickDelayTimer(jint rightClickDelayTimer) {
+    setInt(getMinecraft(), fdRightClickDelayTimer, rightClickDelayTimer);
 }
 
 EntityPlayerSP *Minecraft::getPlayerContainer() {

@@ -30,6 +30,8 @@ public:
     jboolean isInGameHasFocus();
     jobject getTimer();
     jobject getEntityRenderer();
+    jint getRightClickDelayTimer();
+    void setRightClickDelayTimer(jint rightClickDelayTimer);
 
 	EntityPlayerSP *getPlayerContainer();
 	WorldClient *getWorldContainer();
@@ -47,6 +49,7 @@ private:
     jfieldID fdPointedEntity;
     jfieldID fdTimer;
     jfieldID fdEntityRenderer;
+    jfieldID fdRightClickDelayTimer;
 	jmethodID smdGetMinecraft;
     jmethodID mdGetRenderViewEntity;
 

@@ -108,6 +108,7 @@ void Mapping::setup() {
     field(m, "pointedEntity", "field_147125_j", "Lnet/minecraft/entity/Entity;", false);
     field(m, "objectMouseOver", "field_71476_x", "Lnet/minecraft/util/math/RayTraceResult;", false);
     field(m, "timer", "field_71428_T", "Lnet/minecraft/util/Timer;", false);
+    field(m, "rightClickDelayTimer", "field_71467_ac", "I", false);
     field(m, "entityRenderer", "field_71460_t", "Lnet/minecraft/client/renderer/EntityRenderer;", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
     method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);

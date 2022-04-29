@@ -78,7 +78,7 @@ void AimAssist::run(Minecraft *mc) {
                 thePlayer->setRotationPitch(std::max(thePlayer->getRotationPitch(), fullRotations[1]));
             }
 
-            free(fullRotations);
+            delete[] fullRotations;
         }
     }
 }
@@ -98,7 +98,7 @@ bool AimAssist::isInFOV(EntityPlayer *entity, Minecraft *mc, float fov) {
     float playerYaw = MathHelper::wrapAngleTo180(mc->getPlayerContainer()->getRotationYaw()) + 180;
     float *targetRotations = MathHelper::getRotations(mc->getPlayerContainer(), entity);
     float targetYaw = targetRotations[0] + 180;
-    free(targetRotations);
+    delete[] targetRotations;
 
     float diff = std::abs(MathHelper::getAngleDiff(playerYaw, targetYaw));
 
