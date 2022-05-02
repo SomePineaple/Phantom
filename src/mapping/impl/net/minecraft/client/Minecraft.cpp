@@ -19,6 +19,7 @@ Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "
     fdTimer = getFieldID("timer");
     fdEntityRenderer = getFieldID("entityRenderer");
     fdRightClickDelayTimer = getFieldID("rightClickDelayTimer");
+    fdLeftClickMouse = getFieldID("leftClickMouse");
 
     mdGetRenderViewEntity = getMethodID("getRenderViewEntity");
 
@@ -81,6 +82,14 @@ jint Minecraft::getRightClickDelayTimer() {
 
 void Minecraft::setRightClickDelayTimer(jint rightClickDelayTimer) {
     setInt(getMinecraft(), fdRightClickDelayTimer, rightClickDelayTimer);
+}
+
+jint Minecraft::getLeftClickMouse() {
+    return getInt(getMinecraft(), fdLeftClickMouse);
+}
+
+void Minecraft::setLeftClickMouse(jint leftClickMouse) {
+    setInt(getMinecraft(), fdLeftClickMouse, leftClickMouse);
 }
 
 EntityPlayerSP *Minecraft::getPlayerContainer() {

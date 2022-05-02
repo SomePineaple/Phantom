@@ -32,6 +32,8 @@ public:
     jobject getEntityRenderer();
     jint getRightClickDelayTimer();
     void setRightClickDelayTimer(jint rightClickDelayTimer);
+    jint getLeftClickMouse();
+    void setLeftClickMouse(jint leftClickMouse);
 
 	EntityPlayerSP *getPlayerContainer();
 	WorldClient *getWorldContainer();
@@ -50,6 +52,7 @@ private:
     jfieldID fdTimer;
     jfieldID fdEntityRenderer;
     jfieldID fdRightClickDelayTimer;
+    jfieldID fdLeftClickMouse;
 	jmethodID smdGetMinecraft;
     jmethodID mdGetRenderViewEntity;
 

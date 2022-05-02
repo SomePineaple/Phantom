@@ -16,6 +16,8 @@
 #include "cheats/AimAssist.h"
 #include "cheats/Reach.h"
 #include "cheats/FastPlace.h"
+#include "cheats/HitDelayFix.h"
+
 #include "ui/KeyManager.h"
 
 Phantom::Phantom() {
@@ -40,6 +42,7 @@ Phantom::Phantom() {
     cheats.push_back(new AutoClicker());
     cheats.push_back(new Reach(this));
     cheats.push_back(new FastPlace());
+    cheats.push_back(new HitDelayFix());
 }
 
 void Phantom::runClient() {

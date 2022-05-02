@@ -110,6 +110,7 @@ void Mapping::setup() {
     field(m, "timer", "field_71428_T", "Lnet/minecraft/util/Timer;", false);
     field(m, "rightClickDelayTimer", "field_71467_ac", "I", false);
     field(m, "entityRenderer", "field_71460_t", "Lnet/minecraft/client/renderer/EntityRenderer;", false);
+    field(m, "leftClickMouse", "field_71429_W", "I", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
     method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);
     m = make("EntityLivingBase", "net.minecraft.entity.EntityLivingBase");

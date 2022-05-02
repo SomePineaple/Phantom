@@ -17,7 +17,7 @@ jobject WorldClient::getEntityList() {
     if (mc->getWorld() == nullptr)
         return nullptr;
 
-	return getObject(mc->getWorld(), fdEntityList);
+    return getObject(mc->getWorld(), fdEntityList);
 }
 
 jobject WorldClient::getPlayerList() {
