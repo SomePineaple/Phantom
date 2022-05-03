@@ -16,13 +16,13 @@ double MathHelper::distance(double x1, double y1, double z1, double x2, double y
     return distance(y1 - y2, distance(x1 - x2, z1 - z2));
 }
 
-double *MathHelper::direction(double x1, double y1, double z1, double x2, double y2, double z2) {
+MathHelper::Vec2 MathHelper::direction(double x1, double y1, double z1, double x2, double y2, double z2) {
     double dx = x2 - x1;
 		double dy = y2 - y1;
 		double dz = z2 - z1;
 		double yaw = toDegrees(atan2(dz, dx)) - 90;
 		double pitch = -toDegrees(atan2(dy, distance(dx, dz)));
-		return new double[2] { yaw, pitch };
+		return { yaw, pitch };
 }
 
 float MathHelper::wrapAngleTo180(float angle) {
@@ -89,26 +89,22 @@ float MathHelper::findMod(float a, float b) {
     return mod;
 }
 
-float *MathHelper::getRotations(EntityPlayerSP *player, EntityPlayer *target) {
+MathHelper::Vec2 MathHelper::getRotations(EntityPlayerSP *player, EntityPlayer *target) {
     double deltaX = target->getPosX() + (target->getPosX() - target->getLastTickPosX()) - player->getPosX();
     double deltaY = target->getPosY() - 3.5 + target->getEyeHeight() - player->getPosY() + player->getEyeHeight();
     double deltaZ = target->getPosZ() + (target->getPosZ() - target->getLastTickPosZ()) - player->getPosZ();
 
     double distance = sqrt(pow(deltaX, 2) + pow(deltaZ, 2));
 
-    auto yaw = (float)toDegrees(-atan(deltaX / deltaZ));
-    auto pitch = (float) -toDegrees(atan(deltaY / distance));
+    double yaw = toDegrees(-atan(deltaX / deltaZ));
+    double pitch =  -toDegrees(atan(deltaY / distance));
 
     double mathStuffs = toDegrees(atan(deltaZ / deltaX));
     if (deltaX < 0 && deltaZ < 0)
-        yaw = (float) (90 + mathStuffs);
+        yaw = 90 + mathStuffs;
     else if (deltaX > 0 && deltaZ < 0)
-        yaw = (float) (-90 + mathStuffs);
-
-    auto rotations = (float *) malloc(2 * sizeof(float));
-    rotations[0] = yaw;
-    rotations[1] = pitch;
-    return rotations;
+        yaw = -90 + mathStuffs;
+    return {yaw, pitch};
 }
 
 int MathHelper::getDirection(float currentYaw, float targetYaw) {

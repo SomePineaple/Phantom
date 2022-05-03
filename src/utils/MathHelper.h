@@ -9,13 +9,17 @@
 class EntityPlayer;
 class EntityPlayerSP;
 namespace MathHelper {
+    struct Vec2 {
+        double x, y;
+    };
+
     double toDegrees(double rad);
     double toRadians(double deg);
 
     double distance(double x, double y);
     double distance(double x1, double y1, double z1, double x2, double y2, double z2);
     double direction(double x1, double y1, double x2, double y2);
-    double *direction(double x1, double y1, double z1, double x2, double y2, double z2);
+    Vec2 direction(double x1, double y1, double z1, double x2, double y2, double z2);
 
     float wrapAngleTo180(float angle);
     float getAngleDiff(float a, float b);
@@ -26,7 +30,7 @@ namespace MathHelper {
 
     float findMod(float a, float b);
 
-    float *getRotations(EntityPlayerSP *player, EntityPlayer *target);
+    Vec2 getRotations(EntityPlayerSP *player, EntityPlayer *target);
     int getDirection(float currentYaw, float targetYaw);
 }
 

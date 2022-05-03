@@ -40,9 +40,9 @@ void AimBot::run(Minecraft *mc) {
 
     // If there is an entity in range, look at it
     if (closest != nullptr) {
-        double *rotation = MathHelper::direction(player->getPosX(), player->getPosY(), player->getPosZ(), closest->getPosX(), closest->getPosY(), closest->getPosZ());
-        player->setRotationYaw((float)rotation[0]);
-        player->setRotationPitch((float)rotation[1]);
+        MathHelper::Vec2 rotation = MathHelper::direction(player->getPosX(), player->getPosY(), player->getPosZ(), closest->getPosX(), closest->getPosY(), closest->getPosZ());
+        player->setRotationYaw((float)rotation.x);
+        player->setRotationPitch((float)rotation.y);
     }
 }
 
