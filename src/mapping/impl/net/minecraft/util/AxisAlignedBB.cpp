@@ -45,3 +45,7 @@ MovingObjectPosition *AxisAlignedBB::getCalculateInterceptContainer(jobject vec1
 
     return new MovingObjectPosition(phantom, mvObjectPos);
 }
+
+jobject AxisAlignedBB::getAABB() {
+    return aabb;
+}

@@ -15,6 +15,8 @@ public:
 	jobject get(jint index);
 	int size();
 	jobjectArray toArray();
+
+    jobject getList();
 private:
 	jmethodID mdGet;
 	jmethodID mdSize;

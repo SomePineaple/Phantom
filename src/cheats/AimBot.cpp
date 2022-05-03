@@ -26,21 +26,22 @@ void AimBot::run(Minecraft *mc) {
 
     // Get all the entities, calculate the closest one
     JavaList *entities = world->getEntities();
-    Entity *closest = nullptr;
+    int closestIndex = -1;
     for (int i = 0; i < entities->size(); i++) {
-        auto * entity = new Entity(phantom, entities->get(i));
-        if (entity->getId() != player->getId()) {
-            auto newDist = (float)MathHelper::distance(entity->getPosX(), entity->getPosY(), entity->getPosZ(), player->getPosX(), player->getPosY(), player->getPosZ());
+        Entity entity(phantom, entities->get(i));
+        if (entity.getId() != player->getId()) {
+            auto newDist = (float)MathHelper::distance(entity.getPosX(), entity.getPosY(), entity.getPosZ(), player->getPosX(), player->getPosY(), player->getPosZ());
             if (newDist < closestDist) {
                 closestDist = newDist;
-                closest = entity;
+                closestIndex = i;
             }
         }
     }
 
     // If there is an entity in range, look at it
-    if (closest != nullptr) {
-        MathHelper::Vec2 rotation = MathHelper::direction(player->getPosX(), player->getPosY(), player->getPosZ(), closest->getPosX(), closest->getPosY(), closest->getPosZ());
+    if (closestIndex != -1) {
+        Entity closest(phantom, entities->get(closestIndex));
+        MathHelper::Vec2 rotation = MathHelper::direction(player->getPosX(), player->getPosY(), player->getPosZ(), closest.getPosX(), closest.getPosY(), closest.getPosZ());
         player->setRotationYaw((float)rotation.x);
         player->setRotationPitch((float)rotation.y);
     }

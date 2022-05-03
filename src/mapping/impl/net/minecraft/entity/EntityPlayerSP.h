@@ -30,6 +30,8 @@ public:
 	void setRotationYaw(jfloat yaw);
 	void setRotationPitch(jfloat pitch);
 	void setSprinting(jboolean sprinting);
+
+    jobject getEntityPlayerSP();
 private:
 	jfieldID fdPosX;
 	jfieldID fdPosY;

@@ -30,6 +30,8 @@ public:
     jdouble getLastTickPosX();
     jfloat getEyeHeight();
     jdouble getLastTickPosZ();
+
+    jobject getPlayer();
 protected:
     jfieldID fdPosX;
     jfieldID fdLastTickPosX;

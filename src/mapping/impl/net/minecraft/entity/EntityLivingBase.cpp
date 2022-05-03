@@ -52,3 +52,7 @@ jdouble EntityLivingBase::getLastTickPosZ() {
 jfloat EntityLivingBase::getEyeHeight() {
     return getFloat(entity, mdGetEyeHeight);
 }
+
+jobject EntityLivingBase::getEntityLivingBase() {
+    return entity;
+}

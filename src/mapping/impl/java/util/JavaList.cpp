@@ -23,3 +23,7 @@ int JavaList::size() {
 jobjectArray JavaList::toArray() {
 	return (jobjectArray) getObject(list, mdToArray);
 }
+
+jobject JavaList::getList() {
+    return list;
+}

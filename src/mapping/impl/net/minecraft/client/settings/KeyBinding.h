@@ -15,6 +15,8 @@ public:
     void setKeyBindState(jint key, jboolean state);
 
     int getKeyCode();
+
+    jobject getKeyBinding();
 private:
     jobject keyBinding;
 

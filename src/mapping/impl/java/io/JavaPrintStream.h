@@ -11,6 +11,7 @@ class JavaPrintStream : public AbstractClass {
 public:
     JavaPrintStream(Phantom *phantom, jobject printStream);
     void println(jstring data);
+    jobject getPrintStream();
 private:
     jobject printStream;
 

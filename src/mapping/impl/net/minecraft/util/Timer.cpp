@@ -12,3 +12,7 @@ Timer::Timer(Phantom *phantom, jobject timer) : AbstractClass(phantom, "Timer") 
 jfloat Timer::getPartialTicks() {
     return getFloat(timer, fdPartialTicks);
 }
+
+jobject Timer::getTimer() {
+    return timer;
+}

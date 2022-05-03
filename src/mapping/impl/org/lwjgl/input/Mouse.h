@@ -13,7 +13,7 @@ public:
     explicit Mouse(Phantom *phantom);
     bool isButtonDown(int button);
 private:
-    jmethodID mdIsButtonDown;
+    jmethodID smdIsButtonDown;
 };
 
 

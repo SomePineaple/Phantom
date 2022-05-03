@@ -5,9 +5,9 @@
 #include "Mouse.h"
 
 Mouse::Mouse(Phantom *phantom) : AbstractClass(phantom, "Mouse") {
-    mdIsButtonDown = getMethodID("isButtonDown");
+    smdIsButtonDown = getMethodID("isButtonDown");
 }
 
 bool Mouse::isButtonDown(int button) {
-    return getBoolean(cls, mdIsButtonDown, button);
+    return getBoolean(cls, smdIsButtonDown, button);
 }

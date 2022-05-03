@@ -24,3 +24,7 @@ int KeyBinding::getKeyCode() {
         return 0;
     return getInt(keyBinding, mdGetKeyCode);
 }
+
+jobject KeyBinding::getKeyBinding() {
+    return keyBinding;
+}

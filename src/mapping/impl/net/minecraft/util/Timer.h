@@ -12,6 +12,8 @@ class Timer : public AbstractClass {
 public:
     Timer(Phantom *phantom, jobject timer);
     jfloat getPartialTicks();
+
+    jobject getTimer();
 private:
     jfieldID fdPartialTicks;
 

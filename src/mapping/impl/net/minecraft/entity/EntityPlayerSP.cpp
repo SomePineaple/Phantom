@@ -79,3 +79,7 @@ const char *EntityPlayerSP::getFormattedDisplayName() {
     jboolean notTrue = false;
     return phantom->getEnv()->GetStringUTFChars(str, &notTrue);
 }
+
+jobject EntityPlayerSP::getEntityPlayerSP() {
+    return mc->getPlayer();
+}

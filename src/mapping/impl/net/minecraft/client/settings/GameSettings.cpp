@@ -21,3 +21,7 @@ KeyBinding *GameSettings::getKeyBindAttackContainer() {
         keyBindAttackContainer = new KeyBinding(phantom, getKeyBindAttack());
     return keyBindAttackContainer;
 }
+
+jobject GameSettings::getGameSettings() {
+    return gameSettings;
+}

@@ -22,3 +22,7 @@ Vec3 *MovingObjectPosition::getHitVecContainer() {
 
     return new Vec3(phantom, hitVec);
 }
+
+jobject MovingObjectPosition::getMovingObjectPosition() {
+    return movingObjectPosition;
+}

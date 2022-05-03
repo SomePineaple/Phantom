@@ -22,3 +22,7 @@ jobjectArray JavaSet::toArray() {
 jobject JavaSet::get(int index) {
 	return getArrayElement(toArray(), index);
 }
+
+jobject JavaSet::getSet() {
+    return set;
+}

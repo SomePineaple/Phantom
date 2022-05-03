@@ -21,6 +21,8 @@ public:
     AxisAlignedBB *getExpandContainer(jdouble x, jdouble y, jdouble z);
     AxisAlignedBB *getAddCoordContainer(jdouble x, jdouble y, jdouble z);
     MovingObjectPosition *getCalculateInterceptContainer(jobject vec1, jobject vec2);
+
+    jobject getAABB();
 private:
     jmethodID mdExpand;
     jmethodID mdAddCoord;

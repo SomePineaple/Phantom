@@ -15,6 +15,7 @@ public:
 
     jobject getKeyBindAttack();
     KeyBinding *getKeyBindAttackContainer();
+    jobject getGameSettings();
 private:
     jobject gameSettings;
     jfieldID keyBindAttack;

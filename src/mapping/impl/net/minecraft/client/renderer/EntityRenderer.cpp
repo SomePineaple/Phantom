@@ -25,3 +25,7 @@ Entity *EntityRenderer::getPointedEntityContainer() {
 
     return new Entity(phantom, pointedEntity);
 }
+
+jobject EntityRenderer::getEntityRenderer() {
+    return entityRenderer;
+}

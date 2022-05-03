@@ -21,6 +21,8 @@ public:
 
     jint getId();
     const char * getName();
+
+    jobject getEntityLivingBase();
 private:
     jfieldID fdPosX;
     jfieldID fdLastTickPosX;

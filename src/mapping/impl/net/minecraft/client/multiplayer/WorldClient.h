@@ -21,6 +21,8 @@ public:
 	JavaList *getEntities();
     JavaList *getPlayers();
     JavaList *getEntitiesWithinAABBExcluding(jobject entity, jobject AABB);
+
+    jobject getWorld();
 private:
 	jfieldID fdEntityList;
     jfieldID fdPlayerList;

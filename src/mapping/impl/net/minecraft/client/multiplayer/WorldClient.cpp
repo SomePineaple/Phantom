@@ -56,3 +56,7 @@ JavaList *WorldClient::getEntitiesWithinAABBExcluding(jobject entity, jobject AA
 
     return new JavaList(phantom, entitiesWithinAABB);
 }
+
+jobject WorldClient::getWorld() {
+    return mc->getWorld();
+}

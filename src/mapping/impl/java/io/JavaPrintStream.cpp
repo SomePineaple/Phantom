@@ -13,3 +13,7 @@ JavaPrintStream::JavaPrintStream(Phantom *phantom, jobject printStream) : Abstra
 void JavaPrintStream::println(jstring data) {
     callMethod(printStream, mdPrintln, data);
 }
+
+jobject JavaPrintStream::getPrintStream() {
+    return printStream;
+}
