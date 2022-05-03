@@ -39,6 +39,6 @@ jobject Vec3::addVector(jdouble x, jdouble y, jdouble z) {
     return getObject(vec3, mdAddVector, x, y, z);
 }
 
-Vec3 *Vec3::addVectorContainer(jdouble x, jdouble y, jdouble z) {
-    return new Vec3(phantom, addVector(x, y, z));
+Vec3 Vec3::addVectorContainer(jdouble x, jdouble y, jdouble z) {
+    return Vec3(phantom, addVector(x, y, z));
 }

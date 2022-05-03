@@ -34,12 +34,12 @@ public:
     jboolean canRiderInteract();
     jboolean canBeCollidedWith();
 
-    Vec3 *getPositionEyesContainer(jfloat partialTicks);
-    Vec3 *getLookContainer(jfloat partialTicks);
+    Vec3 getPositionEyesContainer(jfloat partialTicks);
+    Vec3 getLookContainer(jfloat partialTicks);
 
-    AxisAlignedBB *getEntityBoundingBoxContainer();
+    AxisAlignedBB getEntityBoundingBoxContainer();
 
-    Entity *getRidingEntityContainer();
+    Entity getRidingEntityContainer();
 
 	jint getId();
 	const char *getName();

@@ -35,12 +35,12 @@ public:
     jint getLeftClickMouse();
     void setLeftClickMouse(jint leftClickMouse);
 
-	EntityPlayerSP *getPlayerContainer();
-	WorldClient *getWorldContainer();
-    GameSettings *getGameSettingsContainer();
-    Entity *getRenderViewEntityContainer();
-    Timer *getTimerContainer();
-    EntityRenderer *getEntityRendererContainer();
+	EntityPlayerSP getPlayerContainer();
+	WorldClient getWorldContainer();
+    GameSettings getGameSettingsContainer();
+    Entity getRenderViewEntityContainer();
+    Timer getTimerContainer();
+    EntityRenderer getEntityRendererContainer();
     Phantom *getPhantom();
 private:
 	jfieldID fdPlayer;
@@ -55,10 +55,6 @@ private:
     jfieldID fdLeftClickMouse;
 	jmethodID smdGetMinecraft;
     jmethodID mdGetRenderViewEntity;
-
-	EntityPlayerSP *playerContainer;
-	WorldClient *worldContainer;
-    GameSettings *gameSettingsContainer;
 };
 
 #endif //PHANTOM_MINECRAFT_H

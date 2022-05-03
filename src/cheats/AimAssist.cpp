@@ -42,17 +42,17 @@ void AimAssist::run(Minecraft *mc) {
     if (!onlyOnClick || mouseState.buttonStates[1]) {
         float closestDistance = range;
 
-        EntityPlayerSP *thePlayer = mc->getPlayerContainer();
+        EntityPlayerSP thePlayer = mc->getPlayerContainer();
 
-        EntityPlayer *closest = nullptr;
-        JavaList *players = mc->getWorldContainer()->getPlayers();
-        if (players == nullptr)
+        EntityPlayer closest(phantom, nullptr);
+        JavaList players = mc->getWorldContainer().getPlayers();
+        if (players.getList() == nullptr)
             return;
 
-        for (int i = 0; i < players->size(); i++) {
-            auto *player = new EntityPlayer(phantom, players->get(i));
-            if ((player->getId() != mc->getPlayerContainer()->getId()) && isInFOV(player, mc, fov) && !(MCUtils::sameTeam(mc, player) && teams)) {
-                auto newDist = (float) MathHelper::distance(player->getPosX(), player->getPosY(), player->getPosZ(), thePlayer->getPosX(), thePlayer->getPosY(), thePlayer->getPosZ());
+        for (int i = 0; i < players.size(); i++) {
+            EntityPlayer player(phantom, players.get(i));
+            if ((player.getId() != mc->getPlayerContainer().getId()) && isInFOV(&player, mc, fov) && !(MCUtils::sameTeam(mc, &player) && teams)) {
+                auto newDist = (float) MathHelper::distance(player.getPosX(), player.getPosY(), player.getPosZ(), thePlayer.getPosX(), thePlayer.getPosY(), thePlayer.getPosZ());
                 if (newDist < closestDistance) {
                     closestDistance = newDist;
                     closest = player;
@@ -60,22 +60,22 @@ void AimAssist::run(Minecraft *mc) {
             }
         }
 
-        if (closest != nullptr) {
-            MathHelper::Vec2 fullRotations = MathHelper::getRotations(thePlayer, closest);
+        if (closest.getPlayer() != nullptr) {
+            MathHelper::Vec2 fullRotations = MathHelper::getRotations(&thePlayer, &closest);
 
-            float currentYaw = MathHelper::wrapAngleTo180(thePlayer->getRotationYaw());
-            float currentPitch = MathHelper::wrapAngleTo180(thePlayer->getRotationPitch());
+            float currentYaw = MathHelper::wrapAngleTo180(thePlayer.getRotationYaw());
+            float currentPitch = MathHelper::wrapAngleTo180(thePlayer.getRotationPitch());
 
             int direction = MathHelper::getDirection(currentYaw, fullRotations.x);
 
-            thePlayer->setRotationYaw(thePlayer->getRotationYaw() + (std::min(hSpeed / ImGui::GetIO().Framerate, (float)std::abs(fullRotations.x - currentYaw)) * (float)direction));
+            thePlayer.setRotationYaw(thePlayer.getRotationYaw() + (std::min(hSpeed / ImGui::GetIO().Framerate, (float)std::abs(fullRotations.x - currentYaw)) * (float)direction));
 
             if (fullRotations.y > currentPitch) {
-                thePlayer->setRotationPitch(thePlayer->getRotationPitch() + (vSpeed / ImGui::GetIO().Framerate));
-                thePlayer->setRotationPitch(std::min(thePlayer->getRotationPitch(), (float)fullRotations.y));
+                thePlayer.setRotationPitch(thePlayer.getRotationPitch() + (vSpeed / ImGui::GetIO().Framerate));
+                thePlayer.setRotationPitch(std::min(thePlayer.getRotationPitch(), (float)fullRotations.y));
             } else if (fullRotations.y < currentPitch) {
-                thePlayer->setRotationPitch(thePlayer->getRotationPitch() - (vSpeed / ImGui::GetIO().Framerate));
-                thePlayer->setRotationPitch(std::max(thePlayer->getRotationPitch(), (float)fullRotations.y));
+                thePlayer.setRotationPitch(thePlayer.getRotationPitch() - (vSpeed / ImGui::GetIO().Framerate));
+                thePlayer.setRotationPitch(std::max(thePlayer.getRotationPitch(), (float)fullRotations.y));
             }
         }
     }
@@ -93,8 +93,9 @@ void AimAssist::renderSettings() {
 }
 
 bool AimAssist::isInFOV(EntityPlayer *entity, Minecraft *mc, float fov) {
-    float playerYaw = MathHelper::wrapAngleTo180(mc->getPlayerContainer()->getRotationYaw()) + 180;
-    MathHelper::Vec2 targetRotations = MathHelper::getRotations(mc->getPlayerContainer(), entity);
+    EntityPlayerSP player = mc->getPlayerContainer();
+    float playerYaw = MathHelper::wrapAngleTo180(player.getRotationYaw()) + 180;
+    MathHelper::Vec2 targetRotations = MathHelper::getRotations(&player, entity);
     float targetYaw = (float)targetRotations.x + 180;
 
     float diff = std::abs(MathHelper::getAngleDiff(playerYaw, targetYaw));

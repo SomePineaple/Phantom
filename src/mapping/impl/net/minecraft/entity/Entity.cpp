@@ -97,28 +97,18 @@ jboolean Entity::canBeCollidedWith() {
     return getBoolean(entity, mdCanBeCollodedWith);
 }
 
-Vec3 *Entity::getPositionEyesContainer(jfloat partialTicks) {
-    return new Vec3(phantom, getPositionEyes(partialTicks));
+Vec3 Entity::getPositionEyesContainer(jfloat partialTicks) {
+    return Vec3(phantom, getPositionEyes(partialTicks));
 }
 
-Vec3 *Entity::getLookContainer(jfloat partialTicks) {
-    return new Vec3(phantom, getLook(partialTicks));
+Vec3 Entity::getLookContainer(jfloat partialTicks) {
+    return Vec3(phantom, getLook(partialTicks));
 }
 
-AxisAlignedBB *Entity::getEntityBoundingBoxContainer() {
-    jobject entityBoundingBox = getEntityBoundingBox();
-
-    if (entityBoundingBox == nullptr)
-        return nullptr;
-
-    return new AxisAlignedBB(phantom, entityBoundingBox);
+AxisAlignedBB Entity::getEntityBoundingBoxContainer() {
+    return AxisAlignedBB(phantom, getEntityBoundingBox());
 }
 
-Entity *Entity::getRidingEntityContainer() {
-    jobject ridingEntity = getRidingEntity();
-
-    if (ridingEntity == nullptr)
-        return nullptr;
-
-    return new Entity(phantom, ridingEntity);
+Entity Entity::getRidingEntityContainer() {
+    return Entity(phantom, getRidingEntity());
 }

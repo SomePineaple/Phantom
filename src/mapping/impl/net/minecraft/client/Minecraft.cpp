@@ -22,10 +22,6 @@ Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "
     fdLeftClickMouse = getFieldID("leftClickMouse");
 
     mdGetRenderViewEntity = getMethodID("getRenderViewEntity");
-
-    playerContainer = nullptr;
-    worldContainer = nullptr;
-    gameSettingsContainer = nullptr;
 }
 
 jobject Minecraft::getMinecraft() {
@@ -92,50 +88,28 @@ void Minecraft::setLeftClickMouse(jint leftClickMouse) {
     setInt(getMinecraft(), fdLeftClickMouse, leftClickMouse);
 }
 
-EntityPlayerSP *Minecraft::getPlayerContainer() {
-    if (getPlayer() == nullptr) return nullptr;
-
-	if (!playerContainer)
-		playerContainer = new EntityPlayerSP(phantom, this);
-	return playerContainer;
+EntityPlayerSP Minecraft::getPlayerContainer() {
+	return EntityPlayerSP(phantom, this);
 }
 
-WorldClient *Minecraft::getWorldContainer() {
-    if (getWorld() == nullptr) return nullptr;
-
-	if (!worldContainer)
-		worldContainer = new WorldClient(phantom, this);
-	return worldContainer;
+WorldClient Minecraft::getWorldContainer() {
+	return WorldClient(phantom, this);
 }
 
-GameSettings *Minecraft::getGameSettingsContainer() {
-    if (getGameSettings() == nullptr)
-        return nullptr;
-
-    if (!gameSettingsContainer)
-        gameSettingsContainer = new GameSettings(phantom, getGameSettings());
-    return gameSettingsContainer;
+GameSettings Minecraft::getGameSettingsContainer() {
+    return GameSettings(phantom, getGameSettings());
 }
 
-Entity *Minecraft::getRenderViewEntityContainer() {
-    if (getRenderViewEntity() == nullptr)
-        return nullptr;
-
-    return new Entity(phantom, getRenderViewEntity());
+Entity Minecraft::getRenderViewEntityContainer() {
+    return Entity(phantom, getRenderViewEntity());
 }
 
-Timer *Minecraft::getTimerContainer() {
-    jobject timer = getTimer();
-    if (timer == nullptr)
-        return nullptr;
-    return new Timer(phantom, timer);
+Timer Minecraft::getTimerContainer() {
+    return Timer(phantom, getTimer());
 }
 
-EntityRenderer *Minecraft::getEntityRendererContainer() {
-    jobject entityRenderer = getEntityRenderer();
-    if (entityRenderer == nullptr)
-        return nullptr;
-    return new EntityRenderer(phantom, entityRenderer);
+EntityRenderer Minecraft::getEntityRendererContainer() {
+    return EntityRenderer(phantom, getEntityRenderer());
 }
 
 Phantom *Minecraft::getPhantom() {

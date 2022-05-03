@@ -38,23 +38,16 @@ void WorldClient::setWorldTime(jlong time) {
 	callMethod(mc->getWorld(), mdSetWorldTime, time);
 }
 
-JavaList *WorldClient::getEntities() {
-	return new JavaList(phantom, getEntityList());
+JavaList WorldClient::getEntities() {
+	return JavaList(phantom, getEntityList());
 }
 
-JavaList *WorldClient::getPlayers() {
-    if (getPlayerList() == nullptr)
-        return nullptr;
-
-    return new JavaList(phantom, getPlayerList());
+JavaList WorldClient::getPlayers() {
+    return JavaList(phantom, getPlayerList());
 }
 
-JavaList *WorldClient::getEntitiesWithinAABBExcluding(jobject entity, jobject AABB) {
-    jobject entitiesWithinAABB = getEntitiesWithinAABBExcludingList(entity, AABB);
-    if (entitiesWithinAABB == nullptr)
-        return nullptr;
-
-    return new JavaList(phantom, entitiesWithinAABB);
+JavaList WorldClient::getEntitiesWithinAABBExcluding(jobject entity, jobject AABB) {
+    return JavaList(phantom, getEntitiesWithinAABBExcludingList(entity, AABB));
 }
 
 jobject WorldClient::getWorld() {

@@ -11,6 +11,7 @@
 class JavaSystem : public AbstractClass {
 public:
     explicit JavaSystem(Phantom *phantom);
+    ~JavaSystem();
     JavaPrintStream *out;
 private:
 };

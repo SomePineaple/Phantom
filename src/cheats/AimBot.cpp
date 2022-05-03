@@ -19,31 +19,30 @@ AimBot::AimBot(Phantom *phantom) : Cheat("AimBot","Automatically puts cursor ove
 }
 
 void AimBot::run(Minecraft *mc) {
-    EntityPlayerSP *player = mc->getPlayerContainer();
-    WorldClient *world = mc->getWorldContainer();
+    EntityPlayerSP player = mc->getPlayerContainer();
+    WorldClient world = mc->getWorldContainer();
 
     float closestDist = range;
 
     // Get all the entities, calculate the closest one
-    JavaList *entities = world->getEntities();
-    int closestIndex = -1;
-    for (int i = 0; i < entities->size(); i++) {
-        Entity entity(phantom, entities->get(i));
-        if (entity.getId() != player->getId()) {
-            auto newDist = (float)MathHelper::distance(entity.getPosX(), entity.getPosY(), entity.getPosZ(), player->getPosX(), player->getPosY(), player->getPosZ());
+    JavaList entities = world.getEntities();
+    Entity closest(phantom, nullptr);
+    for (int i = 0; i < entities.size(); i++) {
+        Entity entity(phantom, entities.get(i));
+        if (entity.getId() != player.getId()) {
+            auto newDist = (float)MathHelper::distance(entity.getPosX(), entity.getPosY(), entity.getPosZ(), player.getPosX(), player.getPosY(), player.getPosZ());
             if (newDist < closestDist) {
                 closestDist = newDist;
-                closestIndex = i;
+                closest = entity;
             }
         }
     }
 
     // If there is an entity in range, look at it
-    if (closestIndex != -1) {
-        Entity closest(phantom, entities->get(closestIndex));
-        MathHelper::Vec2 rotation = MathHelper::direction(player->getPosX(), player->getPosY(), player->getPosZ(), closest.getPosX(), closest.getPosY(), closest.getPosZ());
-        player->setRotationYaw((float)rotation.x);
-        player->setRotationPitch((float)rotation.y);
+    if (closest.getEntity() != nullptr) {
+        MathHelper::Vec2 rotation = MathHelper::direction(player.getPosX(), player.getPosY(), player.getPosZ(), closest.getPosX(), closest.getPosY(), closest.getPosZ());
+        player.setRotationYaw((float)rotation.x);
+        player.setRotationPitch((float)rotation.y);
     }
 }
 

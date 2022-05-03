@@ -15,7 +15,7 @@ public:
 
     jobject getHitVec();
 
-    Vec3 *getHitVecContainer();
+    Vec3 getHitVecContainer();
 
     jobject getMovingObjectPosition();
 private:

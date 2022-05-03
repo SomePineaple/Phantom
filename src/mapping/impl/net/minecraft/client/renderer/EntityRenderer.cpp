@@ -18,12 +18,8 @@ void EntityRenderer::setPointedEntity(jobject entity) {
     setObject(entityRenderer, fdPointedEntity, entity);
 }
 
-Entity *EntityRenderer::getPointedEntityContainer() {
-    jobject pointedEntity = getPointedEntity();
-    if (pointedEntity == nullptr)
-        return nullptr;
-
-    return new Entity(phantom, pointedEntity);
+Entity EntityRenderer::getPointedEntityContainer() {
+    return Entity(phantom, getPointedEntity());
 }
 
 jobject EntityRenderer::getEntityRenderer() {

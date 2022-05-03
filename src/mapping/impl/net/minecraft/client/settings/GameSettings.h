@@ -14,13 +14,11 @@ public:
     GameSettings(Phantom *phantom, jobject gameSettings);
 
     jobject getKeyBindAttack();
-    KeyBinding *getKeyBindAttackContainer();
+    KeyBinding getKeyBindAttackContainer();
     jobject getGameSettings();
 private:
     jobject gameSettings;
     jfieldID keyBindAttack;
-
-    KeyBinding *keyBindAttackContainer;
 };
 
 

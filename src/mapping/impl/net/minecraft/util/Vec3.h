@@ -21,7 +21,7 @@ public:
     jdouble distanceTo(jobject vec);
 
     jobject addVector(jdouble x, jdouble y, jdouble z);
-    Vec3 *addVectorContainer(jdouble x, jdouble y, jdouble z);
+    Vec3 addVectorContainer(jdouble x, jdouble y, jdouble z);
 private:
     jfieldID fdXCoord;
     jfieldID fdYCoord;

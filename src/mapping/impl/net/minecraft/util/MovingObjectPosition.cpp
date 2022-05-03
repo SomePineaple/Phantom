@@ -14,13 +14,8 @@ jobject MovingObjectPosition::getHitVec() {
     return getObject(movingObjectPosition, fdHitVec);
 }
 
-Vec3 *MovingObjectPosition::getHitVecContainer() {
-    jobject hitVec = getHitVec();
-
-    if (hitVec == nullptr)
-        return nullptr;
-
-    return new Vec3(phantom, hitVec);
+Vec3 MovingObjectPosition::getHitVecContainer() {
+    return Vec3(phantom, getHitVec());
 }
 
 jobject MovingObjectPosition::getMovingObjectPosition() {

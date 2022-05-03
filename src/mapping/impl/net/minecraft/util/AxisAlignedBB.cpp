@@ -29,21 +29,16 @@ jboolean AxisAlignedBB::isVecInside(jobject vec) {
     return getBoolean(aabb, mdIsVecInside, vec);
 }
 
-AxisAlignedBB *AxisAlignedBB::getExpandContainer(jdouble x, jdouble y, jdouble z) {
-    return new AxisAlignedBB(phantom, expand(x, y, z));
+AxisAlignedBB AxisAlignedBB::getExpandContainer(jdouble x, jdouble y, jdouble z) {
+    return AxisAlignedBB(phantom, expand(x, y, z));
 }
 
-AxisAlignedBB *AxisAlignedBB::getAddCoordContainer(jdouble x, jdouble y, jdouble z) {
-    return new AxisAlignedBB(phantom, addCoord(x, y, z));
+AxisAlignedBB AxisAlignedBB::getAddCoordContainer(jdouble x, jdouble y, jdouble z) {
+    return AxisAlignedBB(phantom, addCoord(x, y, z));
 }
 
-MovingObjectPosition *AxisAlignedBB::getCalculateInterceptContainer(jobject vec1, jobject vec2) {
-    jobject mvObjectPos = calculateIntercept(vec1, vec2);
-
-    if (mvObjectPos == nullptr)
-        return nullptr;
-
-    return new MovingObjectPosition(phantom, mvObjectPos);
+MovingObjectPosition AxisAlignedBB::getCalculateInterceptContainer(jobject vec1, jobject vec2) {
+    return MovingObjectPosition(phantom, calculateIntercept(vec1, vec2));
 }
 
 jobject AxisAlignedBB::getAABB() {

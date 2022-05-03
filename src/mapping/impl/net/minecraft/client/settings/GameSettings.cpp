@@ -7,19 +7,14 @@
 GameSettings::GameSettings(Phantom *phantom, jobject gameSettings) : AbstractClass(phantom, "GameSettings") {
     this->gameSettings = gameSettings;
     keyBindAttack = getFieldID("keyBindAttack");
-    keyBindAttackContainer = nullptr;
 }
 
 jobject GameSettings::getKeyBindAttack() {
     return getObject(gameSettings, keyBindAttack);
 }
 
-KeyBinding *GameSettings::getKeyBindAttackContainer() {
-    if (getKeyBindAttack() == nullptr)
-        return nullptr;
-    if (keyBindAttackContainer == nullptr)
-        keyBindAttackContainer = new KeyBinding(phantom, getKeyBindAttack());
-    return keyBindAttackContainer;
+KeyBinding GameSettings::getKeyBindAttackContainer() {
+    return KeyBinding(phantom, getKeyBindAttack());
 }
 
 jobject GameSettings::getGameSettings() {

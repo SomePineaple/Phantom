@@ -8,7 +8,7 @@
 #include "MiscUtils.h"
 
 bool MCUtils::sameTeam(Minecraft *mc, EntityPlayer *player) {
-    std::string playerName = mc->getPlayerContainer()->getFormattedDisplayName();
+    std::string playerName = mc->getPlayerContainer().getFormattedDisplayName();
     std::string otherName = player->getFormattedDisplayName();
 
     MiscUtils::replaceStr(playerName, "§r", "");

@@ -16,7 +16,7 @@ public:
     jobject getPointedEntity();
     void setPointedEntity(jobject entity);
 
-    Entity *getPointedEntityContainer();
+    Entity getPointedEntityContainer();
     jobject getEntityRenderer();
 private:
     jfieldID fdPointedEntity;
