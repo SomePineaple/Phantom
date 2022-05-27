@@ -1,7 +1,3 @@
-//
-// Created by somepineaple on 1/30/22.
-//
-
 #include "PhantomWindow.h"
 
 #include <SDL_opengl.h>
@@ -22,6 +18,36 @@ PhantomWindow::PhantomWindow(int width, int height, const char *title) {
     glContext = nullptr;
 }
 
+void Colors( ) {
+    ImGuiStyle& style = ImGui::GetStyle();
+
+    style.Colors[ImGuiCol_WindowBg] = ImColor(48, 37, 70);
+    style.Colors[ImGuiCol_ChildBg] = ImColor(40, 31, 56);
+    style.Colors[ImGuiCol_Text] = ImColor(255, 255, 255);
+    style.Colors[ImGuiCol_Button] = ImColor(160, 65, 84);
+    
+}
+void Title( ) {
+    std::string text = "Phantom";
+    ImGui::SetWindowFontScale(2);
+    ImGui::Dummy(ImVec2(0.0f, 5.0f));
+    auto windowWidth = ImGui::GetWindowSize().x;
+    auto textWidth   = ImGui::CalcTextSize(text.c_str()).x;
+    ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
+
+    ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0,255,0,255));
+
+    ImGui::Text("Phantom");
+    ImGui::SetWindowFontScale(1);
+    ImGui::PopStyleColor();
+}
+void AlignForWidth(float width, float alignment = 0.5f) {
+    ImGuiStyle& style = ImGui::GetStyle();
+    float avail = ImGui::GetContentRegionAvail().x;
+    float off = (avail - width) * alignment;
+    if (off > 0.0f)
+        ImGui::SetCursorPosX(ImGui::GetCursorPosX() + off);
+}
 void PhantomWindow::setup() {
     // Setup SDL
     // (Some versions of SDL before <2.0.10 appears to have performance/stalling issues on a minority of Windows systems,
@@ -60,8 +86,10 @@ void PhantomWindow::setup() {
     // Setup Platform/Renderer backends
     ImGui_ImplSDL2_InitForOpenGL(window, glContext);
     ImGui_ImplOpenGL3_Init(glsl_version);
+    
 }
-
+std::string CurrentMenu = "Nothing";
+int Tab = 2;
 void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, bool inGame) {
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
@@ -78,78 +106,146 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
-
+    
     // Draw widgets
     {
         ImGui::SetNextWindowPos(ImVec2(0, 0));
         ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y));
         ImGui::Begin("Phantom Settings", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
-
-        XUtils::renderMouseSelector();
-        XUtils::renderKeyboardSelector();
-
-        if (ImGui::Combo("Style", &style, "Gold\0Cinder\0Light\0Dark\0Classic\0")) {
-            switch(style) {
-                case 0:
-                    ImGuiUtils::styleColorsGold();
-                    break;
-                case 1:
-                    ImGui::StyleColorsCinder();
-                    break;
-                case 2:
-                    ImGui::StyleColorsLight();
-                    break;
-                case 3:
-                    ImGui::StyleColorsDark();
-                    break;
-                case 4:
-                    ImGui::StyleColorsClassic();
-                    break;
+        ImGui::SetCursorPos(ImVec2(35,90));
+        ImGui::BeginChild("Sidebar", ImVec2(140,344), true);
+        if (Tab == 1 && inGame){
+            for (Cheat *cheat : cheats) {
+            if(ImGui::Button(cheat->getName(), ImVec2(130,25))) {
+                CurrentMenu = cheat->getName();
             }
+            if (ImGui::IsItemHovered()) {
+                ImGui::SameLine();
+                ImGuiUtils::drawHelper(cheat->getDescription());
+            }
+                    
+            }
+        }
+        ImGui::EndChild();
+        
+        ImGui::SetCursorPos(ImVec2(185,90));
+        ImGui::BeginChild("Settings", ImVec2(495,344), true);
+        if (Tab == 1) {
+            if (inGame) {
+                ImGui::Text("Cheats:");
+                for (Cheat *cheat : cheats) {
+                    
+                    if (CurrentMenu == cheat->getName()) {
+                        ImGui::Checkbox(cheat->getName(), &cheat->enabled);
+                        std::string description = cheat->getName();
+                        description.append(": Settings");
+                        
+                        // if (ImGui::CollapsingHeader(description.c_str())) {
+                        //    ImGui::Indent(15);
+                        cheat->renderSettings();
+                        if (ImGui::Button("Bind")){
+                            cheat->binding = true;
+                        }
+                        ImGui::SameLine();
+                        if (cheat->binding){
+                            ImGui::Text("Bind: <...>");
+                        }else{
+                            ImGui::Text("Bind: <%d>", cheat->bind);
+                        }
+                        //
+                        
+                    }
+                } }   
+            } else {
+                ImGui::Text("Please join a world");
+            }
+
+            
+        if (Tab == 2) {
+            XUtils::renderMouseSelector();
+            XUtils::renderKeyboardSelector();
+            if (ImGui::Combo("Style", &style, "Gold\0Cinder\0Light\0Dark\0Classic\0Custom\0")) {
+                switch(style) {
+                    case 0:
+                        ImGuiUtils::styleColorsGold();
+                        break;
+                    case 1:
+                        ImGui::StyleColorsCinder();
+                        break;
+                    case 2:
+                        ImGui::StyleColorsLight();
+                        break;
+                    case 3:
+                        ImGui::StyleColorsDark();
+                        break;
+                    case 4:
+                        ImGui::StyleColorsClassic();
+                        break;
+                    case 5:
+                        Colors();
+                        break;
+                }
 
             ImGui::GetStyle().WindowRounding = 0;
-        }
-
-        if (inGame) {
-            ImGui::Text("Cheats:");
-
-            for (Cheat *cheat : cheats) {
-                ImGui::Checkbox(cheat->getName(), &cheat->enabled);
-                if (strlen(cheat->getDescription()) > 0) {
-                    ImGui::SameLine();
-                    ImGuiUtils::drawHelper(cheat->getDescription());
-                }
-
-                if (cheat->enabled) {
-                    std::string description = cheat->getName();
-                    description.append(": Settings");
-
-                    if (ImGui::CollapsingHeader(description.c_str())) {
-                        ImGui::Indent(15);
-                        cheat->renderSettings();
-                        if (ImGui::Button("Bind"))
-                            cheat->binding = true;
-                        ImGui::SameLine();
-                        if (cheat->binding)
-                            ImGui::Text("Bind: <...>");
-                        else
-                            ImGui::Text("Bind: <%d>", cheat->bind);
-                        ImGui::Unindent(15);
-                    }
-                }
             }
-        } else {
-            ImGui::Text("Please join a world");
+            }
+        ImGui::EndChild();
+
+        ImGui::SetCursorPos(ImVec2(200,35));
+        ImGui::BeginChild("Topbar", ImVec2(282,49), true);
+        ImGuiStyle& Style = ImGui::GetStyle();
+        float width = 0.0f;
+        width += ImGui::CalcTextSize("Cheats").x;
+        width += Style.ItemSpacing.x;
+        width += ImGui::CalcTextSize("Settings").x;
+        AlignForWidth(width);
+        if (ImGui::Button("Cheats")) {
+            Tab = 1;
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("Settings")) {
+            Tab = 2;
         }
 
-        if (ImGui::Button("Destruct"))
-            running = false;
+        ImGui::EndChild();
 
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+        ImGui::SetCursorPos(ImVec2(50,50));
+        ImGui::Text("Phantom");
         ImGui::End();
     }
+/*   Title();
+        ImGui::Dummy(ImVec2(0, 10));
+        ImGui::BeginChild("Buttons", ImVec2(0.0f, 0.0f));
+        ImGuiStyle& Style = ImGui::GetStyle();
+        float width = 0.0f;
+        ImGui::SetWindowFontScale(1.2f);
+        width += ImGui::CalcTextSize("Cheats").x;
+        width += Style.ItemSpacing.x;
+        width += ImGui::CalcTextSize("Settings").x;
+        AlignForWidth(width);
+        if (ImGui::Button("Cheats")) {
+            Tab = 1;
+        } Style.ItemSpacing.x = 1;
+       
+        ImGui::SameLine();
+        if (ImGui::Button("Settings")) {
+            Tab = 2;
+        }
 
-    // Rendering
+        ImGui::SetWindowFontScale(1);
+        ImGui::Dummy(ImVec2(0,10.0f));
+    
+        ImGui::EndChild();
+
+
+        
+
+
+        
+        ImGui::End();
+    
+ */
+        
     ImGui::Render();
     glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
     glClearColor(1, 1, 1, 1);
