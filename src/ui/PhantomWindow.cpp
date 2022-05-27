@@ -25,8 +25,8 @@ void Colors( ) {
     style.Colors[ImGuiCol_ChildBg] = ImColor(40, 31, 56);
     style.Colors[ImGuiCol_Text] = ImColor(255, 255, 255);
     style.Colors[ImGuiCol_Button] = ImColor(160, 65, 84);
-    
 }
+
 void Title( ) {
     std::string text = "Phantom";
     ImGui::SetWindowFontScale(2);
@@ -41,6 +41,7 @@ void Title( ) {
     ImGui::SetWindowFontScale(1);
     ImGui::PopStyleColor();
 }
+
 void AlignForWidth(float width, float alignment = 0.5f) {
     ImGuiStyle& style = ImGui::GetStyle();
     float avail = ImGui::GetContentRegionAvail().x;
@@ -48,6 +49,7 @@ void AlignForWidth(float width, float alignment = 0.5f) {
     if (off > 0.0f)
         ImGui::SetCursorPosX(ImGui::GetCursorPosX() + off);
 }
+
 void PhantomWindow::setup() {
     // Setup SDL
     // (Some versions of SDL before <2.0.10 appears to have performance/stalling issues on a minority of Windows systems,
@@ -86,8 +88,8 @@ void PhantomWindow::setup() {
     // Setup Platform/Renderer backends
     ImGui_ImplSDL2_InitForOpenGL(window, glContext);
     ImGui_ImplOpenGL3_Init(glsl_version);
-    
 }
+
 std::string CurrentMenu = "Nothing";
 int Tab = 2;
 void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, bool inGame) {
@@ -106,7 +108,7 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
-    
+
     // Draw widgets
     {
         ImGui::SetNextWindowPos(ImVec2(0, 0));
@@ -116,32 +118,26 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
         ImGui::BeginChild("Sidebar", ImVec2(140,344), true);
         if (Tab == 1 && inGame){
             for (Cheat *cheat : cheats) {
-            if(ImGui::Button(cheat->getName(), ImVec2(130,25))) {
-                CurrentMenu = cheat->getName();
-            }
-            if (ImGui::IsItemHovered()) {
-                ImGui::SameLine();
-                ImGuiUtils::drawHelper(cheat->getDescription());
-            }
-                    
+                if(ImGui::Button(cheat->getName(), ImVec2(130,25)))
+                    CurrentMenu = cheat->getName();
+                if (ImGui::IsItemHovered()) {
+                    ImGui::SameLine();
+                    ImGuiUtils::drawHelper(cheat->getDescription());
+                }
             }
         }
         ImGui::EndChild();
-        
+
         ImGui::SetCursorPos(ImVec2(185,90));
         ImGui::BeginChild("Settings", ImVec2(495,344), true);
         if (Tab == 1) {
             if (inGame) {
                 ImGui::Text("Cheats:");
                 for (Cheat *cheat : cheats) {
-                    
                     if (CurrentMenu == cheat->getName()) {
                         ImGui::Checkbox(cheat->getName(), &cheat->enabled);
                         std::string description = cheat->getName();
                         description.append(": Settings");
-                        
-                        // if (ImGui::CollapsingHeader(description.c_str())) {
-                        //    ImGui::Indent(15);
                         cheat->renderSettings();
                         if (ImGui::Button("Bind")){
                             cheat->binding = true;
@@ -152,15 +148,14 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
                         }else{
                             ImGui::Text("Bind: <%d>", cheat->bind);
                         }
-                        //
-                        
                     }
-                } }   
+                }
             } else {
                 ImGui::Text("Please join a world");
             }
+        }
 
-            
+
         if (Tab == 2) {
             XUtils::renderMouseSelector();
             XUtils::renderKeyboardSelector();
@@ -188,17 +183,17 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
 
             ImGui::GetStyle().WindowRounding = 0;
             }
-            }
+        }
         ImGui::EndChild();
 
         ImGui::SetCursorPos(ImVec2(200,35));
         ImGui::BeginChild("Topbar", ImVec2(282,49), true);
         ImGuiStyle& Style = ImGui::GetStyle();
-        float width = 0.0f;
-        width += ImGui::CalcTextSize("Cheats").x;
-        width += Style.ItemSpacing.x;
-        width += ImGui::CalcTextSize("Settings").x;
-        AlignForWidth(width);
+        float sectionWidth = 0.0f;
+        sectionWidth += ImGui::CalcTextSize("Cheats").x;
+        sectionWidth += Style.ItemSpacing.x;
+        sectionWidth += ImGui::CalcTextSize("Settings").x;
+        AlignForWidth(sectionWidth);
         if (ImGui::Button("Cheats")) {
             Tab = 1;
         }
@@ -213,39 +208,7 @@ void PhantomWindow::update(const std::vector<Cheat*>& cheats, bool &running, boo
         ImGui::Text("Phantom");
         ImGui::End();
     }
-/*   Title();
-        ImGui::Dummy(ImVec2(0, 10));
-        ImGui::BeginChild("Buttons", ImVec2(0.0f, 0.0f));
-        ImGuiStyle& Style = ImGui::GetStyle();
-        float width = 0.0f;
-        ImGui::SetWindowFontScale(1.2f);
-        width += ImGui::CalcTextSize("Cheats").x;
-        width += Style.ItemSpacing.x;
-        width += ImGui::CalcTextSize("Settings").x;
-        AlignForWidth(width);
-        if (ImGui::Button("Cheats")) {
-            Tab = 1;
-        } Style.ItemSpacing.x = 1;
-       
-        ImGui::SameLine();
-        if (ImGui::Button("Settings")) {
-            Tab = 2;
-        }
 
-        ImGui::SetWindowFontScale(1);
-        ImGui::Dummy(ImVec2(0,10.0f));
-    
-        ImGui::EndChild();
-
-
-        
-
-
-        
-        ImGui::End();
-    
- */
-        
     ImGui::Render();
     glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
     glClearColor(1, 1, 1, 1);
