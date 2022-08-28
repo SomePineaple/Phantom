@@ -78,6 +78,10 @@ void Phantom::runClient() {
 
     window->destruct();
     jvm->DetachCurrentThread();
+
+    delete mc;
+    delete window;
+    delete keyManager;
 }
 
 void Phantom::onKey(int key) {
