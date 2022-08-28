@@ -14,5 +14,8 @@ bool MCUtils::sameTeam(Minecraft *mc, EntityPlayer *player) {
     MiscUtils::replaceStr(playerName, "§r", "");
     MiscUtils::replaceStr(otherName, "§r", "");
 
+    if (playerName.size() < 3 || otherName.size() < 3)
+        return false;
+
     return playerName.at(2) == otherName.at(2);
 }
