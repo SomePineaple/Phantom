@@ -6,7 +6,10 @@
 
 #include <net/minecraft/entity/player/EntityPlayer.h>
 #include <net/minecraft/entity/EntityPlayerSP.h>
+#include <net/minecraft/util/AxisAlignedBB.h>
 #include <cmath>
+
+using namespace std;
 
 double MathHelper::distance(double x, double y) {
     return sqrt(pow(x, 2) + pow(y, 2));
@@ -123,4 +126,32 @@ int MathHelper::getDirection(float currentYaw, float targetYaw) {
         else
             return -1;
     }
+}
+
+double MathHelper::intersect(AxisAlignedBB &aabb, MathHelper::Ray r) {
+    double t1 = (aabb.getMinX() - r.origin.x) / r.dir.x;
+    double t2 = (aabb.getMaxX() - r.origin.x) / r.dir.x;
+    double t3 = (aabb.getMinY() - r.origin.y) / r.dir.y;
+    double t4 = (aabb.getMaxY() - r.origin.y) / r.dir.y;
+    double t5 = (aabb.getMinZ() - r.origin.z) / r.dir.z;
+    double t6 = (aabb.getMaxZ() - r.origin.z) / r.dir.z;
+
+     double tmin = max(max(min(t1, t2), min(t3, t4)), min(t5, t6));
+     double tmax = min(min(max(t1, t2), max(t3, t4)), max(t5, t6));
+
+     if (tmax < 0)
+        return -1;
+
+    if (tmin > tmax)
+       return -1;
+
+    if (tmin < 0)
+        return tmax;
+
+    return tmin;
+}
+
+MathHelper::Vec3 MathHelper::normalize(const MathHelper::Vec3 &vec) {
+    double length = sqrt((vec.x*vec.x) + (vec.y*vec.y) + (vec.z*vec.z));
+    return {vec.x/length, vec.y/length, vec.z/length};
 }

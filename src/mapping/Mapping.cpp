@@ -100,6 +100,7 @@ void Mapping::setup() {
     method(m, "getKeyCode", "func_151463_i", "()I", false);
     m = make("GameSettings", "net.minecraft.client.settings.GameSettings");
     field(m, "keyBindAttack", "field_74312_F", "Lnet/minecraft/client/settings/KeyBinding;", false);
+    field(m, "keyBindBack", "field_74368_y", "Lnet/minecraft/client/settings/KeyBinding;", false);
     m = make("Minecraft", "net.minecraft.client.Minecraft");
     field(m, "player", "field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;", false);
     field(m, "world", "field_71441_e", "Lnet/minecraft/client/multiplayer/WorldClient;", false);
@@ -135,6 +136,7 @@ void Mapping::setup() {
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
     method(m, "getDisplayName", "func_145748_c_", "()Lnet/minecraft/util/IChatComponent;", false);
+    method(m, "getEntityBoundingBox", "func_174813_aQ", "()Lnet/minecraft/util/AxisAlignedBB;", false);
     m = make("Vec3", "net.minecraft.util.Vec3");
     field(m, "xCoord", "field_72450_a", "D", false);
     field(m, "yCoord", "field_72448_b", "D", false);
@@ -146,6 +148,12 @@ void Mapping::setup() {
     method(m, "expand", "func_72314_b", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
     method(m, "calculateIntercept", "func_72327_a", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;)Lnet/minecraft/util/MovingObjectPosition;", false);
     method(m, "isVecInside", "func_72318_a", "(Lnet/minecraft/util/Vec3;)Z", false);
+    field(m, "maxX", "field_72336_d", "D", false);
+    field(m, "maxY", "field_72337_e", "D", false);
+    field(m, "maxZ", "field_72334_f", "D", false);
+    field(m, "minX", "field_72340_a", "D", false);
+    field(m, "minY", "field_72338_b", "D", false);
+    field(m, "minZ", "field_72339_c", "D", false);
     m = make("MovingObjectPosition", "net.minecraft.util.MovingObjectPosition");
     field(m, "hitVec", "field_72307_f", "Lnet/minecraft/util/Vec3;", false);
     m = make("Timer", "net.minecraft.util.Timer");

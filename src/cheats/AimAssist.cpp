@@ -66,7 +66,7 @@ void AimAssist::run(Minecraft *mc) {
             float currentYaw = MathHelper::wrapAngleTo180(thePlayer.getRotationYaw());
             float currentPitch = MathHelper::wrapAngleTo180(thePlayer.getRotationPitch());
 
-            int direction = MathHelper::getDirection(currentYaw, fullRotations.x);
+            int direction = MathHelper::getDirection(currentYaw, (float)fullRotations.x);
 
             thePlayer.setRotationYaw(thePlayer.getRotationYaw() + (std::min(hSpeed / ImGui::GetIO().Framerate, (float)std::abs(fullRotations.x - currentYaw)) * (float)direction));
 

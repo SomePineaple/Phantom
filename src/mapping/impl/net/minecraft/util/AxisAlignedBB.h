@@ -17,6 +17,12 @@ public:
     jobject addCoord(jdouble x, jdouble y, jdouble z);
     jobject calculateIntercept(jobject vec1, jobject vec2);
     jboolean isVecInside(jobject vec);
+    jdouble getMaxX();
+    jdouble getMaxY();
+    jdouble getMaxZ();
+    jdouble getMinX();
+    jdouble getMinY();
+    jdouble getMinZ();
 
     AxisAlignedBB getExpandContainer(jdouble x, jdouble y, jdouble z);
     AxisAlignedBB getAddCoordContainer(jdouble x, jdouble y, jdouble z);
@@ -28,6 +34,12 @@ private:
     jmethodID mdAddCoord;
     jmethodID mdCalculateIntercept;
     jmethodID mdIsVecInside;
+    jfieldID fdMaxX;
+    jfieldID fdMaxY;
+    jfieldID fdMaxZ;
+    jfieldID fdMinX;
+    jfieldID fdMinY;
+    jfieldID fdMinZ;
 
     jobject aabb;
 };

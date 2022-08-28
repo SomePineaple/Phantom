@@ -4,6 +4,8 @@
 
 #include "EntityPlayer.h"
 
+#include "../../util/AxisAlignedBB.h"
+
 EntityPlayer::EntityPlayer(Phantom *phantom, jobject player) :  AbstractClass(phantom, "EntityPlayer") {
     this->player = player;
     //Get all the field and method IDs for EntityPlayerSP that we want (mappings are for 1.12)
@@ -19,6 +21,7 @@ EntityPlayer::EntityPlayer(Phantom *phantom, jobject player) :  AbstractClass(ph
     mdSetSprinting = getMethodID("setSprint");
     mdGetEyeHeight = getMethodID("getEyeHeight");
     mdGetDisplayName = getMethodID("getDisplayName");
+    mdGetEntityBoundingBox = getMethodID("getEntityBoundingBox");
 
     jclass IChatComponent = getClass("net.minecraft.util.IChatComponent");
     mdIChatComponentGetFmtTxt = phantom->getEnv()->GetMethodID(IChatComponent, "func_150254_d", "()Ljava/lang/String;");
@@ -81,6 +84,14 @@ const char *EntityPlayer::getFormattedDisplayName() {
 
     jboolean notTrue = false;
     return phantom->getEnv()->GetStringUTFChars(str, &notTrue);
+}
+
+jobject EntityPlayer::getEntityBoundingBox() {
+    return getObject(player, mdGetEntityBoundingBox);
+}
+
+AxisAlignedBB EntityPlayer::getEntityBoundingBoxContainer() {
+    return {phantom, getEntityBoundingBox()};
 }
 
 jobject EntityPlayer::getPlayer() {

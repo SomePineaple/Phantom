@@ -8,9 +8,18 @@
 
 class EntityPlayer;
 class EntityPlayerSP;
+class AxisAlignedBB;
 namespace MathHelper {
     struct Vec2 {
         double x, y;
+    };
+
+    struct Vec3 {
+        double x, y, z;
+    };
+
+    struct Ray {
+        Vec3 origin, dir;
     };
 
     double toDegrees(double rad);
@@ -32,6 +41,10 @@ namespace MathHelper {
 
     Vec2 getRotations(EntityPlayerSP *player, EntityPlayer *target);
     int getDirection(float currentYaw, float targetYaw);
+
+    double intersect(AxisAlignedBB &aabb, Ray ray);
+
+    Vec3 normalize(const Vec3 &vec);
 }
 
 

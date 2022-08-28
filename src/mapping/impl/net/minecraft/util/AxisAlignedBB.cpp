@@ -10,6 +10,13 @@ AxisAlignedBB::AxisAlignedBB(Phantom *phantom, jobject aabb) : AbstractClass(pha
     mdIsVecInside = getMethodID("isVecInside");
     mdCalculateIntercept = getMethodID("calculateIntercept");
 
+    fdMaxX = getFieldID("maxX");
+    fdMaxY = getFieldID("maxY");
+    fdMaxZ = getFieldID("maxZ");
+    fdMinX = getFieldID("minX");
+    fdMinY = getFieldID("minY");
+    fdMinZ = getFieldID("minZ");
+
     this->aabb = aabb;
 }
 
@@ -29,16 +36,40 @@ jboolean AxisAlignedBB::isVecInside(jobject vec) {
     return getBoolean(aabb, mdIsVecInside, vec);
 }
 
+jdouble AxisAlignedBB::getMaxX() {
+    return getFloat(aabb, fdMaxX);
+}
+
+jdouble AxisAlignedBB::getMaxY() {
+    return getFloat(aabb, fdMaxY);
+}
+
+jdouble AxisAlignedBB::getMaxZ() {
+    return getFloat(aabb, fdMaxZ);
+}
+
+jdouble AxisAlignedBB::getMinX() {
+    return getFloat(aabb, fdMinX);
+}
+
+jdouble AxisAlignedBB::getMinY() {
+    return getFloat(aabb, fdMinY);
+}
+
+jdouble AxisAlignedBB::getMinZ() {
+    return getFloat(aabb, fdMinZ);
+}
+
 AxisAlignedBB AxisAlignedBB::getExpandContainer(jdouble x, jdouble y, jdouble z) {
-    return AxisAlignedBB(phantom, expand(x, y, z));
+    return {phantom, expand(x, y, z)};
 }
 
 AxisAlignedBB AxisAlignedBB::getAddCoordContainer(jdouble x, jdouble y, jdouble z) {
-    return AxisAlignedBB(phantom, addCoord(x, y, z));
+    return {phantom, addCoord(x, y, z)};
 }
 
 MovingObjectPosition AxisAlignedBB::getCalculateInterceptContainer(jobject vec1, jobject vec2) {
-    return MovingObjectPosition(phantom, calculateIntercept(vec1, vec2));
+    return {phantom, calculateIntercept(vec1, vec2)};
 }
 
 jobject AxisAlignedBB::getAABB() {

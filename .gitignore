@@ -3,3 +3,5 @@
 /build
 /.idea
 /compile_commands.json
+/Phantom.kdev4
+/.kdev4

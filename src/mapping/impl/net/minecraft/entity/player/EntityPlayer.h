@@ -9,6 +9,7 @@
 #include "../../../../../../Phantom.h"
 #include <net/minecraft/entity/EntityLivingBase.h>
 
+class AxisAlignedBB;
 
 class EntityPlayer : public AbstractClass {
 public:
@@ -31,6 +32,10 @@ public:
     jfloat getEyeHeight();
     jdouble getLastTickPosZ();
 
+    jobject getEntityBoundingBox();
+
+    AxisAlignedBB getEntityBoundingBoxContainer();
+
     jobject getPlayer();
 protected:
     jfieldID fdPosX;
@@ -45,6 +50,7 @@ protected:
     jmethodID mdSetSprinting;
     jmethodID mdGetEyeHeight;
     jmethodID mdGetDisplayName;
+    jmethodID mdGetEntityBoundingBox;
 
     jmethodID mdIChatComponentGetFmtTxt;
 
