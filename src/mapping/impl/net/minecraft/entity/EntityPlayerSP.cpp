@@ -15,6 +15,10 @@ EntityPlayerSP::EntityPlayerSP(Phantom * phantom, Minecraft * mc) : AbstractClas
 	fdPosZ = getFieldID("z");
 	fdRotationYaw = getFieldID("yaw");
 	fdRotationPitch = getFieldID("pitch");
+    /* fdGetItemInUse = getFieldID("itemInUse"); */
+    /* fdGetEquipment = getFieldID("equipment"); */
+    fdWidth = getFieldID("width");
+    fdHeight = getFieldID("height");
 	mdGetId = getMethodID("getID");
 	mdGetName = getMethodID("getName");
 	mdSetSprinting = getMethodID("setSprint");
@@ -79,6 +83,26 @@ const char *EntityPlayerSP::getFormattedDisplayName() {
     jboolean notTrue = false;
     return phantom->getEnv()->GetStringUTFChars(str, &notTrue);
 }
+
+/* const char *EntityPlayerSP::getItemInUse() { */
+    /* auto str = (jstring) getObject(mc->getPlayer(), fdGetItemInUse); */
+    /* jboolean notTrue = false; */
+    /* return phantom->getEnv()->GetStringUTFChars(str, &notTrue); */
+/* } */
+
+void EntityPlayerSP::setWidth(jfloat width) {
+    setFloat(mc->getPlayer(), fdWidth, width);
+}
+
+void EntityPlayerSP::setHeight(jfloat height) {
+    setFloat(mc->getPlayer(), fdHeight, height);
+}
+
+/* const char *EntityPlayerSP::getClickedItem() { */
+/*     auto item = (jstring)getObject(mc->getPlayer(), fdGetClickedItem); */
+/*     jboolean notTrue = false; */
+/*     return phantom->getEnv()->GetStringUTFChars(item, &notTrue); */
+/* } */
 
 jobject EntityPlayerSP::getEntityPlayerSP() {
     return mc->getPlayer();

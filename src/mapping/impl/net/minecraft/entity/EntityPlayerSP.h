@@ -26,10 +26,15 @@ public:
 	jint getId();
 	const char *getName();
     const char *getFormattedDisplayName();
+    const char *getClickedItem();
+
 
 	void setRotationYaw(jfloat yaw);
 	void setRotationPitch(jfloat pitch);
 	void setSprinting(jboolean sprinting);
+
+    void setWidth(jfloat width);
+    void setHeight(jfloat height);
 
     jobject getEntityPlayerSP();
 private:
@@ -38,6 +43,12 @@ private:
 	jfieldID fdPosZ;
 	jfieldID fdRotationYaw;
 	jfieldID fdRotationPitch;
+    /* jfieldID fdGetCurrentItem; */
+    /* jfieldID fdGetSlotIndex; */
+    /* jfieldID fdGetEquipment; */
+    /* jfieldID fdGetClickedItem; */
+    jfieldID fdWidth, fdHeight;
+    /* jfieldID fdGetCurrentPlayerItem; */
 	jmethodID mdGetId;
 	jmethodID mdGetName;
 	jmethodID mdSetSprinting;
@@ -50,3 +61,4 @@ private:
 };
 
 #endif //PHANTOM_ENTITYPLAYERSP_H
+
