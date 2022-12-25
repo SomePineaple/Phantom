@@ -21,8 +21,8 @@ private:
 
 
     // Settings
-    bool defaultSelfHitbox;
-    bool phase;
+    bool devSize;
+    int scale;
     float selfWidth, selfHeight;
 
 };
