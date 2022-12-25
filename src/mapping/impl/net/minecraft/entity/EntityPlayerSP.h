@@ -33,8 +33,8 @@ public:
 	void setRotationPitch(jfloat pitch);
 	void setSprinting(jboolean sprinting);
 
-    void setWidth(jfloat width);
-    void setHeight(jfloat height);
+    void setSelfWidth(jfloat width);
+    void setSelfHeight(jfloat height);
 
     jobject getEntityPlayerSP();
 private:
@@ -47,7 +47,7 @@ private:
     /* jfieldID fdGetSlotIndex; */
     /* jfieldID fdGetEquipment; */
     /* jfieldID fdGetClickedItem; */
-    jfieldID fdWidth, fdHeight;
+    jfieldID fdSelfWidth, fdSelfHeight;
     /* jfieldID fdGetCurrentPlayerItem; */
 	jmethodID mdGetId;
 	jmethodID mdGetName;

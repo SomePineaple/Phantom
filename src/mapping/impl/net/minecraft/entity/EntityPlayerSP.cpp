@@ -17,8 +17,8 @@ EntityPlayerSP::EntityPlayerSP(Phantom * phantom, Minecraft * mc) : AbstractClas
 	fdRotationPitch = getFieldID("pitch");
     /* fdGetItemInUse = getFieldID("itemInUse"); */
     /* fdGetEquipment = getFieldID("equipment"); */
-    fdWidth = getFieldID("width");
-    fdHeight = getFieldID("height");
+    fdSelfWidth = getFieldID("width");
+    fdSelfHeight = getFieldID("height");
 	mdGetId = getMethodID("getID");
 	mdGetName = getMethodID("getName");
 	mdSetSprinting = getMethodID("setSprint");
@@ -90,12 +90,12 @@ const char *EntityPlayerSP::getFormattedDisplayName() {
     /* return phantom->getEnv()->GetStringUTFChars(str, &notTrue); */
 /* } */
 
-void EntityPlayerSP::setWidth(jfloat width) {
-    setFloat(mc->getPlayer(), fdWidth, width);
+void EntityPlayerSP::setSelfWidth(jfloat width) {
+    setFloat(mc->getPlayer(), fdSelfWidth, width);
 }
 
-void EntityPlayerSP::setHeight(jfloat height) {
-    setFloat(mc->getPlayer(), fdHeight, height);
+void EntityPlayerSP::setSelfHeight(jfloat height) {
+    setFloat(mc->getPlayer(), fdSelfHeight, height);
 }
 
 /* const char *EntityPlayerSP::getClickedItem() { */
