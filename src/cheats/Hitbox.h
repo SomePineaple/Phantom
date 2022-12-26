@@ -14,6 +14,7 @@ public:
     explicit Hitbox(Phantom *phantom);
 
     void run(Minecraft *mc) override;
+    void reset(Minecraft *mc) override;
     void renderSettings() override;
 private:
 
@@ -21,6 +22,7 @@ private:
 
 
     // Settings
+    bool showHitbox;
     bool devSize;
     int scale;
     float selfWidth, selfHeight;

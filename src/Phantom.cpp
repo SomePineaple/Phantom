@@ -14,9 +14,11 @@
 #include "cheats/AimBot.h"
 #include "cheats/AutoClicker.h"
 #include "cheats/AimAssist.h"
+#include "cheats/Hitbox.h"
 #include "cheats/Reach.h"
 #include "cheats/FastPlace.h"
 #include "cheats/HitDelayFix.h"
+#include "cheats/Speed.h"
 
 #include "ui/KeyManager.h"
 #include "cheats/STap.h"
@@ -39,12 +41,14 @@ Phantom::Phantom() {
     Mapping::setup();
 
     cheats.push_back(new AimBot(this));
-    cheats.push_back(new AimAssist(this));
     cheats.push_back(new AutoClicker());
+    cheats.push_back(new AimAssist(this));
+    cheats.push_back(new Hitbox(this));
     cheats.push_back(new Reach(this));
     cheats.push_back(new FastPlace());
     cheats.push_back(new HitDelayFix());
     cheats.push_back(new STap(this));
+    cheats.push_back(new Speed(this));
 }
 
 void Phantom::runClient() {
@@ -73,6 +77,8 @@ void Phantom::runClient() {
         for (Cheat *cheat : cheats) {
             if (cheat->enabled)
                 cheat->run(mc);
+            else if(!cheat->enabled)
+                cheat->reset(mc);
         }
 
         window->update(cheats, running, true);
