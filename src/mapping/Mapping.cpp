@@ -16,6 +16,8 @@ const char *Mapping::getClassName(const char *key)  {
 }
 
 void Mapping::setup() {
+    // PLEASE USE https://github.com/bspkrs/MCPMappingViewer 1.8.9 stable!!!!!!!!!!!!
+
     // How to define mappings:
     // --- Unobfuscated classes:
     //
@@ -36,11 +38,8 @@ void Mapping::setup() {
     method(m, "toArray", "()[Ljava/lang/Object;", false);
     method(m, "size", "()I", false);
     m = make("Set", "java.util.Set");
-    method(m, "toArray", "()[Ljava/lang/Object;", false);
-    method(m, "size", "()I", false);
-    m = make("System", "java.lang.System");
-    field(m, "out", "Ljava/io/PrintStream;", true);
-    m = make("PrintStream", "java.io.PrintStream");
+    method(m, "toArray", "()[Ljava/lang/Object;", false); method(m, "size", "()I", false);
+    m = make("System", "java.lang.System"); field(m, "out", "Ljava/io/PrintStream;", true); m = make("PrintStream", "java.io.PrintStream");
     method(m, "println", "(Ljava/lang/String;)V", false);
     m = make("Mouse", "org.lwjgl.input.Mouse");
     method(m, "isButtonDown", "(I)Z", true);
@@ -83,17 +82,46 @@ void Mapping::setup() {
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);
     method(m, "setTime", "func_72877_b", "(J)V", false);
     method(m, "getEntitiesWithinAABBExcluding", "func_72839_b", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/AxisAlignedBB;)Ljava/util/List;", false);
+    m = make("PlayerControllerMP", "net.minecraft.client.multiplayer.PlayerControllerMP");
+    method(m, "getIsHittingBlock", "func_181040_m", "()Z", false);
+    field(m, "isHittingBlock" "field_78778_j", "Z", false);
     m = make("PlayerSP", "net.minecraft.client.entity.EntityPlayerSP");
     field(m, "x", "field_70165_t", "D", false);
     field(m, "y", "field_70163_u", "D", false);
     field(m, "z", "field_70161_v", "D", false);
     field(m, "yaw", "field_70177_z", "F", false);
     field(m, "pitch", "field_70125_A", "F", false);
+    /* field(m, "speed", "field_75645_e", "F", false); */
+
+    // need to move to net/minecraft/network/play/client    C0CPacketInput
+    field(m, "forwardSpeed", "field_149622_b", "F", false);
+    field(m, "strafeSpeed", "field_149624_a", "F", false);
+    //
+
+    /* field(m, "slotIndex", "field_75225_a", "F", false); */
+    /* field(m, "slotNumber", "field_75222_d", "()I", false); */
+    /* field(m, "currentItemStack", "field_70456_f", "()I", false); */
+    field(m, "width", "field_70130_N", "F", false);
+    field(m, "height", "field_70131_O", "F", false);
+
+    field(m, "curBlockDamageMP" ,"field_78770_f", "()F", false);
+
+    method(m, "setPosition", "func_70107_b", "(DDD)V", false);
+    method(m, "setVelocity", "func_70016_h", "(DDD)V", false); // maybe shoudl be in entity
+    method(m, "handleEntityVelocity", "func_147244_a", "a", false);
+    /* field(m, "currentItem", "field_70461_c", "D", false); */
+    /* field(m, "itemInUse", "field_71074_e", "F", false); */
+    /* field(m, "equipment", "field_82182_bS", "L", false); */
+    /* field(m, "clickedItem", "field_149551_e", "()Ljava/lang/String;", false); */
+    /* field(m, "currentPlayerItem", "field_78777_l", "()I", false); */
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
     method(m, "getDisplayName", "func_145748_c_", "()Lnet/minecraft/util/IChatComponent;", false);
+    // field_147065_z
+
+
     m = make("KeyBinding", "net.minecraft.client.settings.KeyBinding");
     method(m, "setKeyBindState", "func_74510_a", "(IZ)V", true);
     method(m, "onTick", "func_74507_a", "(I)V", true);
@@ -104,6 +132,7 @@ void Mapping::setup() {
     m = make("Minecraft", "net.minecraft.client.Minecraft");
     field(m, "player", "field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;", false);
     field(m, "world", "field_71441_e", "Lnet/minecraft/client/multiplayer/WorldClient;", false);
+    field(m, "playerController", "field_71442_b", "Lnet/minecraft/client/multiplayer/PlayerControllerMP", false);
     field(m, "gameSettings", "field_71474_y", "Lnet/minecraft/client/settings/GameSettings;", false);
     field(m, "inGameHasFocus", "field_71415_G", "Z", false);
     field(m, "pointedEntity", "field_147125_j", "Lnet/minecraft/entity/Entity;", false);
