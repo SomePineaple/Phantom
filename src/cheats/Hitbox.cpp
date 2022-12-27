@@ -18,6 +18,9 @@ Hitbox::Hitbox(Phantom *phantom) : Cheat("Hitbox", "Change the size of hitbox's"
     selfWidth = 0.6;
     selfHeight = 1.8;
     scale = 0;
+
+    horizontal = 0.6;
+    vertical = 0.6;
 }
 
 void Hitbox::run(Minecraft *mc) {
@@ -30,11 +33,15 @@ void Hitbox::run(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
     player.setSelfWidth(selfWidth);
     player.setSelfHeight(selfHeight);
+    // TODO: find a way to reload/update player/world to update hitbox
 
     /* player.setCurBlockDamageMP(1.0F); */
 
     /* if(showHitbox) */
         /* player. */
+
+    player.setVelocity(horizontal, vertical, 1);
+
 }
 
 void Hitbox::reset(Minecraft *mc) {
@@ -66,4 +73,7 @@ void Hitbox::renderSettings() {
         }
 
     }
+
+    ImGui::SliderFloat("Horizontal velocity", &horizontal, 0, 100, "%.5f");
+    ImGui::SliderFloat("Vertical velocity", &vertical, 0, 100, "%.5f");
 }

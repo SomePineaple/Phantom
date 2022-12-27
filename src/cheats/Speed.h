@@ -2,16 +2,16 @@
 // Created by somepineaple on 2/1/22.
 //
 
-#ifndef PHANTOM_VCLIP_H
-#define PHANTOM_VCLIP_H
+#ifndef PHANTOM_SPEED_H
+#define PHANTOM_SPEED_H
 
 
 #include "Cheat.h"
 
 class EntityPlayer;
-class VClip : public Cheat {
+class Speed : public Cheat {
 public:
-    explicit VClip(Phantom *phantom);
+    explicit Speed(Phantom *phantom);
 
     void run(Minecraft *mc) override;
     void reset(Minecraft *mc) override;
@@ -21,10 +21,11 @@ private:
 
     Phantom *phantom;
 
+
     // Settings
-    bool teleport;
-    float x, y, z;
+    float speed;
+
 };
 
-#endif //PHANTOM_VCLIP_H
+#endif //PHANTOM_SPEED_H
 

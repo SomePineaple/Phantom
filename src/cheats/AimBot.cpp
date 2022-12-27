@@ -63,6 +63,8 @@ void AimBot::run(Minecraft *mc) {
         }
 }
 
+void AimBot::reset() {}
+
 void AimBot::renderSettings() {
     ImGui::SliderFloat("range", &range, 0, 6);
     ImGui::Checkbox("Only while clicking", &onlyOnClick);

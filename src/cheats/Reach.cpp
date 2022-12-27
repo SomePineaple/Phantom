@@ -13,10 +13,6 @@ Reach::Reach(Phantom *phantom) : Cheat("Reach", "Long arm hack") {
     this->phantom = phantom;
 }
 
-void Reach::renderSettings() {
-    ImGui::SliderFloat("Hit Distance", &reach, 3, 6, "%.2f");
-}
-
 // This is basically a copy of how minecraft calculates what block your looking at, but with modified reach values.
 void Reach::run(Minecraft *mc) {
     Entity renderViewEntity = mc->getRenderViewEntityContainer();
@@ -81,4 +77,12 @@ void Reach::run(Minecraft *mc) {
             mc->setObjectMouseOver(phantom->getEnv()->NewObject(MovingObjectPosition, movingObjectPositionConstructor, entityRenderer.getPointedEntity(), var9.getVec3()));
         }
     }
+}
+
+void Reach::reset(Minecraft *mc) {
+    // should make reset to 3 blocks reach
+}
+
+void Reach::renderSettings() {
+    ImGui::SliderFloat("Hit Distance", &reach, 3, 6, "%.2f");
 }

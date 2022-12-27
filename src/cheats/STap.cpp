@@ -18,16 +18,6 @@ STap::STap(Phantom *phantom) : Cheat("STap", "Get Crazy Combo's bro") {
     numIntersections = 0;
 }
 
-void STap::renderSettings() {
-    ImGui::SliderFloat("Engage Distance", &engageDistance, 0.0, 4.0);
-    ImGui::SliderFloat("Disengage Distance", &disengageDistance, 0.0, 4.0);
-
-    ImGui::Text("%d, %.2f", numIntersections, dist);
-
-    if (disengageDistance < engageDistance)
-        disengageDistance = engageDistance;
-}
-
 void STap::run(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
     /*
@@ -71,4 +61,16 @@ void STap::run(Minecraft *mc) {
     } else {
         keyBindBack.setKeyBindState(keyBindBack.getKeyCode(), false);
     }
+}
+
+void reset(Minecraft *mc) {}
+
+void STap::renderSettings() {
+    ImGui::SliderFloat("Engage Distance", &engageDistance, 0.0, 4.0);
+    ImGui::SliderFloat("Disengage Distance", &disengageDistance, 0.0, 4.0);
+
+    ImGui::Text("%d, %.2f", numIntersections, dist);
+
+    if (disengageDistance < engageDistance)
+        disengageDistance = engageDistance;
 }

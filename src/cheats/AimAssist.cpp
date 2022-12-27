@@ -19,6 +19,7 @@ AimAssist::AimAssist(Phantom *phantom) : Cheat("AimAssist", "Aims for u, but smo
     hSpeed = 10;
     vSpeed = 0;
     onlyOnClick = true;
+    onlyOnWeapon = false;
     center = true;
     dead = false;
     teams = false;
@@ -39,47 +40,55 @@ void AimAssist::run(Minecraft *mc) {
         XUtils::isDeviceShit = false;
     }
 
-    if (!onlyOnClick || mouseState.buttonStates[1]) {
-        float closestDistance = range;
+    /* isHoldingWeapon(mc); */
 
-        EntityPlayerSP thePlayer = mc->getPlayerContainer();
 
-        EntityPlayer closest(phantom, nullptr);
-        JavaList players = mc->getWorldContainer().getPlayers();
-        if (players.getList() == nullptr)
-            return;
+    /* if (!onlyOnWeapon || isHoldingWeapon(mc)) { */
+        if (!onlyOnClick || mouseState.buttonStates[1]) {
+            float closestDistance = range;
 
-        for (int i = 0; i < players.size(); i++) {
-            EntityPlayer player(phantom, players.get(i));
-            if ((player.getId() != mc->getPlayerContainer().getId()) && isInFOV(&player, mc, fov) && !(MCUtils::sameTeam(mc, &player) && teams)) {
-                auto newDist = (float) MathHelper::distance(player.getPosX(), player.getPosY(), player.getPosZ(), thePlayer.getPosX(), thePlayer.getPosY(), thePlayer.getPosZ());
-                if (newDist < closestDistance) {
-                    closestDistance = newDist;
-                    closest = player;
+            EntityPlayerSP thePlayer = mc->getPlayerContainer();
+
+
+            EntityPlayer closest(phantom, nullptr);
+            JavaList players = mc->getWorldContainer().getPlayers();
+            if (players.getList() == nullptr)
+                return;
+
+            for (int i = 0; i < players.size(); i++) {
+                EntityPlayer player(phantom, players.get(i));
+                if ((player.getId() != mc->getPlayerContainer().getId()) && isInFOV(&player, mc, fov) && !(MCUtils::sameTeam(mc, &player) && teams)) {
+                    auto newDist = (float) MathHelper::distance(player.getPosX(), player.getPosY(), player.getPosZ(), thePlayer.getPosX(), thePlayer.getPosY(), thePlayer.getPosZ());
+                    if (newDist < closestDistance) {
+                        closestDistance = newDist;
+                        closest = player;
+                    }
                 }
             }
-        }
 
-        if (closest.getPlayer() != nullptr) {
-            MathHelper::Vec2 fullRotations = MathHelper::getRotations(&thePlayer, &closest);
+            if (closest.getPlayer() != nullptr) {
+                MathHelper::Vec2 fullRotations = MathHelper::getRotations(&thePlayer, &closest);
 
-            float currentYaw = MathHelper::wrapAngleTo180(thePlayer.getRotationYaw());
-            float currentPitch = MathHelper::wrapAngleTo180(thePlayer.getRotationPitch());
+                float currentYaw = MathHelper::wrapAngleTo180(thePlayer.getRotationYaw());
+                float currentPitch = MathHelper::wrapAngleTo180(thePlayer.getRotationPitch());
 
-            int direction = MathHelper::getDirection(currentYaw, (float)fullRotations.x);
+                int direction = MathHelper::getDirection(currentYaw, (float)fullRotations.x);
 
-            thePlayer.setRotationYaw(thePlayer.getRotationYaw() + (std::min(hSpeed / ImGui::GetIO().Framerate, (float)std::abs(fullRotations.x - currentYaw)) * (float)direction));
+                thePlayer.setRotationYaw(thePlayer.getRotationYaw() + (std::min(hSpeed / ImGui::GetIO().Framerate, (float)std::abs(fullRotations.x - currentYaw)) * (float)direction));
 
-            if (fullRotations.y > currentPitch) {
-                thePlayer.setRotationPitch(thePlayer.getRotationPitch() + (vSpeed / ImGui::GetIO().Framerate));
-                thePlayer.setRotationPitch(std::min(thePlayer.getRotationPitch(), (float)fullRotations.y));
-            } else if (fullRotations.y < currentPitch) {
-                thePlayer.setRotationPitch(thePlayer.getRotationPitch() - (vSpeed / ImGui::GetIO().Framerate));
-                thePlayer.setRotationPitch(std::max(thePlayer.getRotationPitch(), (float)fullRotations.y));
-            }
+                if (fullRotations.y > currentPitch) {
+                    thePlayer.setRotationPitch(thePlayer.getRotationPitch() + (vSpeed / ImGui::GetIO().Framerate));
+                    thePlayer.setRotationPitch(std::min(thePlayer.getRotationPitch(), (float)fullRotations.y));
+                } else if (fullRotations.y < currentPitch) {
+                    thePlayer.setRotationPitch(thePlayer.getRotationPitch() - (vSpeed / ImGui::GetIO().Framerate));
+                    thePlayer.setRotationPitch(std::max(thePlayer.getRotationPitch(), (float)fullRotations.y));
+                }
+            /* } */
         }
     }
 }
+
+void AimAssist::reset(Minecraft *mc) {}
 
 void AimAssist::renderSettings() {
     ImGui::SliderFloat("range", &range, 0, 6, "%.2f");
@@ -87,6 +96,7 @@ void AimAssist::renderSettings() {
     ImGui::SliderFloat("hSpeed", &hSpeed, 0, 100, "%.2f");
     ImGui::SliderFloat("vSpeed", &vSpeed, 0, 100, "%.2f");
     ImGui::Checkbox("Only while clicking", &onlyOnClick);
+    ImGui::Checkbox("Only while holding a weapon", &onlyOnWeapon);
     ImGui::Checkbox("Teams Check", &teams);
     ImGui::Checkbox("Center", &center);
     ImGui::Checkbox("Target Dead", &dead);
@@ -101,4 +111,23 @@ bool AimAssist::isInFOV(EntityPlayer *entity, Minecraft *mc, float fov) {
     float diff = std::abs(MathHelper::getAngleDiff(playerYaw, targetYaw));
 
     return diff < fov;
+}
+
+void AimAssist::isHoldingWeapon(Minecraft *mc) {
+    auto playerItem = mc->getPlayerContainer().getClickedItem();
+    std::string stringg= "notify-send ";
+    /* stringg += (string) playerItem; */
+    stringg += playerItem;
+    const char *cmd = stringg.c_str();
+    system(cmd);
+    /* if (playerItem == nullptr) */
+        /* return false; */
+
+    /* if (playerItem == "diamond_sword") */
+        /* return true; */
+
+    /* return dynamic_cast<playerItem->getItem()>(ItemSword) != 0; */
+    /* return false; */
+    /* return playerItem; */
+    return;
 }

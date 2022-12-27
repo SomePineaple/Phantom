@@ -12,7 +12,10 @@
 class AutoClicker : public Cheat {
 public:
     explicit AutoClicker();
+
+    void reset(Minecraft *mc) override;
     void run(Minecraft *mc) override;
+
     void renderSettings() override;
 private:
     void updateValues();
@@ -24,6 +27,7 @@ private:
     float holdLength;
     float holdLengthRandom;
     bool onlyInGame;
+    bool breakBlocks;
     bool showAdvanced;
 
     int nextDelay;
@@ -37,3 +41,4 @@ private:
 
 
 #endif //PHANTOM_AUTOCLICKER_H
+

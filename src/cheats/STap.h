@@ -6,8 +6,11 @@
 class STap : public Cheat {
 public:
     explicit STap(Phantom *phantom);
-    void renderSettings() override;
+
     void run(Minecraft *mc) override;
+    void reset(Minecraft *mc) override;
+
+    void renderSettings() override;
 private:
     Phantom *phantom;
 
@@ -21,3 +24,4 @@ private:
 };
 
 #endif // PHANTOM_STAP_H
+

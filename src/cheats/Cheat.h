@@ -11,6 +11,7 @@ class Cheat {
 public:
     explicit Cheat(const char *name, const char *description = "");
     virtual void run(Minecraft *mc);
+    virtual void reset(Minecraft *mc);
     virtual void renderSettings();
     const char *getName();
     const char *getDescription();

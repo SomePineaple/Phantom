@@ -10,8 +10,11 @@
 class FastPlace : public Cheat {
 public:
     FastPlace();
+
     void run(Minecraft *mc) override;
+    void reset(Minecraft *mc) override;
 };
 
 
 #endif //PHANTOM_FASTPLACE_H
+

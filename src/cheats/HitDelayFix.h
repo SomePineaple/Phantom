@@ -10,8 +10,11 @@
 class HitDelayFix : public Cheat {
 public:
     HitDelayFix();
+
     void run(Minecraft *mc) override;
+    void reset(Minecraft *mc) override;
 };
 
 
 #endif //PHANTOM_HITDELAYFIX_H
+
