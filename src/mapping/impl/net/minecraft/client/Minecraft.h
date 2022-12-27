@@ -12,6 +12,7 @@
 
 class Phantom;
 class EntityPlayerSP;
+class PlayerControllerMP;
 class WorldClient;
 class Entity;
 class Minecraft : public AbstractClass {
@@ -20,6 +21,7 @@ public:
 
 	jobject getMinecraft();
 	jobject getPlayer();
+    jobject getPlayerController();
 	jobject getWorld();
     jobject getGameSettings();
     jobject getRenderViewEntity();
@@ -36,6 +38,7 @@ public:
     void setLeftClickMouse(jint leftClickMouse);
 
 	EntityPlayerSP getPlayerContainer();
+    PlayerControllerMP getPlayerControllerMPContainer();
 	WorldClient getWorldContainer();
     GameSettings getGameSettingsContainer();
     Entity getRenderViewEntityContainer();
@@ -44,6 +47,7 @@ public:
     Phantom *getPhantom();
 private:
 	jfieldID fdPlayer;
+    jfieldID fdPlayerController;
 	jfieldID fdWorld;
     jfieldID fdGameSettings;
     jfieldID fdInGameHasFocus;
@@ -58,3 +62,4 @@ private:
 };
 
 #endif //PHANTOM_MINECRAFT_H
+

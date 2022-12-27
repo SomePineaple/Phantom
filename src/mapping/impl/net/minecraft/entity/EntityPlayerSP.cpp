@@ -15,10 +15,19 @@ EntityPlayerSP::EntityPlayerSP(Phantom * phantom, Minecraft * mc) : AbstractClas
 	fdPosZ = getFieldID("z");
 	fdRotationYaw = getFieldID("yaw");
 	fdRotationPitch = getFieldID("pitch");
+    fdForwardSpeed = getFieldID("forwardSpeed");
+    fdStrafeSpeed = getFieldID("strafeSpeed");
+    /* fdSpeed = getFieldID("speed"); */
     /* fdGetItemInUse = getFieldID("itemInUse"); */
     /* fdGetEquipment = getFieldID("equipment"); */
     fdSelfWidth = getFieldID("width");
     fdSelfHeight = getFieldID("height");
+
+    fdGetCurBlockDamageMP = getFieldID("curBlockDamageMP");
+    /* mdGetIsHittingBlock = getMethodID("getIsHittingBlock"); */
+
+    mdSetPosition = getMethodID("setPosition");
+    mdSetVelocity = getMethodID("setVelocity");
 	mdGetId = getMethodID("getID");
 	mdGetName = getMethodID("getName");
 	mdSetSprinting = getMethodID("setSprint");
@@ -76,6 +85,11 @@ jfloat EntityPlayerSP::getRotationPitch() {
     return getFloat(mc->getPlayer(), fdRotationPitch);
 }
 
+void EntityPlayerSP::setSpeed(jfloat speed) {
+    setFloat(mc->getPlayer(), fdForwardSpeed, speed);
+    setFloat(mc->getPlayer(), fdStrafeSpeed, speed);
+}
+
 const char *EntityPlayerSP::getFormattedDisplayName() {
     jobject displayName = getObject(mc->getPlayer(), mdGetDisplayName);
     auto str = (jstring) getObject(displayName, mdIChatComponentGetFmtTxt);
@@ -98,11 +112,24 @@ void EntityPlayerSP::setSelfHeight(jfloat height) {
     setFloat(mc->getPlayer(), fdSelfHeight, height);
 }
 
+void EntityPlayerSP::setVelocity(jfloat horizontal, jfloat vertical, jint chance) {
+    callMethod(mc->getPlayer(), mdSetVelocity, horizontal, vertical, horizontal);
+}
+
+void EntityPlayerSP::setPosition(jfloat x, jfloat y, jfloat z) {
+    callMethod(mc->getPlayer(), mdSetPosition, x, y, z);
+}
+
+
 /* const char *EntityPlayerSP::getClickedItem() { */
 /*     auto item = (jstring)getObject(mc->getPlayer(), fdGetClickedItem); */
 /*     jboolean notTrue = false; */
 /*     return phantom->getEnv()->GetStringUTFChars(item, &notTrue); */
 /* } */
+
+void EntityPlayerSP::setCurBlockDamageMP(jfloat damage) {
+    setFloat(mc->getPlayer(), fdGetCurBlockDamageMP, damage);
+} // wrong place
 
 jobject EntityPlayerSP::getEntityPlayerSP() {
     return mc->getPlayer();

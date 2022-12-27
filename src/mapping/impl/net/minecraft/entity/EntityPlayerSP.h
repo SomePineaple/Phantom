@@ -33,6 +33,13 @@ public:
 	void setRotationPitch(jfloat pitch);
 	void setSprinting(jboolean sprinting);
 
+    void setSpeed(jfloat speed);
+    void setVelocity(jfloat horizontal, jfloat vertical, jint change);
+    void setPosition(jfloat x, jfloat y, jfloat z);
+
+    void setCurBlockDamageMP(jfloat damage);
+    jboolean getIsHittingBlock();
+
     void setSelfWidth(jfloat width);
     void setSelfHeight(jfloat height);
 
@@ -43,12 +50,18 @@ private:
 	jfieldID fdPosZ;
 	jfieldID fdRotationYaw;
 	jfieldID fdRotationPitch;
+    jfieldID fdForwardSpeed, fdStrafeSpeed;
+    /* jfieldID fdSpeed; */
     /* jfieldID fdGetCurrentItem; */
     /* jfieldID fdGetSlotIndex; */
     /* jfieldID fdGetEquipment; */
     /* jfieldID fdGetClickedItem; */
     jfieldID fdSelfWidth, fdSelfHeight;
     /* jfieldID fdGetCurrentPlayerItem; */
+    jfieldID fdGetCurBlockDamageMP;
+
+    jmethodID mdSetPosition;
+    jmethodID mdSetVelocity;
 	jmethodID mdGetId;
 	jmethodID mdGetName;
 	jmethodID mdSetSprinting;

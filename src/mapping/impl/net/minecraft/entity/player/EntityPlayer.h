@@ -28,6 +28,7 @@ public:
     void setSprinting(jboolean sprinting);
     const char *getFormattedDisplayName();
 
+
     jdouble getLastTickPosX();
     jfloat getEyeHeight();
     jdouble getLastTickPosZ();
@@ -59,3 +60,4 @@ protected:
 
 
 #endif //PHANTOM_ENTITYPLAYER_H
+
