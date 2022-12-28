@@ -24,6 +24,7 @@ private:
 
     // Settings
     bool showHitbox;
+    bool reload;
     bool devSize;
     int scale;
     float selfWidth, selfHeight;

@@ -10,6 +10,7 @@ HitBox::HitBox(Phantom *phantom) : Cheat("HitBox", "Change the size of hitbox's"
     this->phantom = phantom;
 
     showHitbox = false;
+    reload = true;
     devSize = false;
     selfWidth = 0.6;
     selfHeight = 1.8;
@@ -26,7 +27,8 @@ void HitBox::run(Minecraft *mc) {
     player.setSelfWidth(selfWidth);
     player.setSelfHeight(selfHeight);
 
-    // TODO: find a way to reload/update player/world to update hitbox
+    if(reload)
+        player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ()); // there may be a better way to do it like maybe an actaull update method or something. but this works for now ig.
 
     /* if(showHitbox) */
         /* player. */
@@ -34,8 +36,12 @@ void HitBox::run(Minecraft *mc) {
 
 void HitBox::reset(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
+
     player.setSelfWidth(0.6);
     player.setSelfHeight(1.8);
+
+    if(reload)
+        player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ());
 }
 
 void HitBox::renderSettings() {
@@ -43,6 +49,10 @@ void HitBox::renderSettings() {
 
     if(ImGui::CollapsingHeader("Personal Hitbox")) {
         ImGui::Text("You will usually have to update the player (e.g. walk through a block) for changes to take effect");
+
+        ImGui::Checkbox("Reload", &reload);
+        ImGui::SameLine();
+        ImGuiUtils::drawHelper("Weather or not to instantly update the hitbox");
 
         ImGui::Checkbox("Allow Hitbox size lower than 0", &devSize);
         ImGui::SameLine();

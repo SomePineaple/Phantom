@@ -34,7 +34,7 @@ void Clip::run(Minecraft *mc) {
 
     if(teleport) {
         if(!type)
-            player.setPosition(player.getPosX() + (double)x, player.getPosY() + (double)y, player.getPosZ() + (double)z); // y pos broken?
+            player.setPosition(player.getPosX() + (double)x, player.getPosY() + (double)y, player.getPosZ() + (double)z);
         else
             player.setPosition((double)x, (double)y, (double)z);
         teleport = false;
