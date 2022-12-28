@@ -9,6 +9,8 @@
 HitBox::HitBox(Phantom *phantom) : Cheat("HitBox", "Change the size of hitbox's") {
     this->phantom = phantom;
 
+
+    canBeResetTemporaryVariableThatsWhyTheNameIsSoLongSoIWantToFixThisMore = false;
     showHitbox = false;
     reload = true;
     devSize = false;
@@ -20,6 +22,8 @@ HitBox::HitBox(Phantom *phantom) : Cheat("HitBox", "Change the size of hitbox's"
 }
 
 void HitBox::run(Minecraft *mc) {
+    canBeResetTemporaryVariableThatsWhyTheNameIsSoLongSoIWantToFixThisMore = true;
+
     if(devSize)
         scale = -10;
     else
@@ -41,16 +45,19 @@ void HitBox::run(Minecraft *mc) {
 }
 
 void HitBox::reset(Minecraft *mc) {
-    EntityPlayerSP player = mc->getPlayerContainer();
+    if(canBeResetTemporaryVariableThatsWhyTheNameIsSoLongSoIWantToFixThisMore) {
+        EntityPlayerSP player = mc->getPlayerContainer();
 
-    // probably faster not checking for differences here since its only once once every so often
-    player.setSelfWidth(0.6);
-    player.setSelfHeight(1.8);
-    oldSelfWidth = 0.6;
-    oldSelfHeight = 1.8;
+        // probably faster not checking for differences here since its only once once every so often
+        player.setSelfWidth(0.6);
+        player.setSelfHeight(1.8);
+        oldSelfWidth = 0.6;
+        oldSelfHeight = 1.8;
 
-    if(reload)
-        player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ());
+        if(reload)
+            player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ());
+        canBeResetTemporaryVariableThatsWhyTheNameIsSoLongSoIWantToFixThisMore = false; // i will make this sort of one time reset() call global in Phantom.* but ill have to modify it quite heavily so ill leave that fora  bit since Hitbox is really the only thing that needs to be reset once as of now
+    }
 }
 
 void HitBox::renderSettings() {

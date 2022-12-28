@@ -22,6 +22,8 @@ private:
     Phantom *phantom;
 
 
+    bool canBeResetTemporaryVariableThatsWhyTheNameIsSoLongSoIWantToFixThisMore;
+
     // Settings
     bool showHitbox;
     bool reload;
