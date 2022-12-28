@@ -6,14 +6,12 @@
 
 #include <net/minecraft/entity/EntityPlayerSP.h>
 #include <net/minecraft/client/multiplayer/WorldClient.h>
-#include <net/minecraft/client/multiplayer/PlayerControllerMP.h>
 
 Minecraft::Minecraft(Phantom *phantom) : AbstractClass::AbstractClass(phantom, "Minecraft") {
 	smdGetMinecraft = getMethodID("getMinecraft");
 
     fdPlayer = getFieldID("player");
 	fdWorld = getFieldID("world");
-    fdPlayerController = getFieldID("playerController");
     fdObjectMouseOver = getFieldID("objectMouseOver");
     fdPointedEntity = getFieldID("pointedEntity");
     fdGameSettings = getFieldID("gameSettings");
@@ -36,10 +34,6 @@ jobject Minecraft::getPlayer() {
 
 jobject Minecraft::getWorld() {
 	return getObject(getMinecraft(), fdWorld);
-}
-
-jobject Minecraft::getPlayerController() {
-    return getObject(getMinecraft(), fdPlayerController);
 }
 
 jobject Minecraft::getGameSettings() {
@@ -96,10 +90,6 @@ void Minecraft::setLeftClickMouse(jint leftClickMouse) {
 
 EntityPlayerSP Minecraft::getPlayerContainer() {
 	return EntityPlayerSP(phantom, this);
-}
-
-PlayerControllerMP Minecraft::getPlayerControllerMPContainer() {
-    return PlayerControllerMP(phantom, this);
 }
 
 WorldClient Minecraft::getWorldContainer() {

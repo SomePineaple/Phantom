@@ -14,16 +14,11 @@ public:
     explicit AimAssist(Phantom *phantom);
 
     void run(Minecraft *mc) override;
-    void reset(Minecraft *mc) override;
-
     void renderSettings() override;
 private:
     static bool isInFOV(EntityPlayer *entity, Minecraft *mc, float fov);
-    static void isHoldingWeapon(Minecraft *mc);
 
     Phantom *phantom;
-
-    float width, height;
 
     // Settings
     float range;
@@ -31,11 +26,10 @@ private:
     float hSpeed;
     float vSpeed;
     bool onlyOnClick;
-    bool onlyOnWeapon;
     bool center;
     bool dead;
     bool teams;
 };
 
-#endif //PHANTOM_AIMASSIST_H
 
+#endif //PHANTOM_AIMASSIST_H

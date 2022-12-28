@@ -9,9 +9,9 @@
 #include "Cheat.h"
 
 class EntityPlayer;
-class Hitbox : public Cheat {
+class HitBox : public Cheat {
 public:
-    explicit Hitbox(Phantom *phantom);
+    explicit HitBox(Phantom *phantom);
 
     void run(Minecraft *mc) override;
     void reset(Minecraft *mc) override;

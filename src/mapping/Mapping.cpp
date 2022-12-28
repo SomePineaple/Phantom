@@ -33,14 +33,23 @@ void Mapping::setup() {
     // -------------------------
     //
     // base - normal jvm classes
+
+
     struct CM* m = make("List", "java.util.List");
     method(m, "get", "(I)Ljava/lang/Object;", false);
     method(m, "toArray", "()[Ljava/lang/Object;", false);
     method(m, "size", "()I", false);
+
     m = make("Set", "java.util.Set");
-    method(m, "toArray", "()[Ljava/lang/Object;", false); method(m, "size", "()I", false);
-    m = make("System", "java.lang.System"); field(m, "out", "Ljava/io/PrintStream;", true); m = make("PrintStream", "java.io.PrintStream");
+    method(m, "toArray", "()[Ljava/lang/Object;", false);
+    method(m, "size", "()I", false);
+
+    m = make("System", "java.lang.System");
+    field(m, "out", "Ljava/io/PrintStream;", true);
+
+    m = make("PrintStream", "java.io.PrintStream");
     method(m, "println", "(Ljava/lang/String;)V", false);
+
     m = make("Mouse", "org.lwjgl.input.Mouse");
     method(m, "isButtonDown", "(I)Z", true);
 
@@ -59,6 +68,7 @@ void Mapping::setup() {
     // -----------------------------------
     //
     // obfuscated minecraft classes - 1.8.9 forge
+
     m = make("Entity", "net.minecraft.entity.Entity");
     field(m, "x", "field_70165_t", "D", false);
     field(m, "lastTickPosX", "field_70142_S", "D", false);
@@ -77,58 +87,43 @@ void Mapping::setup() {
     method(m, "canBeCollidedWith", "func_70067_L", "()Z", false);
     // For some reason this method doesn't appear to be obfuscated. IDK why
     method(m, "canRiderInteract", "()Z", false);
+
     m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
+
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);
     method(m, "setTime", "func_72877_b", "(J)V", false);
     method(m, "getEntitiesWithinAABBExcluding", "func_72839_b", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/AxisAlignedBB;)Ljava/util/List;", false);
+
     m = make("PlayerControllerMP", "net.minecraft.client.multiplayer.PlayerControllerMP");
-    method(m, "getIsHittingBlock", "func_181040_m", "()Z", false);
-    field(m, "isHittingBlock" "field_78778_j", "Z", false);
+    /* field(m, "isHittingBlock" "field_78778_j", "Z", false); */
+    /* method(m, "getIsHittingBlock", "func_181040_m", "()Z", false); */
+
     m = make("PlayerSP", "net.minecraft.client.entity.EntityPlayerSP");
     field(m, "x", "field_70165_t", "D", false);
     field(m, "y", "field_70163_u", "D", false);
     field(m, "z", "field_70161_v", "D", false);
     field(m, "yaw", "field_70177_z", "F", false);
     field(m, "pitch", "field_70125_A", "F", false);
-    /* field(m, "speed", "field_75645_e", "F", false); */
-
-    // need to move to net/minecraft/network/play/client    C0CPacketInput
-    field(m, "forwardSpeed", "field_149622_b", "F", false);
-    field(m, "strafeSpeed", "field_149624_a", "F", false);
-    //
-
-    /* field(m, "slotIndex", "field_75225_a", "F", false); */
-    /* field(m, "slotNumber", "field_75222_d", "()I", false); */
-    /* field(m, "currentItemStack", "field_70456_f", "()I", false); */
     field(m, "width", "field_70130_N", "F", false);
     field(m, "height", "field_70131_O", "F", false);
-
-    field(m, "curBlockDamageMP" ,"field_78770_f", "()F", false);
-
     method(m, "setPosition", "func_70107_b", "(DDD)V", false);
     method(m, "setVelocity", "func_70016_h", "(DDD)V", false); // maybe shoudl be in entity
-    method(m, "handleEntityVelocity", "func_147244_a", "a", false);
-    /* field(m, "currentItem", "field_70461_c", "D", false); */
-    /* field(m, "itemInUse", "field_71074_e", "F", false); */
-    /* field(m, "equipment", "field_82182_bS", "L", false); */
-    /* field(m, "clickedItem", "field_149551_e", "()Ljava/lang/String;", false); */
-    /* field(m, "currentPlayerItem", "field_78777_l", "()I", false); */
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
     method(m, "getDisplayName", "func_145748_c_", "()Lnet/minecraft/util/IChatComponent;", false);
-    // field_147065_z
-
 
     m = make("KeyBinding", "net.minecraft.client.settings.KeyBinding");
     method(m, "setKeyBindState", "func_74510_a", "(IZ)V", true);
     method(m, "onTick", "func_74507_a", "(I)V", true);
     method(m, "getKeyCode", "func_151463_i", "()I", false);
+
     m = make("GameSettings", "net.minecraft.client.settings.GameSettings");
     field(m, "keyBindAttack", "field_74312_F", "Lnet/minecraft/client/settings/KeyBinding;", false);
     field(m, "keyBindBack", "field_74368_y", "Lnet/minecraft/client/settings/KeyBinding;", false);
+
     m = make("Minecraft", "net.minecraft.client.Minecraft");
     field(m, "player", "field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;", false);
     field(m, "world", "field_71441_e", "Lnet/minecraft/client/multiplayer/WorldClient;", false);
@@ -143,6 +138,7 @@ void Mapping::setup() {
     field(m, "leftClickMouse", "field_71429_W", "I", false);
     method(m, "getRenderViewEntity", "func_175606_aa", "()Lnet/minecraft/entity/Entity;", false);
     method(m, "getMinecraft", "func_71410_x", "()Lnet/minecraft/client/Minecraft;", true);
+
     m = make("EntityLivingBase", "net.minecraft.entity.EntityLivingBase");
     field(m, "x", "field_70165_t", "D", false);
     field(m, "lastTickPosX", "field_70142_S", "D", false);
@@ -152,6 +148,7 @@ void Mapping::setup() {
     method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);
+
     m = make("EntityPlayer", "net.minecraft.entity.player.EntityPlayer");
     field(m, "x", "field_70165_t", "D", false);
     field(m, "lastTickPosX", "field_70142_S", "D", false);
@@ -166,12 +163,14 @@ void Mapping::setup() {
     method(m, "setSprint", "func_70031_b", "(Z)V", false);
     method(m, "getDisplayName", "func_145748_c_", "()Lnet/minecraft/util/IChatComponent;", false);
     method(m, "getEntityBoundingBox", "func_174813_aQ", "()Lnet/minecraft/util/AxisAlignedBB;", false);
+
     m = make("Vec3", "net.minecraft.util.Vec3");
     field(m, "xCoord", "field_72450_a", "D", false);
     field(m, "yCoord", "field_72448_b", "D", false);
     field(m, "zCoord", "field_72449_c", "D", false);
     method(m, "addVector", "func_72441_c", "(DDD)Lnet/minecraft/util/Vec3;", false);
     method(m, "distanceTo", "func_72438_d", "(Lnet/minecraft/util/Vec3;)D", false);
+
     m = make("AxisAlignedBB", "net.minecraft.util.AxisAlignedBB");
     method(m, "addCoord", "func_72321_a", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
     method(m, "expand", "func_72314_b", "(DDD)Lnet/minecraft/util/AxisAlignedBB;", false);
@@ -183,10 +182,13 @@ void Mapping::setup() {
     field(m, "minX", "field_72340_a", "D", false);
     field(m, "minY", "field_72338_b", "D", false);
     field(m, "minZ", "field_72339_c", "D", false);
+
     m = make("MovingObjectPosition", "net.minecraft.util.MovingObjectPosition");
     field(m, "hitVec", "field_72307_f", "Lnet/minecraft/util/Vec3;", false);
+
     m = make("Timer", "net.minecraft.util.Timer");
     field(m, "partialTicks", "field_74281_c", "F", false);
+
     m = make("EntityRenderer", "net.minecraft.client.renderer.EntityRenderer");
     field(m, "pointedEntity", "field_78528_u", "Lnet/minecraft/entity/Entity;");
 }

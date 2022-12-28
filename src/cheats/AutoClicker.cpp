@@ -4,7 +4,6 @@
 
 #include "AutoClicker.h"
 
-#include <net/minecraft/client/multiplayer/PlayerControllerMP.h>
 #include <thread>
 #include "../utils/MathHelper.h"
 #include "../utils/ImGuiUtils.h"
@@ -14,7 +13,6 @@
 AutoClicker::AutoClicker() : Cheat("AutoClicker", "Clicks 4 u (so ur hand doesn't break)") {
     cps = 12;
     onlyInGame = true;
-    breakBlocks = true;
 
     clickTimer = new MSTimer();
     eventTimer = new MSTimer();
@@ -32,15 +30,6 @@ AutoClicker::AutoClicker() : Cheat("AutoClicker", "Clicks 4 u (so ur hand doesn'
 }
 
 void AutoClicker::run(Minecraft *mc) {
-
-    /* auto playerItem = mc->getPlayerControllerMPContainer().getIsHittingBlock(); */
-    /* std::string stringg= "notify-send "; */
-    /* /1* stringg += (string) playerItem; *1/ */
-    /* stringg += playerItem; */
-    /* const char *cmd = stringg.c_str(); */
-    /* system(cmd); */
-
-
     if (!mc->isInGameHasFocus() && onlyInGame)
         return;
 
@@ -55,22 +44,17 @@ void AutoClicker::run(Minecraft *mc) {
         XUtils::isDeviceShit = false;
     }
 
-    /* if(!breakBlocks || !mc->getPlayerControllerMPContainer().getIsHittingBlock()) { */
-        if (mouseState.buttonStates[1]) {
-            if (clickTimer->hasTimePassed(nextDelay)) {
-                clickTimer->reset();
-                updateValues();
-                // Click in new detached thread so the delay doesn't affect other modules and frame times
-                std::thread(XUtils::clickMouseXEvent, 1, (int) ((float) nextDelay * holdLength * MathHelper::randFloat(1 - holdLengthRandom, 1 + holdLengthRandom))).detach();
-            }
-        } else {
+    if (mouseState.buttonStates[1]) {
+        if (clickTimer->hasTimePassed(nextDelay)) {
             clickTimer->reset();
+            updateValues();
+            // Click in new detached thread so the delay doesn't affect other modules and frame times
+            std::thread(XUtils::clickMouseXEvent, 1, (int) ((float) nextDelay * holdLength * MathHelper::randFloat(1 - holdLengthRandom, 1 + holdLengthRandom))).detach();
         }
-
+    } else {
+        clickTimer->reset();
     }
-/* } */
-
-void AutoClicker::reset(Minecraft *mc) {}
+}
 
 void AutoClicker::renderSettings() {
     ImGui::SliderFloat("CPS", &cps, 4, 20);
@@ -79,7 +63,6 @@ void AutoClicker::renderSettings() {
     ImGuiUtils::drawHelper("If checked, this will only click when you are in game, otherwise, this will click "
                            "anytime, on any window. You could go to clickspeedtest.net and check ur clicking speed if "
                            "this is not checked");
-    ImGui::Checkbox("Allow Breaking Blocks", &breakBlocks);
     ImGui::Checkbox("Advanced Mode", &showAdvanced);
     if (showAdvanced) {
         ImGui::SliderInt("Event Delay", &eventDelay, 0, 10000);

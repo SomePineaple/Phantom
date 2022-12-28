@@ -1,8 +1,4 @@
-//
-// Created by somepineaple on 2/1/22.
-//
-
-#include "Hitbox.h"
+#include "HitBox.h"
 
 #include <net/minecraft/entity/EntityPlayerSP.h>
 #include <imgui.h>
@@ -10,7 +6,7 @@
 #include "../utils/MathHelper.h"
 
 
-Hitbox::Hitbox(Phantom *phantom) : Cheat("Hitbox", "Change the size of hitbox's") {
+HitBox::HitBox(Phantom *phantom) : Cheat("HitBox", "Change the size of hitbox's") {
     this->phantom = phantom;
 
     showHitbox = false;
@@ -23,8 +19,7 @@ Hitbox::Hitbox(Phantom *phantom) : Cheat("Hitbox", "Change the size of hitbox's"
     vertical = 0.6;
 }
 
-void Hitbox::run(Minecraft *mc) {
-
+void HitBox::run(Minecraft *mc) {
     if(devSize)
         scale = -10;
     else
@@ -33,24 +28,22 @@ void Hitbox::run(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
     player.setSelfWidth(selfWidth);
     player.setSelfHeight(selfHeight);
-    // TODO: find a way to reload/update player/world to update hitbox
 
-    /* player.setCurBlockDamageMP(1.0F); */
+    // TODO: find a way to reload/update player/world to update hitbox
 
     /* if(showHitbox) */
         /* player. */
 
-    player.setVelocity(horizontal, vertical, 1);
-
+    /* player.setVelocity(horizontal, vertical, 1); */
 }
 
-void Hitbox::reset(Minecraft *mc) {
+void HitBox::reset(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
     player.setSelfWidth(0.6);
     player.setSelfHeight(1.8);
 }
 
-void Hitbox::renderSettings() {
+void HitBox::renderSettings() {
     ImGui::Checkbox("Show hitbox", &showHitbox);
 
     if(ImGui::CollapsingHeader("Personal")) {

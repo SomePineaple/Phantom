@@ -18,9 +18,11 @@ public:
     void renderSettings() override;
 
     float range;
+    bool onlyOnClick;
 private:
     Phantom *phantom;
 };
 
 
 #endif //PHANTOM_AIMBOT_H
+
