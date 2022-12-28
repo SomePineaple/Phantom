@@ -29,18 +29,25 @@ void HitBox::run(Minecraft *mc) {
     player.setSelfWidth(selfWidth);
     player.setSelfHeight(selfHeight);
 
-    if((player.getSelfWidth() != oldSelfWidth && player.getSelfHeight() != oldSelfHeight) && reload) // need to check if there is a difference since getting the players position causes lag
-        player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ()); // there may be a better way to do it like maybe an actaull update method or something. but this works for now ig.
+    if((player.getSelfWidth() != oldSelfWidth || player.getSelfHeight() != oldSelfHeight)) {// need to check if there is a difference since getting the players position causes lag
+        oldSelfWidth = selfWidth;
+        oldSelfHeight = selfHeight;
+        if (reload)
+            player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ()); // there may be a better way to do it like maybe an actaull update method or something. but this works for now ig.
+    }
 
     /* if(showHitbox) */
-        /* player. */
+    /* player. */
 }
 
 void HitBox::reset(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
 
+    // probably faster not checking for differences here since its only once once every so often
     player.setSelfWidth(0.6);
     player.setSelfHeight(1.8);
+    oldSelfWidth = 0.6;
+    oldSelfHeight = 1.8;
 
     if(reload)
         player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ());
