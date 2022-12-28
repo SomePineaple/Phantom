@@ -2,7 +2,7 @@
 // Created by somepineaple on 2/1/22.
 //
 
-#include "VClip.h"
+#include "Clip.h"
 
 #include <net/minecraft/entity/EntityPlayerSP.h>
 #include <imgui.h>
@@ -10,7 +10,7 @@
 #include "../utils/MathHelper.h"
 
 
-VClip::VClip(Phantom *phantom) : Cheat("VClip", "Set the players position") {
+Clip::Clip(Phantom *phantom) : Cheat("Clip", "Set the players position") {
     this->phantom = phantom;
 
     teleport = true;
@@ -22,7 +22,7 @@ VClip::VClip(Phantom *phantom) : Cheat("VClip", "Set the players position") {
     z = 0;
 }
 
-void VClip::run(Minecraft *mc) {
+void Clip::run(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
 
     if(getPosition) {
@@ -34,18 +34,18 @@ void VClip::run(Minecraft *mc) {
 
     if(teleport) {
         if(!type)
-            player.setPosition(player.getPosX()+ (double) x, player.getPosY()+ (double) y, player.getPosZ()+ (double) z); // y pos broken?
+            player.setPosition(player.getPosX() + (double)x, player.getPosY() + (double)y, player.getPosZ() + (double)z); // y pos broken?
         else
-            player.setPosition(x, y, z);
+            player.setPosition((double)x, (double)y, (double)z);
         teleport = false;
     }
 }
 
-void VClip::reset(Minecraft *mc) {
+void Clip::reset(Minecraft *mc) {
     teleport = true;
 }
 
-void VClip::renderSettings() {
+void Clip::renderSettings() {
     ImGui::Checkbox("Absolute", &type);
     ImGui::SameLine();
     ImGuiUtils::drawHelper("Absolute position will set the players position to world x,y,z coordinates"

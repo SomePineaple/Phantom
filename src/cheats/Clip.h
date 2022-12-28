@@ -2,16 +2,16 @@
 // Created by somepineaple on 2/1/22.
 //
 
-#ifndef PHANTOM_VCLIP_H
-#define PHANTOM_VCLIP_H
+#ifndef PHANTOM_CLIP_H
+#define PHANTOM_CLIP_H
 
 
 #include "Cheat.h"
 
 class EntityPlayer;
-class VClip : public Cheat {
+class Clip : public Cheat {
 public:
-    explicit VClip(Phantom *phantom);
+    explicit Clip(Phantom *phantom);
 
     void run(Minecraft *mc) override;
     void reset(Minecraft *mc) override;
@@ -30,5 +30,5 @@ private:
 
 };
 
-#endif //PHANTOM_VCLIP_H
+#endif //PHANTOM_CLIP_H
 
