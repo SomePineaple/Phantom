@@ -33,7 +33,7 @@ public:
 	void setRotationPitch(jfloat pitch);
 	void setSprinting(jboolean sprinting);
 
-    void setVelocity(jdouble horizontal, jdouble vertical, jint change);
+    void setVelocity(jdouble horizontal, jdouble vertical);
     void setPosition(jdouble x, jdouble y, jdouble z);
 
     void setSelfWidth(jfloat width);

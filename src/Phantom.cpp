@@ -16,6 +16,7 @@
 #include "cheats/AutoClicker.h"
 #include "cheats/AimAssist.h"
 #include "cheats/HitBox.h"
+#include "cheats/Velocity.h"
 #include "cheats/Reach.h"
 #include "cheats/FastPlace.h"
 #include "cheats/HitDelayFix.h"
@@ -45,6 +46,7 @@ Phantom::Phantom() {
     cheats.push_back(new AutoClicker());
     cheats.push_back(new AimAssist(this));
     cheats.push_back(new HitBox(this));
+    cheats.push_back(new Velocity(this));
     cheats.push_back(new Reach(this));
     cheats.push_back(new FastPlace());
     cheats.push_back(new HitDelayFix());

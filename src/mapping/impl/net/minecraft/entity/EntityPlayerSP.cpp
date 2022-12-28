@@ -92,7 +92,7 @@ void EntityPlayerSP::setSelfHeight(jfloat height) {
     setFloat(mc->getPlayer(), fdSelfHeight, height);
 }
 
-void EntityPlayerSP::setVelocity(jdouble horizontal, jdouble vertical, jint chance) {
+void EntityPlayerSP::setVelocity(jdouble horizontal, jdouble vertical) {
     callMethod(mc->getPlayer(), mdSetVelocity, horizontal, vertical, horizontal);
 }
 
