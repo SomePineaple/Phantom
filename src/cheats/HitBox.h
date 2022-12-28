@@ -28,8 +28,6 @@ private:
     int scale;
     float selfWidth, selfHeight;
 
-    float horizontal, vertical;
-
 };
 
 #endif //PHANTOM_HITBOX_H

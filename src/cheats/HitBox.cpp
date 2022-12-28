@@ -14,9 +14,6 @@ HitBox::HitBox(Phantom *phantom) : Cheat("HitBox", "Change the size of hitbox's"
     selfWidth = 0.6;
     selfHeight = 1.8;
     scale = 0;
-
-    horizontal = 0.6;
-    vertical = 0.6;
 }
 
 void HitBox::run(Minecraft *mc) {
@@ -33,8 +30,6 @@ void HitBox::run(Minecraft *mc) {
 
     /* if(showHitbox) */
         /* player. */
-
-    /* player.setVelocity(horizontal, vertical, 1); */
 }
 
 void HitBox::reset(Minecraft *mc) {
@@ -46,7 +41,7 @@ void HitBox::reset(Minecraft *mc) {
 void HitBox::renderSettings() {
     ImGui::Checkbox("Show hitbox", &showHitbox);
 
-    if(ImGui::CollapsingHeader("Personal")) {
+    if(ImGui::CollapsingHeader("Personal Hitbox")) {
         ImGui::Text("You will usually have to update the player (e.g. walk through a block) for changes to take effect");
 
         ImGui::Checkbox("Allow Hitbox size lower than 0", &devSize);
@@ -67,6 +62,4 @@ void HitBox::renderSettings() {
 
     }
 
-    ImGui::SliderFloat("Horizontal velocity", &horizontal, 0, 100, "%.5f");
-    ImGui::SliderFloat("Vertical velocity", &vertical, 0, 100, "%.5f");
 }
