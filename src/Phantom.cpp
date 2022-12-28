@@ -20,7 +20,7 @@
 #include "cheats/FastPlace.h"
 #include "cheats/HitDelayFix.h"
 #include "cheats/STap.h"
-/* #include "cheats/VClip.h" */
+#include "cheats/VClip.h"
 
 #include "ui/KeyManager.h"
 
@@ -49,7 +49,7 @@ Phantom::Phantom() {
     cheats.push_back(new FastPlace());
     cheats.push_back(new HitDelayFix());
     cheats.push_back(new STap(this));
-    /* cheats.push_back(new VClip(this)); */
+    cheats.push_back(new VClip(this));
 }
 
 void Phantom::runClient() {
