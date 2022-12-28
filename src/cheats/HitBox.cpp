@@ -14,6 +14,8 @@ HitBox::HitBox(Phantom *phantom) : Cheat("HitBox", "Change the size of hitbox's"
     devSize = false;
     selfWidth = 0.6;
     selfHeight = 1.8;
+    oldSelfWidth = 0.6;
+    oldSelfHeight = 1.8;
     scale = 0;
 }
 
@@ -27,7 +29,7 @@ void HitBox::run(Minecraft *mc) {
     player.setSelfWidth(selfWidth);
     player.setSelfHeight(selfHeight);
 
-    if(reload)
+    if((player.getSelfWidth() != oldSelfWidth && player.getSelfHeight() != oldSelfHeight) && reload) // need to check if there is a difference since getting the players position causes lag
         player.setPosition(player.getPosX(), player.getPosY(), player.getPosZ()); // there may be a better way to do it like maybe an actaull update method or something. but this works for now ig.
 
     /* if(showHitbox) */

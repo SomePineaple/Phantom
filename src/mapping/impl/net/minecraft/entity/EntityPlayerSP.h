@@ -38,6 +38,8 @@ public:
 
     void setSelfWidth(jfloat width);
     void setSelfHeight(jfloat height);
+    jfloat getSelfWidth();
+    jfloat getSelfHeight();
 
     jobject getEntityPlayerSP();
 private:

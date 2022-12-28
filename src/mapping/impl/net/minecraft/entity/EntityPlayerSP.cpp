@@ -92,6 +92,14 @@ void EntityPlayerSP::setSelfHeight(jfloat height) {
     setFloat(mc->getPlayer(), fdSelfHeight, height);
 }
 
+jfloat EntityPlayerSP::getSelfWidth() {
+    return getFloat(mc->getPlayer(), fdSelfWidth);
+}
+
+jfloat EntityPlayerSP::getSelfHeight() {
+    return getFloat(mc->getPlayer(), fdSelfHeight);
+}
+
 void EntityPlayerSP::setVelocity(jdouble horizontal, jdouble vertical) {
     callMethod(mc->getPlayer(), mdSetVelocity, horizontal, vertical, horizontal);
 }

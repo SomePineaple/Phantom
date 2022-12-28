@@ -28,6 +28,7 @@ private:
     bool devSize;
     int scale;
     float selfWidth, selfHeight;
+    float oldSelfWidth, oldSelfHeight;
 
 };
 
