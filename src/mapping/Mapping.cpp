@@ -89,7 +89,6 @@ void Mapping::setup() {
     method(m, "canRiderInteract", "()Z", false);
 
     m = make("WorldClient", "net.minecraft.client.multiplayer.WorldClient");
-
     field(m, "entities", "field_72996_f", "Ljava/util/List;", false);
     field(m, "players", "field_73010_i", "Ljava/util/List;", false);
     method(m, "setTime", "func_72877_b", "(J)V", false);
@@ -100,6 +99,7 @@ void Mapping::setup() {
     /* method(m, "getIsHittingBlock", "func_181040_m", "()Z", false); */
 
     m = make("PlayerSP", "net.minecraft.client.entity.EntityPlayerSP");
+    // field_70138_W, field_70145_X do these later
     field(m, "x", "field_70165_t", "D", false);
     field(m, "y", "field_70163_u", "D", false);
     field(m, "z", "field_70161_v", "D", false);
@@ -107,8 +107,15 @@ void Mapping::setup() {
     field(m, "pitch", "field_70125_A", "F", false);
     field(m, "width", "field_70130_N", "F", false);
     field(m, "height", "field_70131_O", "F", false);
+    field(m, "motionX", "field_70159_w", "D", false);
+    field(m, "motionY", "field_70181_x", "D", false);
+    field(m, "motionZ", "field_70179_y", "D", false);
+    field(m, "hurtTime", "field_70737_aN", "I", false);
+    field(m, "maxHurtTime", "field_70738_aO", "I", false);
     method(m, "setPosition", "func_70107_b", "(DDD)V", false);
     method(m, "setVelocity", "func_70016_h", "(DDD)V", false); // maybe shoudl be in entity
+    method(m, "getPositionVector", "func_174791_d", "()Lnet/minecraft/util/Vec3;", false);
+    method(m, "getLook", "func_70676_i", "(F)Lnet/minecraft/util/Vec3;", false);
     method(m, "getID", "func_145782_y", "()I", false);
     method(m, "getEyeHeight", "func_70047_e", "()F", false);
     method(m, "getName", "func_70005_c_", "()Ljava/lang/String;", false);

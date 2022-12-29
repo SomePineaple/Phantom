@@ -27,6 +27,7 @@ private:
     bool getPosition;
 
     float x, y, z;
+    float looking;
 
 };
 

@@ -17,8 +17,15 @@ EntityPlayerSP::EntityPlayerSP(Phantom * phantom, Minecraft * mc) : AbstractClas
 	fdRotationPitch = getFieldID("pitch");
     fdSelfWidth = getFieldID("width");
     fdSelfHeight = getFieldID("height");
+    fdMotionX = getFieldID("motionX");
+    fdMotionY = getFieldID("motionY");
+    fdMotionZ = getFieldID("motionZ");
+    fdHurtTime = getFieldID("hurtTime");
+    fdMaxHurtTime = getFieldID("maxHurtTime");
     mdSetPosition = getMethodID("setPosition");
     mdSetVelocity = getMethodID("setVelocity");
+    /* mdGetPositionVector = getMethodID("getPositionVector"); */
+    /* mdGetLook = getMethodID("getLook"); */
 	mdGetId = getMethodID("getID");
 	mdGetName = getMethodID("getName");
 	mdSetSprinting = getMethodID("setSprint");
@@ -40,6 +47,18 @@ jdouble EntityPlayerSP::getPosY() {
 jdouble EntityPlayerSP::getPosZ() {
 	return getDouble(mc->getPlayer(), fdPosZ);
 }
+
+/* Vec3 EntityPlayerSP::getPositionVector() { */
+/*     return Vec3(phantom, mdGetPositionVector) */
+/* } */
+
+/* jobject EntityPlayerSP::getLook(jfloat partialTicks) { */
+/*     return getObject(mc->getPlayer(), mdGetLook, partialTicks); */
+/* } */
+
+/* Vec3 EntityPlayerSP::getLookContainer(jfloat partialTicks) { */
+/*     return Vec3(phantom, getLook(partialTicks)); */
+/* } */
 
 jint EntityPlayerSP::getId() {
 	return getInt(mc->getPlayer(), mdGetId);
@@ -98,6 +117,24 @@ jfloat EntityPlayerSP::getSelfWidth() {
 
 jfloat EntityPlayerSP::getSelfHeight() {
     return getFloat(mc->getPlayer(), fdSelfHeight);
+}
+
+void EntityPlayerSP::setMotionHorizontal(jdouble horizontal) {
+    horizontal *= getDouble(mc->getPlayer(), fdMotionX);
+    setDouble(mc->getPlayer(), fdMotionX, horizontal);
+    setDouble(mc->getPlayer(), fdMotionZ, horizontal);
+}
+
+void EntityPlayerSP::setMotionY(jdouble motionY) {
+    setDouble(mc->getPlayer(), fdMotionY, getDouble(mc->getPlayer(), fdMotionY) * motionY);
+}
+
+jint EntityPlayerSP::getHurtTime() {
+    return getInt(mc->getPlayer(), fdHurtTime);
+}
+
+jint EntityPlayerSP::getMaxHurtTime() {
+    return getInt(mc->getPlayer(), fdMaxHurtTime);
 }
 
 void EntityPlayerSP::setVelocity(jdouble horizontal, jdouble vertical) {

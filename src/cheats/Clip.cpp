@@ -5,6 +5,7 @@
 #include "Clip.h"
 
 #include <net/minecraft/entity/EntityPlayerSP.h>
+#include <net/minecraft/client/multiplayer/WorldClient.h>
 #include <imgui.h>
 #include "../utils/ImGuiUtils.h"
 #include "../utils/MathHelper.h"
@@ -20,10 +21,12 @@ Clip::Clip(Phantom *phantom) : Cheat("Clip", "Set the players position") {
     x = 0;
     y = 0;
     z = 0;
+    looking = 0;
 }
 
 void Clip::run(Minecraft *mc) {
     EntityPlayerSP player = mc->getPlayerContainer();
+
 
     if(getPosition) {
         getPosition = false;
@@ -33,6 +36,10 @@ void Clip::run(Minecraft *mc) {
     }
 
     if(teleport) {
+        /* Vec3 look = player.getLookContainer(mc->getTimerContainer().getPartialTicks()); */
+        /* Vec3 coords = player.getPositionVector().addVectorContainer(look.getXCoord(), look.getYCoord(), look.getZCoord()); */
+        /* player.setPosition(coords.getXCoord(), coords.getYCoord(), coords.getZCoord()); // sometimes unnecessary but helps with ux */
+
         if(!type)
             player.setPosition(player.getPosX() + (double)x, player.getPosY() + (double)y, player.getPosZ() + (double)z);
         else
@@ -54,6 +61,10 @@ void Clip::renderSettings() {
     ImGui::SliderFloat("x", &x, -10, 10, "%.5f");
     ImGui::SliderFloat("y", &y, -10, 10, "%.5f");
     ImGui::SliderFloat("z", &z, -10, 10, "%.5f");
+
+    ImGui::SliderFloat("Looking", &looking, -10, 10, "%.5f");
+    ImGui::SameLine();
+    ImGuiUtils::drawHelper("Teleport in the direction the player is looking");
 
     if(ImGui::Button("Get position"))
         getPosition = true;

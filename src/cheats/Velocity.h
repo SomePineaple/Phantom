@@ -23,7 +23,7 @@ private:
 
     // Settings
     float chance;
-    float constantHorizontal, constantVertical;
+    float horizontalMotion, verticalMotion;
 };
 
 #endif //PHANTOM_VELOCITY_H
