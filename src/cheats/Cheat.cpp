@@ -13,6 +13,7 @@ Cheat::Cheat(const char *name, const char *description) {
 }
 
 void Cheat::run(Minecraft *mc) {}
+void Cheat::reset(Minecraft *mc) {}
 
 void Cheat::renderSettings() {}
 

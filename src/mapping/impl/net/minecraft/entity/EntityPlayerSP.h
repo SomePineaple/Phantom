@@ -27,9 +27,29 @@ public:
 	const char *getName();
     const char *getFormattedDisplayName();
 
+    /* jobject getLook(jfloat partialTicks); */
+    /* Vec3 getLookContainer(jfloat partialTicks); */
+
 	void setRotationYaw(jfloat yaw);
 	void setRotationPitch(jfloat pitch);
 	void setSprinting(jboolean sprinting);
+
+    void setMotionHorizontal(jdouble horizontal);
+    void setMotionY(jdouble motionY);
+
+    void setVelocity(jdouble horizontal, jdouble vertical);
+    void setPosition(jdouble x, jdouble y, jdouble z);
+
+    /* Vec3 getPositionVector(); */
+
+    void setSelfWidth(jfloat width);
+    void setSelfHeight(jfloat height);
+
+    jfloat getSelfWidth();
+    jfloat getSelfHeight();
+
+    jint getHurtTime();
+    jint getMaxHurtTime();
 
     jobject getEntityPlayerSP();
 private:
@@ -38,6 +58,13 @@ private:
 	jfieldID fdPosZ;
 	jfieldID fdRotationYaw;
 	jfieldID fdRotationPitch;
+    jfieldID fdSelfWidth, fdSelfHeight;
+    jfieldID fdMotionX, fdMotionY, fdMotionZ;
+    jfieldID fdHurtTime, fdMaxHurtTime;
+    jmethodID mdSetPosition;
+    jmethodID mdSetVelocity;
+    /* jmethodID mdGetLook; */
+    /* jmethodID mdGetPositionVector; */
 	jmethodID mdGetId;
 	jmethodID mdGetName;
 	jmethodID mdSetSprinting;
@@ -50,3 +77,4 @@ private:
 };
 
 #endif //PHANTOM_ENTITYPLAYERSP_H
+
