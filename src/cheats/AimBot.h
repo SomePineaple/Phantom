@@ -11,12 +11,18 @@
 class AimBot : public Cheat {
 public:
     explicit AimBot(Phantom *phantom);
+
     void run(Minecraft *mc) override;
+    void reset(Minecraft *mc) override;
+
     void renderSettings() override;
+
     float range;
+    bool onlyOnClick;
 private:
     Phantom *phantom;
 };
 
 
 #endif //PHANTOM_AIMBOT_H
+

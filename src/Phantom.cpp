@@ -8,18 +8,22 @@
 #include <net/minecraft/client/Minecraft.h>
 #include <net/minecraft/client/multiplayer/WorldClient.h>
 #include <net/minecraft/entity/EntityPlayerSP.h>
+/* #include <net/minecraft/client/multiplayer/PlayerControllerMP.h> */
 
 #include "ui/PhantomWindow.h"
 
 #include "cheats/AimBot.h"
 #include "cheats/AutoClicker.h"
 #include "cheats/AimAssist.h"
+#include "cheats/HitBox.h"
+#include "cheats/Velocity.h"
 #include "cheats/Reach.h"
 #include "cheats/FastPlace.h"
 #include "cheats/HitDelayFix.h"
+#include "cheats/STap.h"
+#include "cheats/Clip.h"
 
 #include "ui/KeyManager.h"
-#include "cheats/STap.h"
 
 Phantom::Phantom() {
     running = false;
@@ -39,12 +43,15 @@ Phantom::Phantom() {
     Mapping::setup();
 
     cheats.push_back(new AimBot(this));
-    cheats.push_back(new AimAssist(this));
     cheats.push_back(new AutoClicker());
+    cheats.push_back(new AimAssist(this));
+    cheats.push_back(new HitBox(this));
+    cheats.push_back(new Velocity(this));
     cheats.push_back(new Reach(this));
     cheats.push_back(new FastPlace());
     cheats.push_back(new HitDelayFix());
     cheats.push_back(new STap(this));
+    cheats.push_back(new Clip(this));
 }
 
 void Phantom::runClient() {
@@ -62,6 +69,7 @@ void Phantom::runClient() {
         // This is in the loop so that the instances are current. IE, joining a new world not trying to reference the old one.
         EntityPlayerSP player = mc->getPlayerContainer();
         WorldClient world = mc->getWorldContainer();
+        /* PlayerControllerMP playerController = mc->getPlayerControllerMPContainer(); */
         // Ensure the player and world are not null (IE, check if in-game)
         if (player.getEntityPlayerSP() == nullptr || world.getWorld() == nullptr) {
             window->update(cheats, running, false);
@@ -73,6 +81,8 @@ void Phantom::runClient() {
         for (Cheat *cheat : cheats) {
             if (cheat->enabled)
                 cheat->run(mc);
+            else if(!cheat->enabled)
+                cheat->reset(mc);
         }
 
         window->update(cheats, running, true);
